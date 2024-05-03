@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+
+  <head>
+    <link href="styles/style.css" rel="stylesheet" />
+    <script src="scripts/main.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link
+  rel="apple-touch-icon-precomposed"
+  sizes="144x144"
+  href="images/logo-quick-scales.PNG" />
+<!-- iPhone with high-resolution Retina display: -->
+<link
+  rel="apple-touch-icon-precomposed"
+  sizes="114x114"
+  href="images/logo-quick-scales.PNG"  />
+<!-- first- and second-generation iPad: -->
+<link
+  rel="apple-touch-icon-precomposed"
+  sizes="72x72"
+  href="images/logo-quick-scales.PNG"  />
+<!-- non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+<link
+  rel="apple-touch-icon-precomposed"
+  href="images/logo-quick-scales.PNG"  />
+<!-- basic favicon -->
+<link
+  rel="icon"
+  href="images/logo-quick-scales.PNG"  />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Quick Scales Tool</title>
+  <meta name="author" content="Unknown" />
+  <meta name="description" content="The Quick Scales Tool is a visual aid for guitar, bass, piano and other fretted string 
+  instruments that allows musicians to see which notes on a scale will maximize harmonious playing while staying in key, especially during collaborative play!" />
+  </head>
+
+
+
+
+  <body>
+
+    <div class="toolbar">
+
+    <h1 class="title">Quick Scales Tool</h1>
+
+    <h2 class="subtitle">Guitar Fretboard</h2>
+
+    <!-- Add the below commented out section to the about/howto page -->
+
+    <!-- <p>Select a root note and a scale from each drop down menu below. C Major (Ionian) is selected by default.</p> -->
+
+    <div>
+  <select class="select" id='Select1'>
+    <option value="C" selected>C</option>
+    <option value="C♯/D♭">C♯/D♭</option>
+    <option value="D">D</option>
+    <option value="D♯/E♭">D♯/E♭</option>
+    <option value="E">E</option>
+    <option value="F">F</option>
+    <option value="F♯/G♭">F♯/G♭</option>
+    <option value="G">G</option>
+    <option value="G♯/A♭">G♯/A♭</option>
+    <option value="A">A</option>
+    <option value="A♯/B♭">A♯/B♭</option>
+    <option value="B">B</option>
+  </select>
+  
+  <select class="select" id='Select2'>
+
+    <hr />
+    <optgroup label="Common">
+    <option value="Major (Ionian)" selected>Major (Ionian)</option>
+    <option value="Minor (Aeolian)">Minor (Aeolian)</option>
+    <option value="Major Pentatonic">Major Pentatonic</option>
+    <option value="Minor Pentatonic">Minor Pentatonic</option>
+    <option value="Blues">Blues</option>
+    <option value="Melodic Minor">Melodic Minor</option>
+    <option value="Harmonic Minor">Harmonic Minor</option>
+<!--     <option value="Harmonic Major">Harmonic Major</option> -->
+    <option value="Blues Minor">Blues Minor</option>
+    </optgroup>
+
+    <hr />
+    <optgroup label="Technical">
+    <option value="Diminished">Diminished</option>
+ <!--    <option value="Half Diminished">Half Diminished</option> -->
+    <option value="Augmented">Augmented</option>
+    <option value="Whole Tone">Whole Tone</option>
+    <option value="Double Harmonic">Double Harmonic</option>
+    <option value="Chromatic">Chromatic</option>
+    </optgroup>
+
+    <hr />
+    <optgroup label="Jazz & Ethnic">
+<!--     <option value="Acoustic">Acoustic</option>
+    <option value="Algerian">Algerian</option>
+    <option value="Altered">Altered</option> -->
+    <option value="Mixo Blues">Mixo Blues</option>
+    <option value="Bebop Dominant">Bebop Dominant</option>
+    <option value="Bebop Major">Bebop Major</option>
+    <option value="Melodic Minor Bebop">Melodic Minor Bebop</option>
+    <option value="Locrian Bebop">Locrian Bebop</option>
+    <option value="Enigmatic">Enigmatic</option>
+<!--     <option value="Flamenco">Flamenco</option>
+    <option value="Gypsy">Gypsy</option>
+    <option value="Hirajoshi">Hirajoshi</option>
+    <option value="Hungarian Minor">Hungarian Minor</option> -->
+    <option value="In">In</option>
+    <option value="Insen">Insen</option>
+    <option value="Istrian">Istrian</option>
+<!--     <option value="Iwato">Iwato</option>
+    <option value="Lydian Augmented">Lydian Augmented</option>
+    <option value="Major Locrian">Major Locrian</option> -->
+    <option value="Neapolitan Major">Neapolitan Major</option>
+    <option value="Neapolitan Minor">Neapolitan Minor</option>
+    <option value="Persian">Persian</option>
+    <option value="Pfluke">Pfluke</option>
+<!--     <option value="Phrygian Dominant">Phrygian Dominant</option> -->
+    <option value="Prometheus">Prometheus</option>
+    <option value="Tritone">Tritone</option>
+    <option value="Ukrainian Dorian">Ukrainian Dorian</option>
+<!--     <option value="Yo">Yo</option> -->
+    </optgroup>
+
+    <hr />
+    <optgroup label="Common Modes">
+    <option value="Phrygian">Phrygian</option>
+    <option value="Dorian">Dorian</option>
+    <option value="Lydian">Lydian</option>
+    <option value="Mixolydian">Mixolydian</option>
+    <option value="Locrian">Locrian</option>
+    <option value="Major Hexatonic">Major Hexatonic</option>
+    <option value="Minor Hexatonic">Minor Hexatonic</option>
+    </optgroup>
+
+  </select> 
+</div>
+
+<div><img src="images/hamburger-menu-512.png" class="linkbtn" id="linkbtn" onclick="togglemobilelink()"/></div>
+
+    <nav class="mobilelink">
+    <ul id="mobilelink">
+    <li><a href="index-piano/index.html">Piano Keyboard</a></li>
+    <li><a href="index-guitar-filter/index.html">Scale Filter</a></li>
+    <li><a href="index-about/index.html">About</a></li>
+    </ul>
+    </nav>
+
+</div>
+
+<div class="mytable2">
+<table class="mytable" id="mytable">
+      
+      <tr class="table-top">
+        <td class="col6"><button href="#"  onclick="toggleColumn(6)">Hide</button></td>
+        <td class="col7"><button href="#"  onclick="toggleColumn(7)">Hide</button></td>
+        <td class="ExcelStyle"><button href="#"  onclick="toggleColumn(7)">Tune</button></td>
+        <td class="ExcelStyle"><button href="#"  onclick="toggleColumn(6)">Strings</button></td>
+        <td class="ExcelStyle"></td>
+        <td class="ExcelStyle"></td>
+        <td class="ExcelStyle"></td>
+        <td class="ExcelStyle"></td>
+        <td class="ExcelStyle"></td>
+        <td class="ExcelStyle"></td>
+        <td class="ExcelStyle"></td>
+        <td class="ExcelStyle"></td>
+        <td class="ExcelStyle"></td>
+        <td class="ExcelStyle"></td>
+        <td class="ExcelStyle"><button href="#"  onclick="toggleColumn(1)" class="fretfullbtn">24🠲</button></td>
+        <td class="col1"></td>
+        <td class="col1"></td>
+        <td class="col1"></td>
+        <td class="col1"></td>
+        <td class="col1"></td>
+        <td class="col1"></td>
+        <td class="col1"></td>
+        <td class="col1"><!--<button href="#"  onclick="toggleColumn(2)">(±)21</button>--></td>
+        <td class="col1 col2"><!--<button href="#"  onclick="toggleColumn(3)">(±)22</button>--></td>
+        <td class="col1 col3"><!--<button href="#"  onclick="toggleColumn(4)">(±)23-24</button>--></td>
+        <td class="col1 col4"></td>
+        <td class="col1 col4"><button href="#"  onclick="toggleColumn(1)">🠰12</button></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+      </tr>
+
+<!--
+    <tr class="table-header">
+        <td class="col6"></td>
+        <td class="col7"></td>
+        <td class="ExcelStyle">0</td>
+        <td class="ExcelStyle">1</td>
+        <td class="ExcelStyle">2</td>
+        <td class="ExcelStyle">3</td>
+        <td class="ExcelStyle">4</td>
+        <td class="ExcelStyle">5</td>
+        <td class="ExcelStyle">6</td>
+        <td class="ExcelStyle">7</td>
+        <td class="ExcelStyle">8</td>
+        <td class="ExcelStyle">9</td>
+        <td class="ExcelStyle">10</td>
+        <td class="ExcelStyle">11</td>
+        <td class="ExcelStyle">12</td>
+        <td class="col1">13</td>
+        <td class="col1">14</td>
+        <td class="col1">15</td>
+        <td class="col1">16</td>
+        <td class="col1">17</td>
+        <td class="col1">18</td>
+        <td class="col1">19</td>
+        <td class="col1">20</td>
+        <td class="col2">21</td>
+        <td class="col3">22</td>
+        <td class="col4">23</td>
+        <td class="col4">24</td>
+        <td class="col5">25</td>
+        <td class="col5">26</td>
+        <td class="col5">27</td>
+        <td class="col5">28</td>
+        <td class="col5">29</td>
+        <td class="col5">30</td>
+        <td class="col5">31</td>
+        <td class="col5">32</td>
+        <td class="col5">33</td>
+        <td class="col5">34</td>
+        <td class="col5">35</td>
+      </tr>
+      -->
+
+      <tr class="table-header">
+        <td class="col6"></td>
+        <td class="col7"></td>
+        <td class="ExcelStyle" style="text-align: right;">|</td>
+        <td class="ExcelStyle" style="text-align: left;">|</td>
+        <td class="ExcelStyle"></td>
+        <td class="ExcelStyle">➌</td>
+        <td class="ExcelStyle"></td>
+        <td class="ExcelStyle">➎</td>
+        <td class="ExcelStyle"></td>
+        <td class="ExcelStyle">➐</td>
+        <td class="ExcelStyle"></td>
+        <td class="ExcelStyle">➒</td>
+        <td class="ExcelStyle"></td>
+        <td class="ExcelStyle"></td>
+        <td class="ExcelStyle">➊➋</td>
+        <td class="col1"></td>
+        <td class="col1"></td>
+        <td class="col1">➎</td>
+        <td class="col1"></td>
+        <td class="col1">➐</td>
+        <td class="col1"></td>
+        <td class="col1">➒</td>
+        <td class="col1"></td>
+        <td class="col1 col2">➊</td>
+        <td class="col1 col3"></td>
+        <td class="col1 col4"></td>
+        <td class="col1 col4">➋➍</td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+      </tr>
+
+      <tr id="highEString">
+        
+        <td class="col6"><button href="#" onclick="toggleRowHighE(this)">E🠲</button></td>
+        <td class="col7"><button href="#" onclick="shiftHighELeft(this)">🠲</button></td>
+        <td class="ExcelStyle rotate-text ENote Highlight">E</td>
+        <td class="ExcelStyle FNote Highlight">F</td>
+        <td class="ExcelStyle FSharpNote">F♯</td>
+        <td class="ExcelStyle GNote Highlight">G</td>
+        <td class="ExcelStyle GSharpNote">G♯</td>
+        <td class="ExcelStyle ANote Highlight">A</td>
+        <td class="ExcelStyle ASharpNote">A♯</td>
+        <td class="ExcelStyle BNote Highlight">B</td>
+        <td class="ExcelStyle CNote Highlight">C</td>
+        <td class="ExcelStyle CSharpNote">C♯</td>
+        <td class="ExcelStyle DNote Highlight">D</td>
+        <td class="ExcelStyle DSharpNote">D♯</td>
+        <td class="ExcelStyle ENote Highlight">E</td>
+        <td class="col1 FNote Highlight">F</td>
+        <td class="col1 FSharpNote">F♯</td>
+        <td class="col1 GNote Highlight">G</td>
+        <td class="col1 GSharpNote">G♯</td>
+        <td class="col1 ANote Highlight">A</td>
+        <td class="col1 ASharpNote">A♯</td>
+        <td class="col1 BNote Highlight">B</td>
+        <td class="col1 CNote Highlight">C</td>
+        <td class="col1 col2 CSharpNote">C♯</td>
+        <td class="col1 col3 DNote Highlight">D</td>
+        <td class="col1 col4 DSharpNote">D♯</td>
+        <td class="col1 col4 ENote Highlight">E</td>
+        <td class="col5 FNote Highlight">F</td>
+        <td class="col5 FSharpNote">F♯</td>
+        <td class="col5 GNote Highlight">G</td>
+        <td class="col5 GSharpNote">G♯</td>
+        <td class="col5 ANote Highlight">A</td>
+        <td class="col5 ASharpNote">A♯</td>
+        <td class="col5 BNote Highlight">B</td>
+        <td class="col5 CNote Highlight">C</td>
+        <td class="col5 CSharpNote">C♯</td>
+        <td class="col5 DNote Highlight">D</td>
+        <td class="col5 DSharpNote">D♯</td>
+      </tr>
+      <tr id="highBString">
+        
+        <td class="col6"><button href="#" onclick="toggleRowHighE(this)">E🠱</button></td>
+        <td class="col7"><button href="#" onclick="shiftHighBLeft(this)">🠲</button></td>
+        <td class="ExcelStyle rotate-text BNote Highlight">B</td>
+        <td class="ExcelStyle CNote Highlight">C</td>
+        <td class="ExcelStyle CSharpNote">C♯</td>
+        <td class="ExcelStyle DNote Highlight">D</td>
+        <td class="ExcelStyle DSharpNote">D♯</td>
+        <td class="ExcelStyle ENote Highlight">E</td>
+        <td class="ExcelStyle FNote Highlight">F</td>
+        <td class="ExcelStyle FSharpNote">F♯</td>
+        <td class="ExcelStyle GNote Highlight">G</td>
+        <td class="ExcelStyle GSharpNote">G♯</td>
+        <td class="ExcelStyle ANote Highlight">A</td>
+        <td class="ExcelStyle ASharpNote">A♯</td>
+        <td class="ExcelStyle BNote Highlight">B</td>
+        <td class="col1 CNote Highlight">C</td>
+        <td class="col1 CSharpNote">C♯</td>
+        <td class="col1 DNote Highlight">D</td>
+        <td class="col1 DSharpNote">D♯</td>
+        <td class="col1 ENote Highlight">E</td>
+        <td class="col1 FNote Highlight">F</td>
+        <td class="col1 FSharpNote">F♯</td>
+        <td class="col1 GNote Highlight">G</td>
+        <td class="col1 col2 GSharpNote">G♯</td>
+        <td class="col1 col3 ANote Highlight">A</td>
+        <td class="col1 col4 ASharpNote">A♯</td>
+        <td class="col1 col4 BNote Highlight">B</td>
+        <td class="col5 CNote Highlight">C</td>
+        <td class="col5 CSharpNote">C♯</td>
+        <td class="col5 DNote Highlight">D</td>
+        <td class="col5 DSharpNote">D♯</td>
+        <td class="col5 ENote Highlight">E</td>
+        <td class="col5 FNote Highlight">F</td>
+        <td class="col5 FSharpNote">F♯</td>
+        <td class="col5 GNote Highlight">G</td>
+        <td class="col5 GSharpNote">G♯</td>
+        <td class="col5 ANote Highlight">A</td>
+        <td class="col5 ASharpNote">A♯</td>
+      </tr>
+      <tr id="highGString">
+       
+        <td class="col6"><button href="#" onclick="toggleRowHighB(this)">B🠱 </button></td>
+        <td class="col7"><button href="#" onclick="shiftHighGLeft(this)">🠲</button></td>
+        <td class="ExcelStyle rotate-text GNote Highlight">G</td>
+        <td class="ExcelStyle GSharpNote">G♯</td>
+        <td class="ExcelStyle ANote Highlight">A</td>
+        <td class="ExcelStyle ASharpNote">A♯</td>
+        <td class="ExcelStyle BNote Highlight">B</td>
+        <td class="ExcelStyle CNote Highlight">C</td>
+        <td class="ExcelStyle CSharpNote">C♯</td>
+        <td class="ExcelStyle DNote Highlight">D</td>
+        <td class="ExcelStyle DSharpNote">D♯</td>
+        <td class="ExcelStyle ENote Highlight">E</td>
+        <td class="ExcelStyle FNote Highlight">F</td>
+        <td class="ExcelStyle FSharpNote">F♯</td>
+        <td class="ExcelStyle GNote Highlight">G</td>
+        <td class="col1 GSharpNote">G♯</td>
+        <td class="col1 ANote Highlight">A</td>
+        <td class="col1 ASharpNote">A♯</td>
+        <td class="col1 BNote Highlight">B</td>
+        <td class="col1 CNote Highlight">C</td>
+        <td class="col1 CSharpNote">C♯</td>
+        <td class="col1 DNote Highlight">D</td>
+        <td class="col1 DSharpNote">D♯</td>
+        <td class="col1 col2 ENote Highlight">E</td>
+        <td class="col1 col3 FNote Highlight">F</td>
+        <td class="col1 col4 FSharpNote">F♯</td>
+        <td class="col1 col4 GNote Highlight">G</td>
+        <td class="col5 GSharpNote">G♯</td>
+        <td class="col5 ANote Highlight">A</td>
+        <td class="col5 ASharpNote">A♯</td>
+        <td class="col5 BNote Highlight">B</td>
+        <td class="col5 CNote Highlight">C</td>
+        <td class="col5 CSharpNote">C♯</td>
+        <td class="col5 DNote Highlight">D</td>
+        <td class="col5 DSharpNote">D♯</td>
+        <td class="col5 ENote Highlight">E</td>
+        <td class="col5 FNote Highlight">F</td>
+        <td class="col5 FSharpNote">F♯</td>
+      </tr>
+      <tr id="DString">
+        
+        <td class="col6"></td>
+        <td class="col7"><button href="#" onclick="shiftDLeft(this)">🠲</button></td>
+        <td class="ExcelStyle rotate-text DNote Highlight">D</td>
+        <td class="ExcelStyle DSharpNote">D♯</td>
+        <td class="ExcelStyle ENote Highlight">E</td>
+        <td class="ExcelStyle FNote Highlight">F</td>
+        <td class="ExcelStyle FSharpNote">F♯</td>
+        <td class="ExcelStyle GNote Highlight">G</td>
+        <td class="ExcelStyle GSharpNote">G♯</td>
+        <td class="ExcelStyle ANote Highlight">A</td>
+        <td class="ExcelStyle ASharpNote">A♯</td>
+        <td class="ExcelStyle BNote Highlight">B</td>
+        <td class="ExcelStyle CNote Highlight">C</td>
+        <td class="ExcelStyle CSharpNote">C♯</td>
+        <td class="ExcelStyle DNote Highlight">D</td>
+        <td class="col1 DSharpNote">D♯</td>
+        <td class="col1 ENote Highlight">E</td>
+        <td class="col1 FNote Highlight">F</td>
+        <td class="col1 FSharpNote">F♯</td>
+        <td class="col1 GNote Highlight">G</td>
+        <td class="col1 GSharpNote">G♯</td>
+        <td class="col1 ANote Highlight">A</td>
+        <td class="col1 ASharpNote">A♯</td>
+        <td class="col1 col2 BNote Highlight">B</td>
+        <td class="col1 col3 CNote Highlight">C</td>
+        <td class="col1 col4 CSharpNote">C♯</td>
+        <td class="col1 col4 DNote Highlight">D</td>
+        <td class="col5 DSharpNote">D♯</td>
+        <td class="col5 ENote Highlight">E</td>
+        <td class="col5 FNote Highlight">F</td>
+        <td class="col5 FSharpNote">F♯</td>
+        <td class="col5 GNote Highlight">G</td>
+        <td class="col5 GSharpNote">G♯</td>
+        <td class="col5 ANote Highlight">A</td>
+        <td class="col5 ASharpNote">A♯</td>
+        <td class="col5 BNote Highlight">B</td>
+        <td class="col5 CNote Highlight">C</td>
+        <td class="col5 CSharpNote">C♯</td>
+      </tr>
+      <tr id="AString">
+     
+        <td class="col6"></td>
+        <td class="col7"><button href="#" onclick="shiftALeft(this)">🠲</button></td>
+        <td class="ExcelStyle rotate-text ANote Highlight">A</td>
+        <td class="ExcelStyle ASharpNote">A♯</td>
+        <td class="ExcelStyle BNote Highlight">B</td>
+        <td class="ExcelStyle CNote Highlight">C</td>
+        <td class="ExcelStyle CSharpNote">C♯</td>
+        <td class="ExcelStyle DNote Highlight">D</td>
+        <td class="ExcelStyle DSharpNote">D♯</td>
+        <td class="ExcelStyle ENote Highlight">E</td>
+        <td class="ExcelStyle FNote Highlight">F</td>
+        <td class="ExcelStyle FSharpNote">F♯</td>
+        <td class="ExcelStyle GNote Highlight">G</td>
+        <td class="ExcelStyle GSharpNote">G♯</td>
+        <td class="ExcelStyle ANote Highlight">A</td>
+        <td class="col1 ASharpNote">A♯</td>
+        <td class="col1 BNote Highlight">B</td>
+        <td class="col1 CNote Highlight">C</td>
+        <td class="col1 CSharpNote">C♯</td>
+        <td class="col1 DNote Highlight">D</td>
+        <td class="col1 DSharpNote">D♯</td>
+        <td class="col1 ENote Highlight">E</td>
+        <td class="col1 FNote Highlight">F</td>
+        <td class="col1 col2 FSharpNote">F♯</td>
+        <td class="col1 col3 GNote Highlight">G</td>
+        <td class="col1 col4 GSharpNote">G♯</td>
+        <td class="col1 col4 ANote Highlight">A</td>
+        <td class="col5 ASharpNote">A♯</td>
+        <td class="col5 BNote Highlight">B</td>
+        <td class="col5 CNote Highlight">C</td>
+        <td class="col5 CSharpNote">C♯</td>
+        <td class="col5 DNote Highlight">D</td>
+        <td class="col5 DSharpNote">D♯</td>
+        <td class="col5 ENote Highlight">E</td>
+        <td class="col5 FNote Highlight">F</td>
+        <td class="col5 FSharpNote">F♯</td>
+        <td class="col5 GNote Highlight">G</td>
+        <td class="col5 GSharpNote">G♯</td>
+      </tr>
+      <tr id="lowEString">
+        
+        <td class="col6"><button href="#" onclick="toggleRowLowB(this)">B🠳</button></td>
+        <td class="col7"><button href="#" onclick="shiftLowELeft(this)">🠲</button></td>
+        <td class="ExcelStyle rotate-text ENote Highlight">E</td>
+        <td class="ExcelStyle FNote Highlight">F</td>
+        <td class="ExcelStyle FSharpNote">F♯</td>
+        <td class="ExcelStyle GNote Highlight">G</td>
+        <td class="ExcelStyle GSharpNote">G♯</td>
+        <td class="ExcelStyle ANote Highlight">A</td>
+        <td class="ExcelStyle ASharpNote">A♯</td>
+        <td class="ExcelStyle BNote Highlight">B</td>
+        <td class="ExcelStyle CNote Highlight">C</td>
+        <td class="ExcelStyle CSharpNote">C♯</td>
+        <td class="ExcelStyle DNote Highlight">D</td>
+        <td class="ExcelStyle DSharpNote">D♯</td>
+        <td class="ExcelStyle ENote Highlight">E</td>
+        <td class="col1 FNote Highlight">F</td>
+        <td class="col1 FSharpNote">F♯</td>
+        <td class="col1 GNote Highlight">G</td>
+        <td class="col1 GSharpNote">G♯</td>
+        <td class="col1 ANote Highlight">A</td>
+        <td class="col1 ASharpNote">A♯</td>
+        <td class="col1 BNote Highlight">B</td>
+        <td class="col1 CNote Highlight">C</td>
+        <td class="col1 col2 CSharpNote">C♯</td>
+        <td class="col1 col3 DNote Highlight">D</td>
+        <td class="col1 col4 DSharpNote">D♯</td>
+        <td class="col1 col4 ENote Highlight">E</td>
+        <td class="col5 FNote Highlight">F</td>
+        <td class="col5 FSharpNote">F♯</td>
+        <td class="col5 GNote Highlight">G</td>
+        <td class="col5 GSharpNote">G♯</td>
+        <td class="col5 ANote Highlight">A</td>
+        <td class="col5 ASharpNote">A♯</td>
+        <td class="col5 BNote Highlight">B</td>
+        <td class="col5 CNote Highlight">C</td>
+        <td class="col5 CSharpNote">C♯</td>
+        <td class="col5 DNote Highlight">D</td>
+        <td class="col5 DSharpNote">D♯</td>
+      </tr>
+      <tr id="lowBString" style="display: none;">
+      
+        <td class="col6"><button href="#" onclick="toggleRowLowG(this)">G🠳</button></td>
+        <td class="col7"><button href="#" onclick="shiftLowBLeft(this)">🠲</button></td>
+        <td class="ExcelStyle rotate-text BNote Highlight">B</td>
+        <td class="ExcelStyle CNote Highlight">C</td>
+        <td class="ExcelStyle CSharpNote">C♯</td>
+        <td class="ExcelStyle DNote Highlight">D</td>
+        <td class="ExcelStyle DSharpNote">D♯</td>
+        <td class="ExcelStyle ENote Highlight">E</td>
+        <td class="ExcelStyle FNote Highlight">F</td>
+        <td class="ExcelStyle FSharpNote">F♯</td>
+        <td class="ExcelStyle GNote Highlight">G</td>
+        <td class="ExcelStyle GSharpNote">G♯</td>
+        <td class="ExcelStyle ANote Highlight">A</td>
+        <td class="ExcelStyle ASharpNote">A♯</td>
+        <td class="ExcelStyle BNote Highlight">B</td>
+        <td class="col1 CNote Highlight">C</td>
+        <td class="col1 CSharpNote">C♯</td>
+        <td class="col1 DNote Highlight">D</td>
+        <td class="col1 DSharpNote">D♯</td>
+        <td class="col1 ENote Highlight">E</td>
+        <td class="col1 FNote Highlight">F</td>
+        <td class="col1 FSharpNote">F♯</td>
+        <td class="col1 GNote Highlight">G</td>
+        <td class="col1 col2 GSharpNote">G♯</td>
+        <td class="col1 col3 ANote Highlight">A</td>
+        <td class="col1 col4 ASharpNote">A♯</td>
+        <td class="col1 col4 BNote Highlight">B</td>
+        <td class="col5 CNote Highlight">C</td>
+        <td class="col5 CSharpNote">C♯</td>
+        <td class="col5 DNote Highlight">D</td>
+        <td class="col5 DSharpNote">D♯</td>
+        <td class="col5 ENote Highlight">E</td>
+        <td class="col5 FNote Highlight">F</td>
+        <td class="col5 FSharpNote">F♯</td>
+        <td class="col5 GNote Highlight">G</td>
+        <td class="col5 GSharpNote">G♯</td>
+        <td class="col5 ANote Highlight">A</td>
+        <td class="col5 ASharpNote">A♯</td>
+      </tr>
+      <tr id="lowGString" style="display: none;">
+
+        <td class="col6"><button href="#" onclick="toggleRowLowG(this)">G🠲</button></td>
+        <td class="col7"><button href="#" onclick="shiftLowGLeft()">🠲</button></td>
+        <td class="ExcelStyle rotate-text GNote Highlight">G</td>
+        <td class="ExcelStyle GSharpNote">G♯</td>
+        <td class="ExcelStyle ANote Highlight">A</td>
+        <td class="ExcelStyle ASharpNote">A♯</td>
+        <td class="ExcelStyle BNote Highlight">B</td>
+        <td class="ExcelStyle CNote Highlight">C</td>
+        <td class="ExcelStyle CSharpNote">C♯</td>
+        <td class="ExcelStyle DNote Highlight">D</td>
+        <td class="ExcelStyle DSharpNote">D♯</td>
+        <td class="ExcelStyle ENote Highlight">E</td>
+        <td class="ExcelStyle FNote Highlight">F</td>
+        <td class="ExcelStyle FSharpNote">F♯</td>
+        <td class="ExcelStyle GNote Highlight">G</td>
+        <td class="col1 GSharpNote">G♯</td>
+        <td class="col1 ANote Highlight">A</td>
+        <td class="col1 ASharpNote">A♯</td>
+        <td class="col1 BNote Highlight">B</td>
+        <td class="col1 CNote Highlight">C</td>
+        <td class="col1 CSharpNote">C♯</td>
+        <td class="col1 DNote Highlight">D</td>
+        <td class="col1 DSharpNote">D♯</td>
+        <td class="col1 col2 ENote Highlight">E</td>
+        <td class="col1 col3 FNote Highlight">F</td>
+        <td class="col1 col4 FSharpNote">F♯</td>
+        <td class="col1 col4 GNote Highlight">G</td>
+        <td class="col5 GSharpNote">G♯</td>
+        <td class="col5 ANote Highlight">A</td>
+        <td class="col5 ASharpNote">A♯</td>
+        <td class="col5 BNote Highlight">B</td>
+        <td class="col5 CNote Highlight">C</td>
+        <td class="col5 CSharpNote">C♯</td>
+        <td class="col5 DNote Highlight">D</td>
+        <td class="col5 DSharpNote">D♯</td>
+        <td class="col5 ENote Highlight">E</td>
+        <td class="col5 FNote Highlight">F</td>
+        <td class="col5 FSharpNote">F♯</td>
+      </tr>
+      <tr class="table-header">
+        <td class="col6"></td>
+        <td class="col7"></td>
+        <td class="ExcelStyle" style="text-align: right;">|</td>
+        <td class="ExcelStyle" style="text-align: left;">|</td>
+        <td class="ExcelStyle"></td>
+        <td class="ExcelStyle">➌</td>
+        <td class="ExcelStyle"></td>
+        <td class="ExcelStyle">➎</td>
+        <td class="ExcelStyle"></td>
+        <td class="ExcelStyle">➐</td>
+        <td class="ExcelStyle"></td>
+        <td class="ExcelStyle">➒</td>
+        <td class="ExcelStyle"></td>
+        <td class="ExcelStyle"></td>
+        <td class="ExcelStyle">➊➋</td>
+        <td class="col1"></td>
+        <td class="col1"></td>
+        <td class="col1">➎</td>
+        <td class="col1"></td>
+        <td class="col1">➐</td>
+        <td class="col1"></td>
+        <td class="col1">➒</td>
+        <td class="col1"></td>
+        <td class="col1 col2">➊</td>
+        <td class="col1 col3"></td>
+        <td class="col1 col4"></td>
+        <td class="col1 col4">➋➍</td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+      </tr>
+
+    </table>
+    </div>
+
+    <h2 id="displayresults" class="results">C Major (Ionian) - Default</h2>
+
+<!-- Add the below commented out section to the about/howto page -->
+
+<!-- <p><br>The notes that can be played for the scale selected are highlighted white on the fretboard above. </br>
+  <br>The top and bottom two strings can be shown or hidden with buttons in the far left column.</br>
+  <br> Each string can be tuned down with buttons in the second column. </br>
+  <br>More frets, up to 24 total, can be added starting with the button above fret 12.</br></p> -->
+
+  </body>
+
+</html>

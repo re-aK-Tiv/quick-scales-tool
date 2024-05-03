@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+
+<head>
+    <link href="styles/style.css" rel="stylesheet" />
+    <script src="scripts/main.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link
+      rel="apple-touch-icon-precomposed"
+      sizes="144x144"
+      href="images/logo-quick-scales-filter.PNG" />
+    <!-- iPhone with high-resolution Retina display: -->
+    <link
+      rel="apple-touch-icon-precomposed"
+      sizes="114x114"
+      href="images/logo-quick-scales-filter.PNG"  />
+    <!-- first- and second-generation iPad: -->
+    <link
+      rel="apple-touch-icon-precomposed"
+      sizes="72x72"
+      href="images/logo-quick-scales-filter.PNG"  />
+    <!-- non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+    <link
+      rel="apple-touch-icon-precomposed"
+      href="images/logo-quick-scales-filter.PNG"  />
+    <!-- basic favicon -->
+    <link
+      rel="icon"
+      href="images/logo-quick-scales-filter.PNG"  />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+    <meta name=ProgId content=Excel.Sheet>
+    <meta name=Generator content="Microsoft Excel 15">
+    <link rel=File-List href="kbd%20format%20table_files/filelist.xml">
+
+    <title>Quick Scales Tool - Scale Filter</title>
+    <meta name="author" content="Kyle Tivnan" />
+    <meta name="description" content="The Quick Scales Tool is a visual aid for guitar, bass, piano and other fretted string
+    instruments that allows musicians to see which notes on a scale will maximize harmonious playing while staying in key, especially during collaborative play!" />
+</head>
+
+<body>
+
+  <div class="toolbar">
+
+    <h1>Quick Scales Tool</h1>
+    <h2>Scale Filter</h2>
+
+    <div><img src="images/hamburger-menu-512.png" class="linkbtn" id="linkbtn" onclick="togglemobilelink()"/></div>
+
+    <nav class="mobilelink">
+    <ul id="mobilelink">
+    <li><a href="../index.html">Guitar Fretboard</a></li>
+    <li><a href="../index-piano/index.html">Piano Keyboard</a></li>
+    <li><a href="../index-about/index.html">About</a></li>
+    </ul>
+    </nav>
+
+  </div>
+
+    <!-- Add the below commented out section to the about/howto page -->
+
+    <!--<p>Select one or more notes by tapping or clicking buttons on the table below. None are selected by default.</p>
+    <p>Scales with matching notes will filter out from a library of scales and display names under the table.</p> 
+    <p>The scales with the best matches are listed first.</p> -->
+
+    <table id="myTable">
+      <thead>
+        <tr>
+          <th>0</th>
+          <th>1</th>
+          <th>2</th>
+          <th>3</th>
+          <th>4</th>
+          <th>5</th>
+          <th>6</th>
+          <th>7</th>
+          <th>8</th>
+          <th>9</th>
+          <th>10</th>
+          <th>11</th>
+          <th>12</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr>
+        <td><button id="EtoggleButton1" class="off">E</button></td>
+        <td><button id="FtoggleButton1" class="off">F</button></td>
+        <td><button id="FsharptoggleButton1" class="off">F♯</button></td>
+        <td><button id="GtoggleButton1" class="off">G</button></td>
+        <td><button id="GsharptoggleButton1" class="off">G♯</button></td>
+        <td><button id="AtoggleButton1" class="off">A</button></td>
+        <td><button id="AsharptoggleButton1" class="off">A♯</button></td>
+        <td><button id="BtoggleButton1" class="off">B</button></td>
+        <td><button id="CtoggleButton1" class="off">C</button></td>  
+        <td><button id="CsharptoggleButton1" class="off">C♯</button></td>  
+        <td><button id="DtoggleButton1" class="off">D</button></td>
+        <td><button id="DsharptoggleButton1" class="off">D♯</button></td>
+        <td><button id="EtoggleButton7" class="off">E</button></td>
+      </tr>
+      <tr>
+        <td><button id="BtoggleButton2" class="off">B</button></td>
+        <td><button id="CtoggleButton2" class="off">C</button></td>  
+        <td><button id="CsharptoggleButton2" class="off">C♯</button></td>  
+        <td><button id="DtoggleButton2" class="off">D</button></td>
+        <td><button id="DsharptoggleButton2" class="off">D♯</button></td>
+        <td><button id="EtoggleButton2" class="off">E</button></td>
+        <td><button id="FtoggleButton2" class="off">F</button></td>
+        <td><button id="FsharptoggleButton2" class="off">F♯</button></td>
+        <td><button id="GtoggleButton2" class="off">G</button></td>
+        <td><button id="GsharptoggleButton2" class="off">G♯</button></td>
+        <td><button id="AtoggleButton2" class="off">A</button></td>
+        <td><button id="AsharptoggleButton2" class="off">A♯</button></td>
+        <td><button id="BtoggleButton7" class="off">B</button></td>
+      </tr>
+        <tr>
+        <td><button id="GtoggleButton3" class="off">G</button></td>
+        <td><button id="GsharptoggleButton3" class="off">G♯</button></td>
+        <td><button id="AtoggleButton3" class="off">A</button></td>
+        <td><button id="AsharptoggleButton3" class="off">A♯</button></td>
+        <td><button id="BtoggleButton3" class="off">B</button></td>
+        <td><button id="CtoggleButton3" class="off">C</button></td>  
+        <td><button id="CsharptoggleButton3" class="off">C♯</button></td>  
+        <td><button id="DtoggleButton3" class="off">D</button></td>
+        <td><button id="DsharptoggleButton3" class="off">D♯</button></td>
+        <td><button id="EtoggleButton3" class="off">E</button></td>
+        <td><button id="FtoggleButton3" class="off">F</button></td>
+        <td><button id="FsharptoggleButton3" class="off">F♯</button></td>
+        <td><button id="GtoggleButton7" class="off">G</button></td>
+        </tr>
+        <tr>
+        <td><button id="DtoggleButton4" class="off">D</button></td>
+        <td><button id="DsharptoggleButton4" class="off">D♯</button></td> 
+        <td><button id="EtoggleButton4" class="off">E</button></td>
+        <td><button id="FtoggleButton4" class="off">F</button></td>
+        <td><button id="FsharptoggleButton4" class="off">F♯</button></td>
+        <td><button id="GtoggleButton4" class="off">G</button></td>
+        <td><button id="GsharptoggleButton4" class="off">G♯</button></td>
+        <td><button id="AtoggleButton4" class="off">A</button></td>
+        <td><button id="AsharptoggleButton4" class="off">A♯</button></td>
+        <td><button id="BtoggleButton4" class="off">B</button></td>
+        <td><button id="CtoggleButton4" class="off">C</button></td>  
+        <td><button id="CsharptoggleButton4" class="off">C♯</button></td>
+        <td><button id="DtoggleButton7" class="off">D</button></td>
+        </tr>
+        <tr>
+        <td><button id="AtoggleButton5" class="off">A</button></td>
+        <td><button id="AsharptoggleButton5" class="off">A♯</button></td>
+        <td><button id="BtoggleButton5" class="off">B</button></td>
+        <td><button id="CtoggleButton5" class="off">C</button></td>  
+        <td><button id="CsharptoggleButton5" class="off">C♯</button></td>  
+        <td><button id="DtoggleButton5" class="off">D</button></td>
+        <td><button id="DsharptoggleButton5" class="off">D♯</button></td>
+        <td><button id="EtoggleButton5" class="off">E</button></td>
+        <td><button id="FtoggleButton5" class="off">F</button></td>
+        <td><button id="FsharptoggleButton5" class="off">F♯</button></td>
+        <td><button id="GtoggleButton5" class="off">G</button></td>
+        <td><button id="GsharptoggleButton5" class="off">G♯</button></td>
+        <td><button id="AtoggleButton7" class="off">A</button></td>
+        </tr>
+        <tr>
+        <td><button id="EtoggleButton6" class="off">E</button></td>
+        <td><button id="FtoggleButton6" class="off">F</button></td>
+        <td><button id="FsharptoggleButton6" class="off">F♯</button></td>
+        <td><button id="GtoggleButton6" class="off">G</button></td>
+        <td><button id="GsharptoggleButton6" class="off">G♯</button></td>
+        <td><button id="AtoggleButton6" class="off">A</button></td>
+        <td><button id="AsharptoggleButton6" class="off">A♯</button></td>
+        <td><button id="BtoggleButton6" class="off">B</button></td>
+        <td><button id="CtoggleButton6" class="off">C</button></td>  
+        <td><button id="CsharptoggleButton6" class="off">C♯</button></td>  
+        <td><button id="DtoggleButton6" class="off">D</button></td>
+        <td><button id="DsharptoggleButton6" class="off">D♯</button></td>
+        <td><button id="EtoggleButton8" class="off">E</button></td>
+        </tr>
+        <tr>
+        <td style="text-align: right;">|</td>
+        <td style="text-align: left;">|</td>
+        <td></td>
+        <td>➌</td>
+        <td></td>
+        <td>➎</td>
+        <td></td>
+        <td>➐</td>
+        <td></td>
+        <td>➒</td>
+        <td></td>
+        <td></td>
+        <td>➊➋</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <ol id="resultList" class="column-container column-item resulttext">No Scale Match. Select more notes.</ol>
+    
+
+</body>
+
+</html>

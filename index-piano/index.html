@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+
+  <head>
+    <script src="scripts/main.js" defer></script>
+    <link href="styles/style.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link
+  rel="apple-touch-icon-precomposed"
+  sizes="144x144"
+  href="images/logo-quick-scales-piano.PNG" />
+<!-- iPhone with high-resolution Retina display: -->
+<link
+  rel="apple-touch-icon-precomposed"
+  sizes="114x114"
+  href="images/logo-quick-scales-piano.PNG"  />
+<!-- first- and second-generation iPad: -->
+<link
+  rel="apple-touch-icon-precomposed"
+  sizes="72x72"
+  href="images/logo-quick-scales-piano.PNG"  />
+<!-- non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+<link
+  rel="apple-touch-icon-precomposed"
+  href="images/logo-quick-scales-piano.PNG"  />
+<!-- basic favicon -->
+<link
+  rel="icon"
+  href="images/logo-quick-scales-piano.PNG"  />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Excel.Sheet>
+<meta name=Generator content="Microsoft Excel 15">
+<link rel=File-List href="kbd%20format%20table_files/filelist.xml">
+  <title>Quick Scales Tool - Piano Keyboard</title>
+  <meta name="author" content="Kyle Tivnan" />
+  <meta name="description" content="The Quick Scales Tool is a visual aid for guitar, bass, piano and other fretted string 
+  instruments that allows musicians to see which notes on a scale will maximize harmonious playing while staying in key, especially during collaborative play!" />
+  </head>
+
+  <body>
+
+      <div class="toolbar">
+
+    <h1 class="title">Quick Scales Tool</h1>
+
+    <h2 class="subtitle">Piano Keyboard</h2>
+
+    <!-- Add the below commented out section to the about/howto page -->
+
+    <!-- <p>Select a root note and a scale from each drop down menu below. C Major (Ionian) is selected by default.</p> -->
+
+    <div>
+  <select class="select" id='Select1'>
+    <option value="C" selected>C</option>
+    <option value="C♯/D♭">C♯/D♭</option>
+    <option value="D">D</option>
+    <option value="D♯/E♭">D♯/E♭</option>
+    <option value="E">E</option>
+    <option value="F">F</option>
+    <option value="F♯/G♭">F♯/G♭</option>
+    <option value="G">G</option>
+    <option value="G♯/A♭">G♯/A♭</option>
+    <option value="A">A</option>
+    <option value="A♯/B♭">A♯/B♭</option>
+    <option value="B">B</option>
+  </select>
+
+  <select class="select" id='Select2'>
+
+    <hr />
+    <optgroup label="Common">
+    <option value="Major (Ionian)" selected>Major (Ionian)</option>
+    <option value="Minor (Aeolian)">Minor (Aeolian)</option>
+    <option value="Major Pentatonic">Major Pentatonic</option>
+    <option value="Minor Pentatonic">Minor Pentatonic</option>
+    <option value="Blues">Blues</option>
+    <option value="Melodic Minor">Melodic Minor</option>
+    <option value="Harmonic Minor">Harmonic Minor</option>
+<!--     <option value="Harmonic Major">Harmonic Major</option> -->
+    <option value="Blues Minor">Blues Minor</option>
+    </optgroup>
+
+    <hr />
+    <optgroup label="Technical">
+    <option value="Diminished">Diminished</option>
+ <!--    <option value="Half Diminished">Half Diminished</option> -->
+    <option value="Augmented">Augmented</option>
+    <option value="Whole Tone">Whole Tone</option>
+    <option value="Double Harmonic">Double Harmonic</option>
+    <option value="Chromatic">Chromatic</option>
+    </optgroup>
+
+    <hr />
+    <optgroup label="Jazz & Ethnic">
+<!--     <option value="Acoustic">Acoustic</option>
+    <option value="Algerian">Algerian</option>
+    <option value="Altered">Altered</option> -->
+    <option value="Mixo Blues">Mixo Blues</option>
+    <option value="Bebop Dominant">Bebop Dominant</option>
+    <option value="Bebop Major">Bebop Major</option>
+    <option value="Melodic Minor Bebop">Melodic Minor Bebop</option>
+    <option value="Locrian Bebop">Locrian Bebop</option>
+    <option value="Enigmatic">Enigmatic</option>
+<!--     <option value="Flamenco">Flamenco</option>
+    <option value="Gypsy">Gypsy</option>
+    <option value="Hirajoshi">Hirajoshi</option>
+    <option value="Hungarian Minor">Hungarian Minor</option> -->
+    <option value="In">In</option>
+    <option value="Insen">Insen</option>
+    <option value="Istrian">Istrian</option>
+<!--     <option value="Iwato">Iwato</option>
+    <option value="Lydian Augmented">Lydian Augmented</option>
+    <option value="Major Locrian">Major Locrian</option> -->
+    <option value="Neapolitan Major">Neapolitan Major</option>
+    <option value="Neapolitan Minor">Neapolitan Minor</option>
+    <option value="Persian">Persian</option>
+    <option value="Pfluke">Pfluke</option>
+<!--     <option value="Phrygian Dominant">Phrygian Dominant</option> -->
+    <option value="Prometheus">Prometheus</option>
+    <option value="Tritone">Tritone</option>
+    <option value="Ukrainian Dorian">Ukrainian Dorian</option>
+<!--     <option value="Yo">Yo</option> -->
+    </optgroup>
+
+    <hr />
+    <optgroup label="Common Modes">
+    <option value="Phrygian">Phrygian</option>
+    <option value="Dorian">Dorian</option>
+    <option value="Lydian">Lydian</option>
+    <option value="Mixolydian">Mixolydian</option>
+    <option value="Locrian">Locrian</option>
+    <option value="Major Hexatonic">Major Hexatonic</option>
+    <option value="Minor Hexatonic">Minor Hexatonic</option>
+    </optgroup>
+
+  </select>
+</div>
+
+<div><img src="images/hamburger-menu-512.png" class="linkbtn" id="linkbtn" onclick="togglemobilelink()"/></div>
+
+    <nav class="mobilelink">
+    <ul id="mobilelink">
+    <li><a href="../index.html">Guitar Fretboard</a></li>
+    <li><a href="../index-guitar-filter/index.html">Scale Filter</a></li>
+    <li><a href="../index-about/index.html">About</a></li>
+    </ul>
+    </nav>
+
+</div>
+
+  <!-- Excel generated piano layout -->
+  <div id="kbd format table_3783" align="center" class="kbdbox">
+    
+    <table class="table">
+     <col width=1 style='width:1pt'>
+     <col width=42 style='width:32pt'>
+     <col width=1 style='width:1pt'>
+     <col width=29 style='width:22pt'>
+     <col width=1 style='width:1pt'>
+     <col width=13 style='width:10pt'>
+     <col width=1 style='width:1pt'>
+     <col width=46 style='width:34pt'>
+     <col width=1 style='width:1pt'>
+     <col width=13 style='width:10pt'>
+     <col width=1 style='width:1pt'>
+     <col width=29 style='width:22pt'>
+     <col width=1 style='width:1pt'>
+     <col width=46 style='width:34pt'>
+     <col width=1 style='width:1pt'>
+     <col width=42 style='width:32pt'>
+     <col width=1 style='width:1pt'>
+     <col width=32 style='width:24pt'>
+     <col width=1 style='width:1pt'>
+     <col width=10 style='width:7pt'>
+     <col width=1 style='width:1pt'>
+     <col width=42 style='width:32pt'>
+     <col width=1 style='width:1pt'>
+     <col width=20 style='width:15pt'>
+     <col width=1 style='width:1pt'>
+     <col width=20 style='width:15pt'>
+     <col width=1 style='width:1pt'>
+     <col width=42 style='width:32pt'>
+     <col width=1 style='width:1pt'>
+     <col width=10 style='width:7pt'>
+     <col width=1 style='width:1pt'>
+     <col width=32 style='width:24pt'>
+     <col width=1 style='width:1pt'>
+     <col width=42 style='width:32pt'>
+     <col width=1 style='width:1pt'>
+     <tr height=0 style='height:.3pt'>
+      <td height=0 class=xl653783 width=1 style='height:.3pt;width:1pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=42 style='width:32pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=1 style='width:1pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=29 style='width:22pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=1 style='width:1pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=13 style='width:10pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=1 style='width:1pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=46 style='width:34pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=1 style='width:1pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=13 style='width:10pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=1 style='width:1pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=29 style='width:22pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=1 style='width:1pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=46 style='width:34pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=1 style='width:1pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=42 style='width:32pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=1 style='width:1pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=32 style='width:24pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=1 style='width:1pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=10 style='width:7pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=1 style='width:1pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=42 style='width:32pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=1 style='width:1pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=20 style='width:15pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=1 style='width:1pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=20 style='width:15pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=1 style='width:1pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=42 style='width:32pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=1 style='width:1pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=10 style='width:7pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=1 style='width:1pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=32 style='width:24pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=1 style='width:1pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=42 style='width:32pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=1 style='width:1pt'><span style='display:none'></span></td>
+     </tr>
+     <tr height=150 style='height:125.0pt'>
+      <td height=150 class=xl653783 style='height:125.0pt'><span style='display:none'></span></td>
+      <td id="C T" class="white-highlight"></td>
+      <td class=xl653783><span style='display:none'></span></td>
+      <td id="Csharp L" class="black"></td>
+      <td id="Csharp M" class="black"><span style='display:none'></span></td>
+      <td id="Csharp R" class="black"><span style='display:none'></span></td>
+      <td class=xl653783><span style='display:none'></span></td>
+      <td id="D T" class="white-highlight"></td>
+      <td class=xl653783><span style='display:none'></span></td>
+      <td id="Dsharp L" class="black"><span style='display:none'></span></td>
+      <td id="Dsharp M" class="black"><span style='display:none'></span></td>
+      <td id="Dsharp R" class="black"></td>
+      <td class=xl653783><span style='display:none'></span></td>
+      <td id="E T" class="white-highlight"></td>
+      <td class=xl653783><span style='display:none'></span></td>
+      <td id="F T" class="white-highlight"></td>
+      <td class=xl653783><span style='display:none'></span></td>
+      <td id="Fsharp L" class="black"></td>
+      <td id="Fsharp M" class="black"><span style='display:none'></span></td>
+      <td id="Fsharp R" class="black"><span style='display:none'></span></td>
+      <td class=xl653783><span style='display:none'></span></td>
+      <td id="G T" class="white-highlight"></td>
+      <td class=xl653783><span style='display:none'></span></td>
+      <td id="Gsharp L" class="black"><span style='display:none'></span></td>
+      <td id="Gsharp M" class="black"><span style='display:none'></span></td>
+      <td id="Gsharp R" class="black"><span style='display:none'></span></td>
+      <td class=xl653783><span style='display:none'></span></td>
+      <td id="A T" class="white-highlight"></td>
+      <td class=xl653783><span style='display:none'></span></td>
+      <td id="Asharp L" class="black"><span style='display:none'></span></td>
+      <td id="Asharp M" class="black"><span style='display:none'></span></td>
+      <td id="Asharp R" class="black"></td>
+      <td class=xl653783><span style='display:none'></span></td>
+      <td id="B T" class="white-highlight"></td>
+      <td class=xl653783><span style='display:none'></span></td>
+     </tr>
+     <tr height=0 style='height:.3pt'>
+      <td height=0 class=xl653783 style='height:.3pt'><span style='display:none'></span></td>
+      <td id="C S" class="white-highlight"></td>
+      <td class=xl653783><span style='display:none'></span></td>
+      <td class=xl653783><span style='display:none'></span></td>
+      <td class=xl653783><span style='display:none'></span></td>
+      <td class=xl653783><span style='display:none'></span></td>
+      <td class=xl653783><span style='display:none'></span></td>
+      <td id="D S" class="white-highlight"></td>
+      <td class=xl653783><span style='display:none'></span></td>
+      <td class=xl653783><span style='display:none'></span></td>
+      <td class=xl653783><span style='display:none'></span></td>
+      <td class=xl653783><span style='display:none'></span></td>
+      <td class=xl653783><span style='display:none'></span></td>
+      <td id="E S" class="white-highlight"></td>
+      <td class=xl653783><span style='display:none'></span></td>
+      <td id="F S" class="white-highlight"></td>
+      <td class=xl653783><span style='display:none'></span></td>
+      <td class=xl653783><span style='display:none'></span></td>
+      <td class=xl653783><span style='display:none'></span></td>
+      <td class=xl653783><span style='display:none'></span></td>
+      <td class=xl653783><span style='display:none'></span></td>
+      <td id="G S" class="white-highlight"></td>
+      <td class=xl653783><span style='display:none'></span></td>
+      <td class=xl653783><span style='display:none'></span></td>
+      <td class=xl653783><span style='display:none'></span></td>
+      <td class=xl653783><span style='display:none'></span></td>
+      <td class=xl653783><span style='display:none'></span></td>
+      <td id="A S" class="white-highlight"></td>
+      <td class=xl653783><span style='display:none'></span></td>
+      <td class=xl653783><span style='display:none'></span></td>
+      <td class=xl653783><span style='display:none'></span></td>
+      <td class=xl653783><span style='display:none'></span></td>
+      <td class=xl653783><span style='display:none'></span></td>
+      <td id="B S" class="white-highlight"></td>
+      <td class=xl653783><span style='display:none'></span></td>
+     </tr>
+     <tr height=150 style='height:75pt'>
+      <td height=150 class=xl653783 style='height:75pt'><span style='display:none'></span></td>
+      <td id="C L" class="white-highlight"></td>
+      <td id="C M" class="white-highlight"><span style='display:none'></span></td>
+      <td id="C R" class="white-highlight"></td>
+      <td class=xl653783><span style='display:none'></span></td>
+      <td id="D L" class="white-highlight"><span style='display:none'></span></td>
+      <td id="D ML" class="white-highlight"><span style='display:none'></span></td>
+      <td id="D M" class="white-highlight"></td>
+      <td id="D MR" class="white-highlight"><span style='display:none'></span></td>
+      <td id="D R" class="white-highlight"><span style='display:none'></span></td>
+      <td class=xl653783><span style='display:none'></span></td>
+      <td id="E L" class="white-highlight"></td>
+      <td id="E M" class="white-highlight"><span style='display:none'></span></td>
+      <td id="E R" class="white-highlight"></td>
+      <td class=xl653783><span style='display:none'></span></td>
+      <td id="F L" class="white-highlight"></td>
+      <td id="F M" class="white-highlight"><span style='display:none'></span></td>
+      <td id="F R" class="white-highlight"></td>
+      <td class=xl653783><span style='display:none'></span></td>
+      <td id="G L" class="white-highlight"><span style='display:none'></span></td>
+      <td id="G ML" class="white-highlight"><span style='display:none'></span></td>
+      <td id="G M" class="white-highlight"></td>
+      <td id="G MR" class="white-highlight"><span style='display:none'></span></td>
+      <td id="G R" class="white-highlight"><span style='display:none'></span></td>
+      <td class=xl653783><span style='display:none'></span></td>
+      <td id="A L" class="white-highlight"></td>
+      <td id="A ML" class="white-highlight"><span style='display:none'></span></td>
+      <td id="A M" class="white-highlight"></td>
+      <td id="A MR" class="white-highlight"><span style='display:none'></span></td>
+      <td id="A R" class="white-highlight"><span style='display:none'></span></td>
+      <td class=xl653783><span style='display:none'></span></td>
+      <td id="B L" class="white-highlight"></td>
+      <td id="B M" class="white-highlight"><span style='display:none'></span></td>
+      <td id="B R" class="white-highlight"></td>
+      <td class=xl653783><span style='display:none'></span></td>
+     </tr>
+     <tr height=0 style='height:.3pt'>
+      <td height=0 class=xl653783 width=1 style='height:.3pt;width:1pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=42 style='width:32pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=1 style='width:1pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=29 style='width:22pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=1 style='width:1pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=13 style='width:10pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=1 style='width:1pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=46 style='width:34pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=1 style='width:1pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=13 style='width:10pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=1 style='width:1pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=29 style='width:22pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=1 style='width:1pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=46 style='width:34pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=1 style='width:1pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=42 style='width:32pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=1 style='width:1pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=32 style='width:24pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=1 style='width:1pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=10 style='width:7pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=1 style='width:1pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=42 style='width:32pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=1 style='width:1pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=20 style='width:15pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=1 style='width:1pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=20 style='width:15pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=1 style='width:1pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=42 style='width:32pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=1 style='width:1pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=10 style='width:7pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=1 style='width:1pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=32 style='width:24pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=1 style='width:1pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=42 style='width:32pt'><span style='display:none'></span></td>
+      <td class=xl653783 width=1 style='width:1pt'><span style='display:none'></span></td>
+     </tr>
+
+    </table>
+    
+    </div>
+   
+  <h2 id="displayresults"  class="results">C Major (Ionian) - Default</h2>
+
+  </body>
+
+</html>

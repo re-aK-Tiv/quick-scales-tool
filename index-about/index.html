@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+
+  <head>
+    <link href="styles/style.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Quick Scales Tool - About</title>
+    <link
+    rel="apple-touch-icon-precomposed"
+    sizes="144x144"
+    href="images/logo-quick-scales.PNG" />
+  <!-- iPhone with high-resolution Retina display: -->
+  <link
+    rel="apple-touch-icon-precomposed"
+    sizes="114x114"
+    href="images/logo-quick-scales.PNG"  />
+  <!-- first- and second-generation iPad: -->
+  <link
+    rel="apple-touch-icon-precomposed"
+    sizes="72x72"
+    href="images/logo-quick-scales.PNG"  />
+  <!-- non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link
+    rel="apple-touch-icon-precomposed"
+    href="images/logo-quick-scales.PNG"  />
+  <!-- basic favicon -->
+  <link
+    rel="icon"
+    href="images/logo-quick-scales.PNG"  />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Quick Scales Tool - About</title>
+    <meta name="author" content="Kyle Tivnan" />
+    <meta name="description" content="The Quick Scales Tool is a visual aid for guitar, bass, piano and other fretted string 
+    instruments that allows musicians to see which notes on a scale will maximize harmonious playing while staying in key, especially during collaborative play!" />
+  </head>
+
+  <body>
+
+  <div class="toolbar">
+
+  <h1>Quick Scales Tool</h1>
+
+  <h2>About</h2>
+
+  <div><img src="images/hamburger-menu-512.png" class="linkbtn" id="linkbtn" onclick="togglemobilelink()"/></div>
+
+    <nav class="mobilelink">
+    <ul id="mobilelink">
+    <li><a href="../index.html">Guitar Fretboard</a></li>
+    <li><a href="../index-piano/index.html">Piano Keyboard</a></li>
+    <li><a href="../index-guitar-filter/index.html">Scale Filter</a></li>
+    </ul>
+    </nav>
+
+</div>
+
+    <p>Goal: A visual tool for fret based instruments like guitars and pianos to help musicians:</p>
+      
+      <ul class="aboutlist">
+        <li>Collaborate in harmony playing in the same scale or key on two or more instruments</li>
+        <li>Write new music compositions or productions with chords progressions, melodies, and licks</li>
+        <li>Improvise solos in the same keys as songs, soundtracks, or newly written riffs</li>
+      </ul>
+      
+    <p>Main UI: the focus of the page is on a fret board of an instrument being played.</p>
+    
+      <ul class="aboutlist">
+        <li>The default view is of the C Major scale, a popular key used in Western music. Drop down menus provide options to select different root notes and scales. </li>
+        <li>A piano keyboard option can be selected.</li>
+        <li>The notes to be played are highlighted white (black for the black keys on a keyboard). The notes to be avoided match a background color.</li>
+        <li>The guitar fretboard is customizable: strings can be removed or added, frets can be added, each string can be tuned.</li>
+        <li>A scale filter option can be used as a lookup tool to find a scale that matches any notes selected.</li>
+      </ul>
+
+      <img src="images/guitar-fret-ver2.PNG" alt="A screenshot of the user interface for the Quick Scales Tool Guitar Fretboard page" class="aboutimg"/>
+      <img src="images/scale-filter-ver2.PNG" alt="A screenshot of the user interface for the Quick Scales Tool Scale Filter page" class="aboutimg"/>
+      <img src="images/keyboard-ver2.PNG" alt="A screenshot of the user interface for the Quick Scales Tool Piano Keyboard page" class="img2"/>
+      
+<script>
+    //toggle mobile link list via hamburger menu
+
+var mobilelink = document.getElementById("mobilelink");
+
+mobilelink.style.maxHeight = "0px";
+
+function togglemobilelink(){
+  if(mobilelink.style.maxHeight == "0px")
+  {
+    mobilelink.style.maxHeight = "130px";
+  }
+  else
+  {
+    mobilelink.style.maxHeight = "0px";
+  }
+}
+</script>
+
+  </body>
+
+</html>
