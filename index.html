@@ -36,6 +36,7 @@
   <meta name="author" content="Unknown" />
   <meta name="description" content="The Quick Scales Tool is a visual aid for guitar, bass, piano and other fretted string 
   instruments that allows musicians to see which notes on a scale will maximize harmonious playing while staying in key, especially during collaborative play!" />
+  <link rel="manifest" href="qst.json" />
   </head>
 
 
@@ -661,6 +662,17 @@
   <br>The top and bottom two strings can be shown or hidden with buttons in the far left column.</br>
   <br> Each string can be tuned down with buttons in the second column. </br>
   <br>More frets, up to 24 total, can be added starting with the button above fret 12.</br></p> -->
+
+  <script>
+
+  <!-- Register the app's service worker. -->
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("sw.js");
+  }
+
+</script>
+
 
   </body>
 
