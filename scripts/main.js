@@ -89,14 +89,14 @@ function shiftHighELeft(){
     }
 
     row.cells[15].classList.add("col1");
-    row.cells[23].classList.remove("col1");
-    row.cells[23].classList.add("col2");
-    row.cells[24].classList.remove("col2");
-    row.cells[24].classList.add("col3");
-    row.cells[25].classList.remove("col3");
-    row.cells[25].classList.add("col4");
+    // row.cells[23].classList.remove("col1");
+    // row.cells[23].classList.add("col2");
+    // row.cells[24].classList.remove("col2");
+    // row.cells[24].classList.add("col3");
+    // row.cells[25].classList.remove("col3");
+    // row.cells[25].classList.add("col4");
     row.cells[27].classList.add("col5")
-    row.cells[27].classList.remove("col4")
+    row.cells[27].classList.remove("col1") //replace col1 with col4 if uncommenting row.cells[23]-[25] above
  
     // Replace the leftmost cell with the last cell value
     row.cells[2].innerHTML = lastCellValue; 
@@ -122,14 +122,14 @@ function shiftHighBLeft(){
     }
 
     row.cells[15].classList.add("col1");
-    row.cells[23].classList.remove("col1");
-    row.cells[23].classList.add("col2");
-    row.cells[24].classList.remove("col2");
-    row.cells[24].classList.add("col3");
-    row.cells[25].classList.remove("col3");
-    row.cells[25].classList.add("col4");
+    // row.cells[23].classList.remove("col1");
+    // row.cells[23].classList.add("col2");
+    // row.cells[24].classList.remove("col2");
+    // row.cells[24].classList.add("col3");
+    // row.cells[25].classList.remove("col3");
+    // row.cells[25].classList.add("col4");
     row.cells[27].classList.add("col5")
-    row.cells[27].classList.remove("col4")
+    row.cells[27].classList.remove("col1") //replace col1 with col4 if uncommenting row.cells[23]-[25] above
  
     // Replace the leftmost cell with the last cell value
     row.cells[2].innerHTML = lastCellValue; 
@@ -155,14 +155,14 @@ function shiftHighGLeft(){
     }
 
     row.cells[15].classList.add("col1");
-    row.cells[23].classList.remove("col1");
-    row.cells[23].classList.add("col2");
-    row.cells[24].classList.remove("col2");
-    row.cells[24].classList.add("col3");
-    row.cells[25].classList.remove("col3");
-    row.cells[25].classList.add("col4");
+    // row.cells[23].classList.remove("col1");
+    // row.cells[23].classList.add("col2");
+    // row.cells[24].classList.remove("col2");
+    // row.cells[24].classList.add("col3");
+    // row.cells[25].classList.remove("col3");
+    // row.cells[25].classList.add("col4");
     row.cells[27].classList.add("col5")
-    row.cells[27].classList.remove("col4")
+    row.cells[27].classList.remove("col1") //replace col1 with col4 if uncommenting row.cells[23]-[25] above
  
     // Replace the leftmost cell with the last cell value
     row.cells[2].innerHTML = lastCellValue; 
@@ -188,14 +188,14 @@ function shiftALeft(){
     }
 
     row.cells[15].classList.add("col1");
-    row.cells[23].classList.remove("col1");
-    row.cells[23].classList.add("col2");
-    row.cells[24].classList.remove("col2");
-    row.cells[24].classList.add("col3");
-    row.cells[25].classList.remove("col3");
-    row.cells[25].classList.add("col4");
+    // row.cells[23].classList.remove("col1");
+    // row.cells[23].classList.add("col2");
+    // row.cells[24].classList.remove("col2");
+    // row.cells[24].classList.add("col3");
+    // row.cells[25].classList.remove("col3");
+    // row.cells[25].classList.add("col4");
     row.cells[27].classList.add("col5")
-    row.cells[27].classList.remove("col4")
+    row.cells[27].classList.remove("col1") //replace col1 with col4 if uncommenting row.cells[23]-[25] above
  
     // Replace the leftmost cell with the last cell value
     row.cells[2].innerHTML = lastCellValue; 
@@ -221,14 +221,14 @@ function shiftDLeft(){
     }
 
     row.cells[15].classList.add("col1");
-    row.cells[23].classList.remove("col1");
-    row.cells[23].classList.add("col2");
-    row.cells[24].classList.remove("col2");
-    row.cells[24].classList.add("col3");
-    row.cells[25].classList.remove("col3");
-    row.cells[25].classList.add("col4");
+    // row.cells[23].classList.remove("col1");
+    // row.cells[23].classList.add("col2");
+    // row.cells[24].classList.remove("col2");
+    // row.cells[24].classList.add("col3");
+    // row.cells[25].classList.remove("col3");
+    // row.cells[25].classList.add("col4");
     row.cells[27].classList.add("col5")
-    row.cells[27].classList.remove("col4")
+    row.cells[27].classList.remove("col1") //replace col1 with col4 if uncommenting row.cells[23]-[25] above
  
     // Replace the leftmost cell with the last cell value
     row.cells[2].innerHTML = lastCellValue; 
@@ -254,14 +254,14 @@ function shiftLowELeft(){
     }
 
     row.cells[15].classList.add("col1");
-    row.cells[23].classList.remove("col1");
-    row.cells[23].classList.add("col2");
-    row.cells[24].classList.remove("col2");
-    row.cells[24].classList.add("col3");
-    row.cells[25].classList.remove("col3");
-    row.cells[25].classList.add("col4");
+    // row.cells[23].classList.remove("col1");
+    // row.cells[23].classList.add("col2");
+    // row.cells[24].classList.remove("col2");
+    // row.cells[24].classList.add("col3");
+    // row.cells[25].classList.remove("col3");
+    // row.cells[25].classList.add("col4");
     row.cells[27].classList.add("col5")
-    row.cells[27].classList.remove("col4")
+    row.cells[27].classList.remove("col1") //replace col1 with col4 if uncommenting row.cells[23]-[25] above
  
     // Replace the leftmost cell with the last cell value
     row.cells[2].innerHTML = lastCellValue; 
@@ -287,14 +287,14 @@ function shiftLowBLeft(){
     }
 
     row.cells[15].classList.add("col1");
-    row.cells[23].classList.remove("col1");
-    row.cells[23].classList.add("col2");
-    row.cells[24].classList.remove("col2");
-    row.cells[24].classList.add("col3");
-    row.cells[25].classList.remove("col3");
-    row.cells[25].classList.add("col4");
+    // row.cells[23].classList.remove("col1");
+    // row.cells[23].classList.add("col2");
+    // row.cells[24].classList.remove("col2");
+    // row.cells[24].classList.add("col3");
+    // row.cells[25].classList.remove("col3");
+    // row.cells[25].classList.add("col4");
     row.cells[27].classList.add("col5")
-    row.cells[27].classList.remove("col4")
+    row.cells[27].classList.remove("col1") //replace col1 with col4 if uncommenting row.cells[23]-[25] above
  
     // Replace the leftmost cell with the last cell value
     row.cells[2].innerHTML = lastCellValue; 
@@ -320,14 +320,14 @@ function shiftLowGLeft(){
     }
 
     row.cells[15].classList.add("col1");
-    row.cells[23].classList.remove("col1");
-    row.cells[23].classList.add("col2");
-    row.cells[24].classList.remove("col2");
-    row.cells[24].classList.add("col3");
-    row.cells[25].classList.remove("col3");
-    row.cells[25].classList.add("col4");
+    // row.cells[23].classList.remove("col1");
+    // row.cells[23].classList.add("col2");
+    // row.cells[24].classList.remove("col2");
+    // row.cells[24].classList.add("col3");
+    // row.cells[25].classList.remove("col3");
+    // row.cells[25].classList.add("col4");
     row.cells[27].classList.add("col5")
-    row.cells[27].classList.remove("col4")
+    row.cells[27].classList.remove("col1") //replace col1 with col4 if uncommenting row.cells[23]-[25] above
  
     // Replace the leftmost cell with the last cell value
     row.cells[2].innerHTML = lastCellValue; 

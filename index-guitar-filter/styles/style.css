@@ -83,8 +83,8 @@ button {
 	color: rgb(14, 10, 10);
 	font-size: 10px;
 	font-weight: bold;
-	width: 100%;
-	border-color: black;
+	cursor: pointer;
+	border-radius: 5px;
 }
 
 .select {
@@ -108,8 +108,13 @@ button {
   
 .on {
 	background-color: white;
-	color: black;
+	font-weight: bold;
+
   }
+
+.black.on {
+	background-color: black;
+}
 
 .buttonresults {
 	text-align: center;
@@ -126,6 +131,278 @@ table {
 	background-color: #67b49d;
 	text-shadow: 3px 3px 3px #aaa;
 }
+
+.col1 {
+	display: none;
+}
+
+/*.col2 {
+	display: none;
+}
+
+.col3 {
+	display: none;
+}
+
+.col4 {
+	display: none;
+}*/
+
+.col5 {
+	display: none;
+}
+
+.col6 {
+	display: none;
+}
+
+.col7 {
+	display: none;
+}
+
+table.show1 .col1 {
+	display: table-cell;
+}
+
+table.show2 .col2 {
+	display: table-cell;
+}
+
+table.show3 .col3 {
+	display: table-cell;
+}
+table.show4 .col4 {
+	display: table-cell;
+}
+
+table.show6 .col6 {
+	display: table-cell;
+}
+table.show7 .col7 {
+	display: table-cell;
+}
+
+.rotate-text {
+	font-weight: bold;
+	border: 3px solid rgb(11, 92, 68);
+}
+
+.table-header {
+	border: none;
+}
+
+.table-top {
+	border: 4px solid;
+	border-color: #2b4b41;
+}
+
+.Highlight {
+	background-color: white;
+	font-weight: bold;
+}
+
+.CNote {
+	color: black;
+	cursor: pointer;
+
+}
+.CSharpNote {
+	color: black;
+		cursor: pointer;
+
+}
+.DNote {
+	color: black;
+	cursor: pointer;
+
+}
+.DSharpNote {
+	color: black;
+		cursor: pointer;
+
+}
+.ENote {
+	color: black;
+		cursor: pointer;
+
+}
+.FNote {
+	color: black;
+		cursor: pointer;
+
+}
+.FSharpNote {
+	color: black;
+		cursor: pointer;
+
+}
+.GNote {
+	color: black;
+		cursor: pointer;
+
+}
+.GSharpNote {
+	color: black;
+		cursor: pointer;
+
+}
+.ANote {
+	color: black;
+		cursor: pointer;
+
+}
+.ASharpNote {
+	color: black;
+		cursor: pointer;
+
+}
+.BNote {
+	color: black;
+		cursor: pointer;
+
+}
+
+/* Piano table style formatting */
+
+.kbdbox {
+	flex: 1;
+	flex-flow: row wrap;
+	align-items: center;
+	justify-content: space-around;
+	padding: 1vw;
+	background-color: #67b49d;
+}
+
+.kbd-table {
+	table-layout: fixed;
+	border: 0;
+	border-collapse: collapse;
+	justify-content: center;
+	margin: 0.1%;
+	margin-top: 0.1%;
+	margin-bottom: 0.1%;
+}
+
+/*.black-highlight {
+	background:black;
+
+}
+
+.black {
+	background:#67b49d;
+
+}*/
+
+.white {
+	background:#67b49d;
+
+}
+
+.white-highlight {
+	background:#F2F2F2;
+
+}
+
+.space-cell {
+	background: gray;
+}
+
+.top-row {
+	height: 0.1vw; /*1pt*/
+	background:gray;
+}
+
+.blackkey-row {
+	height: 27vw; /*225pt; 0.3vw=67.5vw*/
+}
+
+.middle-row {
+	height: 0.1vw;
+}
+
+.whitekey-row {
+	height: 13.5vw; /* 112.5pt; 0.3vw=33.75vw*/
+}
+
+.bottom-row {
+	height: 0.1vw;
+	background:gray;
+}
+
+.col-s {
+	width: 0.1vw;
+	background:gray;
+}
+
+.col-cl {
+	width: 4.3vw; /*32pt*/
+}
+
+.col-csl {
+	width: 3.0vw; /*22pt*/
+}
+
+.col-csr {
+	width: 1.35vw; /*10pt*/
+}
+
+.col-dm {
+	width: 4.6vw; /*34pt*/
+}
+
+.col-dsl {
+	width: 1.35vw;
+}
+
+.col-dsr {
+	width: 3.0vw;
+}
+
+.col-er {
+	width: 4.6vw;
+}
+
+.col-fl {
+	width: 4.3vw;
+}
+
+.col-fsl {
+	width: 3.2vw; /*24pt*/
+}
+
+.col-fsr {
+	width: 0.95vw; /*7pt*/
+}
+
+.col-gm {
+	width: 4.3vw;
+}
+
+.col-gsl {
+	width: 2.03vw; /*15pt*/
+}
+
+.col-gsr {
+	width: 2.03vw;
+}
+
+.col-am {
+	width: 4.3vw;
+}
+
+.col-asl {
+	width: 0.95vw;
+}
+
+.col-asr {
+	width: 3.2vw;
+}
+
+.col-br {
+	width: 4.3vw;
+}
+
+/* Results list formatting */
 
 .column-container {
 	column-count: 2; /* Adjust the number of columns as needed */
@@ -151,23 +428,23 @@ table {
 	  }
 
 	  h1 {
-		  font-size: 12px;
+		  font-size: 28px;
 		  margin: 2px;
 		  text-shadow: 2px 2px 2px #aaa;
 	  }
 
 	  h2 {
 		  display: block;
-		  font-size: 10px;
+		  font-size: 20px;
 		  margin: 2px;
 		  text-shadow: 2px 2px 2px #aaa;
 	  }
 
 	  .linkbtn {
 		  display: block;
-		  width: 12px;
+		  width: 36px;
 		  background-color: #ace7ae;
-		  border-radius: 2px;
+		  border-radius: 10px;
 		  float: right;
 	  }
 
@@ -177,7 +454,7 @@ table {
 		  color: rgb(14, 10, 10);
 		  text-shadow: 0px 0px 0px;
 		  padding: 0px;
-		  font-size: 10px;
+		  font-size: 16px;
 		  font-weight: none;
 		  border: none;
 		  border-radius: 2px;
@@ -199,7 +476,7 @@ table {
 		  display: block;
 		  background-color: #ace7ae;
 		  width: 100%;
-		  font-size: 10px;
+		  font-size: 16px;
 	  }
 
 	  #mobilelink {
@@ -237,6 +514,57 @@ table {
   }
 
   @media (max-width: 450px) {
+
+	  h1 {
+		  font-size: 16px;
+		  margin: 2px;
+		  text-shadow: 2px 2px 2px #aaa;
+	  }
+
+	  h2 {
+		  font-size: 10px;
+		  margin: 2px;
+		  text-shadow: 2px 2px 2px #aaa;
+	  }
+
+	  .mobilelink {
+		  display: block;
+		  background-color: #ace7ae;
+		  width: 100%;
+		  font-size: 10px;
+	  }
+
+	  .linkbtn {
+		  display: block;
+		  width: 20px;
+		  background-color: #ace7ae;
+		  border-radius: 5px;
+		  float: right;
+	  }
+
+	  .select {
+		  background-color: #ace7ae;
+		  text-align: center;
+		  color: rgb(14, 10, 10);
+		  text-shadow: 0px 0px 0px;
+		  padding: 0px;
+		  font-size: 10px;
+		  font-weight: none;
+		  border: none;
+		  border-radius: 2px;
+	  }
+
+	  .fretfullbtn {
+		  display: none;
+	  }
+
+	  .col1 {
+		  display: none;
+	  }
+
+	  table.show1 .col1 {
+		  display: none;
+	  }
 
 	  ol {
 		  font-size: 16px;

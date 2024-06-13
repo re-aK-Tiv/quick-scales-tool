@@ -32,15 +32,12 @@
       href="images/logo-quick-scales-filter.PNG"  />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <meta http-equiv=Content-Type content="text/html; charset=windows-1252">
-    <meta name=ProgId content=Excel.Sheet>
-    <meta name=Generator content="Microsoft Excel 15">
-    <link rel=File-List href="kbd%20format%20table_files/filelist.xml">
 
     <title>Quick Scales Tool - Scale Filter</title>
     <meta name="author" content="Kyle Tivnan" />
     <meta name="description" content="The Quick Scales Tool is a visual aid for guitar, bass, piano and other fretted string
-    instruments that allows musicians to see which notes on a scale will maximize harmonious playing while staying in key, especially during collaborative play!" />
+    instruments that allows musicians to see which notes on a scale will maximize harmonious playing while staying in key, especially during collaborative play! v0.2.16" />
+    <link rel="manifest" href="../qst.json" />
 </head>
 
 <body>
@@ -49,6 +46,8 @@
 
     <h1>Quick Scales Tool</h1>
     <h2>Scale Filter</h2>
+
+    <div><button id="pianoBtn" onclick="togglePiano()"/>Piano</div>
 
     <div><img src="images/hamburger-menu-512.png" class="linkbtn" id="linkbtn" onclick="togglemobilelink()"/></div>
 
@@ -68,133 +67,796 @@
     <p>Scales with matching notes will filter out from a library of scales and display names under the table.</p> 
     <p>The scales with the best matches are listed first.</p> -->
 
-    <table id="myTable">
-      <thead>
-        <tr>
-          <th>0</th>
-          <th>1</th>
-          <th>2</th>
-          <th>3</th>
-          <th>4</th>
-          <th>5</th>
-          <th>6</th>
-          <th>7</th>
-          <th>8</th>
-          <th>9</th>
-          <th>10</th>
-          <th>11</th>
-          <th>12</th>
-        </tr>
-      </thead>
-      <tbody>
 
-        <tr>
-        <td><button id="EtoggleButton1" class="off">E</button></td>
-        <td><button id="FtoggleButton1" class="off">F</button></td>
-        <td><button id="FsharptoggleButton1" class="off">F♯</button></td>
-        <td><button id="GtoggleButton1" class="off">G</button></td>
-        <td><button id="GsharptoggleButton1" class="off">G♯</button></td>
-        <td><button id="AtoggleButton1" class="off">A</button></td>
-        <td><button id="AsharptoggleButton1" class="off">A♯</button></td>
-        <td><button id="BtoggleButton1" class="off">B</button></td>
-        <td><button id="CtoggleButton1" class="off">C</button></td>  
-        <td><button id="CsharptoggleButton1" class="off">C♯</button></td>  
-        <td><button id="DtoggleButton1" class="off">D</button></td>
-        <td><button id="DsharptoggleButton1" class="off">D♯</button></td>
-        <td><button id="EtoggleButton7" class="off">E</button></td>
+
+<div class="mytable2">
+<table class="mytable" id="mytable">
+
+      <tr class="table-top">
+        <td class="col6"><button href="#"  onclick="toggleColumn(6)">Hide</button></td>
+        <td class="col7"><button href="#"  onclick="toggleColumn(7)">Hide</button></td>
+        <td class="ExcelStyle"><button href="#"  onclick="toggleColumn(7)">Tune</button></td>
+        <td class="ExcelStyle"><button href="#"  onclick="toggleColumn(6)">Strings</button></td>
+        <td class="ExcelStyle"></td>
+        <td class="ExcelStyle"></td>
+        <td class="ExcelStyle"></td>
+        <td class="ExcelStyle"></td>
+        <td class="ExcelStyle"></td>
+        <td class="ExcelStyle"></td>
+        <td class="ExcelStyle"></td>
+        <td class="ExcelStyle"></td>
+        <td class="ExcelStyle"></td>
+        <td class="ExcelStyle"></td>
+        <td class="ExcelStyle"><button href="#"  onclick="toggleColumn(1)" class="fretfullbtn">24→</button></td>
+        <td class="col1"></td>
+        <td class="col1"></td>
+        <td class="col1"></td>
+        <td class="col1"></td>
+        <td class="col1"></td>
+        <td class="col1"></td>
+        <td class="col1"></td>
+        <td class="col1"><!--<button href="#"  onclick="toggleColumn(2)">(±)21</button>--></td>
+        <td class="col1 col2"><!--<button href="#"  onclick="toggleColumn(3)">(±)22</button>--></td>
+        <td class="col1 col3"><!--<button href="#"  onclick="toggleColumn(4)">(±)23-24</button>--></td>
+        <td class="col1 col4"></td>
+        <td class="col1 col4"><button href="#"  onclick="toggleColumn(1)">←12</button></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
       </tr>
-      <tr>
-        <td><button id="BtoggleButton2" class="off">B</button></td>
-        <td><button id="CtoggleButton2" class="off">C</button></td>  
-        <td><button id="CsharptoggleButton2" class="off">C♯</button></td>  
-        <td><button id="DtoggleButton2" class="off">D</button></td>
-        <td><button id="DsharptoggleButton2" class="off">D♯</button></td>
-        <td><button id="EtoggleButton2" class="off">E</button></td>
-        <td><button id="FtoggleButton2" class="off">F</button></td>
-        <td><button id="FsharptoggleButton2" class="off">F♯</button></td>
-        <td><button id="GtoggleButton2" class="off">G</button></td>
-        <td><button id="GsharptoggleButton2" class="off">G♯</button></td>
-        <td><button id="AtoggleButton2" class="off">A</button></td>
-        <td><button id="AsharptoggleButton2" class="off">A♯</button></td>
-        <td><button id="BtoggleButton7" class="off">B</button></td>
+
+<!--
+    <tr class="table-header">
+        <td class="col6"></td>
+        <td class="col7"></td>
+        <td class="ExcelStyle">0</td>
+        <td class="ExcelStyle">1</td>
+        <td class="ExcelStyle">2</td>
+        <td class="ExcelStyle">3</td>
+        <td class="ExcelStyle">4</td>
+        <td class="ExcelStyle">5</td>
+        <td class="ExcelStyle">6</td>
+        <td class="ExcelStyle">7</td>
+        <td class="ExcelStyle">8</td>
+        <td class="ExcelStyle">9</td>
+        <td class="ExcelStyle">10</td>
+        <td class="ExcelStyle">11</td>
+        <td class="ExcelStyle">12</td>
+        <td class="col1">13</td>
+        <td class="col1">14</td>
+        <td class="col1">15</td>
+        <td class="col1">16</td>
+        <td class="col1">17</td>
+        <td class="col1">18</td>
+        <td class="col1">19</td>
+        <td class="col1">20</td>
+        <td class="col2">21</td>
+        <td class="col3">22</td>
+        <td class="col4">23</td>
+        <td class="col4">24</td>
+        <td class="col5">25</td>
+        <td class="col5">26</td>
+        <td class="col5">27</td>
+        <td class="col5">28</td>
+        <td class="col5">29</td>
+        <td class="col5">30</td>
+        <td class="col5">31</td>
+        <td class="col5">32</td>
+        <td class="col5">33</td>
+        <td class="col5">34</td>
+        <td class="col5">35</td>
       </tr>
-        <tr>
-        <td><button id="GtoggleButton3" class="off">G</button></td>
-        <td><button id="GsharptoggleButton3" class="off">G♯</button></td>
-        <td><button id="AtoggleButton3" class="off">A</button></td>
-        <td><button id="AsharptoggleButton3" class="off">A♯</button></td>
-        <td><button id="BtoggleButton3" class="off">B</button></td>
-        <td><button id="CtoggleButton3" class="off">C</button></td>  
-        <td><button id="CsharptoggleButton3" class="off">C♯</button></td>  
-        <td><button id="DtoggleButton3" class="off">D</button></td>
-        <td><button id="DsharptoggleButton3" class="off">D♯</button></td>
-        <td><button id="EtoggleButton3" class="off">E</button></td>
-        <td><button id="FtoggleButton3" class="off">F</button></td>
-        <td><button id="FsharptoggleButton3" class="off">F♯</button></td>
-        <td><button id="GtoggleButton7" class="off">G</button></td>
-        </tr>
-        <tr>
-        <td><button id="DtoggleButton4" class="off">D</button></td>
-        <td><button id="DsharptoggleButton4" class="off">D♯</button></td> 
-        <td><button id="EtoggleButton4" class="off">E</button></td>
-        <td><button id="FtoggleButton4" class="off">F</button></td>
-        <td><button id="FsharptoggleButton4" class="off">F♯</button></td>
-        <td><button id="GtoggleButton4" class="off">G</button></td>
-        <td><button id="GsharptoggleButton4" class="off">G♯</button></td>
-        <td><button id="AtoggleButton4" class="off">A</button></td>
-        <td><button id="AsharptoggleButton4" class="off">A♯</button></td>
-        <td><button id="BtoggleButton4" class="off">B</button></td>
-        <td><button id="CtoggleButton4" class="off">C</button></td>  
-        <td><button id="CsharptoggleButton4" class="off">C♯</button></td>
-        <td><button id="DtoggleButton7" class="off">D</button></td>
-        </tr>
-        <tr>
-        <td><button id="AtoggleButton5" class="off">A</button></td>
-        <td><button id="AsharptoggleButton5" class="off">A♯</button></td>
-        <td><button id="BtoggleButton5" class="off">B</button></td>
-        <td><button id="CtoggleButton5" class="off">C</button></td>  
-        <td><button id="CsharptoggleButton5" class="off">C♯</button></td>  
-        <td><button id="DtoggleButton5" class="off">D</button></td>
-        <td><button id="DsharptoggleButton5" class="off">D♯</button></td>
-        <td><button id="EtoggleButton5" class="off">E</button></td>
-        <td><button id="FtoggleButton5" class="off">F</button></td>
-        <td><button id="FsharptoggleButton5" class="off">F♯</button></td>
-        <td><button id="GtoggleButton5" class="off">G</button></td>
-        <td><button id="GsharptoggleButton5" class="off">G♯</button></td>
-        <td><button id="AtoggleButton7" class="off">A</button></td>
-        </tr>
-        <tr>
-        <td><button id="EtoggleButton6" class="off">E</button></td>
-        <td><button id="FtoggleButton6" class="off">F</button></td>
-        <td><button id="FsharptoggleButton6" class="off">F♯</button></td>
-        <td><button id="GtoggleButton6" class="off">G</button></td>
-        <td><button id="GsharptoggleButton6" class="off">G♯</button></td>
-        <td><button id="AtoggleButton6" class="off">A</button></td>
-        <td><button id="AsharptoggleButton6" class="off">A♯</button></td>
-        <td><button id="BtoggleButton6" class="off">B</button></td>
-        <td><button id="CtoggleButton6" class="off">C</button></td>  
-        <td><button id="CsharptoggleButton6" class="off">C♯</button></td>  
-        <td><button id="DtoggleButton6" class="off">D</button></td>
-        <td><button id="DsharptoggleButton6" class="off">D♯</button></td>
-        <td><button id="EtoggleButton8" class="off">E</button></td>
-        </tr>
-        <tr>
-        <td style="text-align: right;">|</td>
-        <td style="text-align: left;">|</td>
-        <td></td>
-        <td>➌</td>
-        <td></td>
-        <td>➎</td>
-        <td></td>
-        <td>➐</td>
-        <td></td>
-        <td>➒</td>
-        <td></td>
-        <td></td>
-        <td>➊➋</td>
-        </tr>
-      </tbody>
+      -->
+
+      <tr class="table-header">
+        <td class="col6"></td>
+        <td class="col7"></td>
+        <td class="ExcelStyle" style="text-align: right;">|</td>
+        <td class="ExcelStyle" style="text-align: left;">|</td>
+        <td class="ExcelStyle"></td>
+        <td class="ExcelStyle">➌</td>
+        <td class="ExcelStyle"></td>
+        <td class="ExcelStyle">➎</td>
+        <td class="ExcelStyle"></td>
+        <td class="ExcelStyle">➐</td>
+        <td class="ExcelStyle"></td>
+        <td class="ExcelStyle">➒</td>
+        <td class="ExcelStyle"></td>
+        <td class="ExcelStyle"></td>
+        <td class="ExcelStyle">➊➋</td>
+        <td class="col1"></td>
+        <td class="col1"></td>
+        <td class="col1">➎</td>
+        <td class="col1"></td>
+        <td class="col1">➐</td>
+        <td class="col1"></td>
+        <td class="col1">➒</td>
+        <td class="col1"></td>
+        <td class="col1 col2">➊</td>
+        <td class="col1 col3"></td>
+        <td class="col1 col4"></td>
+        <td class="col1 col4">➋➍</td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+      </tr>
+
+      <tr id="highEString">
+
+        <td class="col6"><button href="#" onclick="toggleRowHighE(this)">E→</button></td>
+        <td class="col7"><button href="#" onclick="shiftHighELeft(this)">→</button></td>
+
+        <td id="EtoggleButton1" class="off play ENote rotate-text">E</td>
+
+        <td id="FtoggleButton1" class="FNote off play">F</td>
+        <td id="FsharptoggleButton1" class="off play FsharpNote">F♯</td>
+        <td id="GtoggleButton1" class="GNote off play">G</td>
+        <td id="GsharptoggleButton1" class="GsharpNote off play">G♯</td>
+        <td id="AtoggleButton1" class="ANote off play">A</td>
+        <td id="AsharptoggleButton1" class="AsharpNote off play">A♯</td>
+        <td id="BtoggleButton1" class="BNote off play">B</td>
+        <td id="CtoggleButton1" class="CNote off play">C</td>
+        <td id="CsharptoggleButton1" class="CsharpNote off play">C♯</td>
+        <td id="DtoggleButton1" class="DNote off play">D</td>
+        <td id="DsharptoggleButton1" class="DsharpNote off play">D♯</td>
+        <td id="EtoggleButton2" class="ENote off play">E</td>
+
+        <td id="FtoggleButton2" class="col1 FNote off play">F</td>
+        <td id="FsharptoggleButton2" class="col1 FsharpNote off play">F♯</td>
+        <td id="GtoggleButton2" class="col1 GNote off play">G</td>
+        <td id="GsharptoggleButton2" class="col1 GsharpNote off play">G♯</td>
+        <td id="AtoggleButton2" class="col1 ANote off play">A</td>
+        <td id="AsharptoggleButton2" class="col1 AsharpNote off play">A♯</td>
+        <td id="BtoggleButton2" class="col1 BNote off play">B</td>
+        <td id="CtoggleButton2" class="col1 CNote off play">C</td>
+        <td id="CsharptoggleButton2" class="col1 CsharpNote off play">C♯</td>
+        <td id="DtoggleButton2" class="col1 DNote off play">D</td>
+        <td id="DsharptoggleButton2" class="col1 DsharpNote off play">D♯</td>
+        <td id="EtoggleButton3" class="col1 ENote off play">E</td>
+
+        <td id="FtoggleButton3" class="col5 FNote off play">F</td>
+        <td id="FsharptoggleButton3" class="col5 FsharpNote off play">F♯</td>
+        <td id="GtoggleButton3" class="col5 GNote off play">G</td>
+        <td id="GsharptoggleButton3" class="col5 GsharpNote off play">G♯</td>
+        <td id="AtoggleButton3" class="col5 ANote off play">A</td>
+        <td id="AsharptoggleButton3" class="col5 AsharpNote off play">A♯</td>
+        <td id="BtoggleButton3" class="col5 BNote off play">B</td>
+        <td id="CtoggleButton3" class="col5 CNote off play">C</td>
+        <td id="CsharptoggleButton3" class="col5 CsharpNote off play">C♯</td>
+        <td id="DtoggleButton3" class="col5 DNote off play">D</td>
+        <td id="DsharptoggleButton3" class="col5 DsharpNote off play">D♯</td>
+
+      </tr>
+
+      <tr id="highBString">
+
+        <td class="col6"><button href="#" onclick="toggleRowHighE(this)">E↑</button></td>
+        <td class="col7"><button href="#" onclick="shiftHighBLeft(this)">→</button></td>
+
+        <td id="BtoggleButton4" class="rotate-text BNote off play">B</td>
+
+        <td id="CtoggleButton4" class="CNote off play">C</td>
+        <td id="CsharptoggleButton4" class="CsharpNote off play">C♯</td>
+        <td id="DtoggleButton4" class="DNote off play">D</td>
+        <td id="DsharptoggleButton4" class="DsharpNote off play">D♯</td>
+        <td id="EtoggleButton4" class="ENote off play">E</td>
+        <td id="FtoggleButton4" class="FNote off play">F</td>
+        <td id="FsharptoggleButton4" class="FsharpNote off play">F♯</td>
+        <td id="GtoggleButton4" class="GNote off play">G</td>
+        <td id="GsharptoggleButton4" class="GsharpNote off play">G♯</td>
+        <td id="AtoggleButton4" class="ANote off play">A</td>
+        <td id="AsharptoggleButton4" class="AsharpNote off play">A♯</td>
+        <td id="BtoggleButton5" class="BNote off play">B</td>
+
+        <td id="CtoggleButton5" class="col1 CNote off play">C</td>
+        <td id="CsharptoggleButton5" class="col1 CsharpNote off play">C♯</td>
+        <td id="DtoggleButton5" class="col1 DNote off play">D</td>
+        <td id="DsharptoggleButton5" class="col1 DsharpNote off play">D♯</td>
+        <td id="EtoggleButton5" class="col1 ENote off play">E</td>
+        <td id="FtoggleButton5" class="col1 FNote off play">F</td>
+        <td id="FsharptoggleButton5" class="col1 FsharpNote off play">F♯</td>
+        <td id="GtoggleButton5" class="col1 GNote off play">G</td>
+        <td id="GsharptoggleButton5" class="col1 GsharpNote off play">G♯</td>
+        <td id="AtoggleButton5" class="col1 ANote off play">A</td>
+        <td id="AsharptoggleButton5" class="col1 AsharpNote off play">A♯</td>
+        <td id="BtoggleButton6" class="col1 BNote off play">B</td>
+
+        <td id="CtoggleButton6" class="col5 CNote off play">C</td>
+        <td id="CsharptoggleButton6" class="col5 CsharpNote off play">C♯</td>
+        <td id="DtoggleButton6" class="col5 DNote off play">D</td>
+        <td id="DsharptoggleButton6" class="col5 DsharpNote off play">D♯</td>
+        <td id="EtoggleButton6" class="col5 ENote off play">E</td>
+        <td id="FtoggleButton6" class="col5 FNote off play">F</td>
+        <td id="FsharptoggleButton6" class="col5 FsharpNote off play">F♯</td>
+        <td id="GtoggleButton6" class="col5 GNote off play">G</td>
+        <td id="GsharptoggleButton6" class="col5 GsharpNote off play">G♯</td>
+        <td id="AtoggleButton6" class="col5 ANote off play">A</td>
+        <td id="AsharptoggleButton6" class="col5 AsharpNote off play">A♯</td>
+
+      </tr>
+
+      <tr id="highGString">
+
+        <td class="col6"><button href="#" onclick="toggleRowHighB(this)">B↑</button></td>
+        <td class="col7"><button href="#" onclick="shiftHighGLeft(this)">→</button></td>
+
+        <td id="GtoggleButton7" class="rotate-text GNote off play">G</td>
+
+        <td id="GsharptoggleButton7" class="GsharpNote off play">G♯</td>
+        <td id="AtoggleButton7" class="ANote off play">A</td>
+        <td id="AsharptoggleButton7" class="AsharpNote off play">A♯</td>
+        <td id="BtoggleButton7" class="BNote off play">B</td>
+        <td id="CtoggleButton7" class="CNote off play">C</td>
+        <td id="CsharptoggleButton7" class="CsharpNote off play">C♯</td>
+        <td id="DtoggleButton7" class="DNote off play">D</td>
+        <td id="DsharptoggleButton7" class="DsharpNote off play">D♯</td>
+        <td id="EtoggleButton7" class="ENote off play">E</td>
+        <td id="FtoggleButton7" class="FNote off play">F</td>
+        <td id="FsharptoggleButton7" class="FsharpNote off play">F♯</td>
+        <td id="GtoggleButton8" class="GNote off play">G</td>
+
+        <td id="GsharptoggleButton8" class="col1 GsharpNote off play">G♯</td>
+        <td id="AtoggleButton8" class="col1 ANote off play">A</td>
+        <td id="AsharptoggleButton8" class="col1 AsharpNote off play">A♯</td>
+        <td id="BtoggleButton8" class="col1 BNote off play">B</td>
+        <td id="CtoggleButton8" class="col1 CNote off play">C</td>
+        <td id="CsharptoggleButton8" class="col1 CsharpNote off play">C♯</td>
+        <td id="DtoggleButton8" class="col1 DNote off play">D</td>
+        <td id="DsharptoggleButton8" class="col1 DsharpNote off play">D♯</td>
+        <td id="EtoggleButton8" class="col1 ENote off play">E</td>
+        <td id="FtoggleButton8" class="col1 FNote off play">F</td>
+        <td id="FsharptoggleButton8" class="col1 FsharpNote off play">F♯</td>
+        <td id="GtoggleButton9" class="col1 GNote off play">G</td>
+
+        <td id="GsharptoggleButton9" class="col5 GsharpNote off play">G♯</td>
+        <td id="AtoggleButton9" class="col5 ANote off play">A</td>
+        <td id="AsharptoggleButton9" class="col5 AsharpNote off play">A♯</td>
+        <td id="BtoggleButton9" class="col5 BNote off play">B</td>
+        <td id="CtoggleButton9" class="col5 CNote off play">C</td>
+        <td id="CsharptoggleButton9" class="col5 CsharpNote off play">C♯</td>
+        <td id="DtoggleButton9" class="col5 DNote off play">D</td>
+        <td id="DsharptoggleButton9" class="col5 DsharpNote off play">D♯</td>
+        <td id="EtoggleButton9" class="col5 ENote off play">E</td>
+        <td id="FtoggleButton9" class="col5 FNote off play">F</td>
+        <td id="FsharptoggleButton9" class="col5 FsharpNote off play">F♯</td>
+
+      </tr>
+
+      <tr id="DString">
+
+        <td class="col6"></td>
+        <td class="col7"><button href="#" onclick="shiftDLeft(this)">→</button></td>
+
+        <td id="DtoggleButton10" class="rotate-text DNote off play">D</td>
+
+        <td id="DsharptoggleButton10" class="DsharpNote off play">D♯</td>
+        <td id="EtoggleButton10" class="ENote off play">E</td>
+        <td id="FtoggleButton10" class="FNote off play">F</td>
+        <td id="FsharptoggleButton10" class="FsharpNote off play">F♯</td>
+        <td id="GtoggleButton10" class="GNote off play">G</td>
+        <td id="GsharptoggleButton10" class="GsharpNote off play">G♯</td>
+        <td id="AtoggleButton10" class="ANote off play">A</td>
+        <td id="AsharptoggleButton10" class="AsharpNote off play">A♯</td>
+        <td id="BtoggleButton10" class="BNote off play">B</td>
+        <td id="CtoggleButton10" class="CNote off play">C</td>
+        <td id="CsharptoggleButton10" class="CsharpNote off play">C♯</td>
+        <td id="DtoggleButton11" class="DNote off play">D</td>
+
+        <td id="DsharptoggleButton11" class="col1 DsharpNote off play">D♯</td>
+        <td id="EtoggleButton11" class="col1 ENote off play">E</td>
+        <td id="FtoggleButton11" class="col1 FNote off play">F</td>
+        <td id="FsharptoggleButton11" class="col1 FsharpNote off play">F♯</td>
+        <td id="GtoggleButton11" class="col1 GNote off play">G</td>
+        <td id="GsharptoggleButton11" class="col1 GsharpNote off play">G♯</td>
+        <td id="AtoggleButton11" class="col1 ANote off play">A</td>
+        <td id="AsharptoggleButton11" class="col1 AsharpNote off play">A♯</td>
+        <td id="BtoggleButton11" class="col1 BNote off play">B</td>
+        <td id="CtoggleButton11" class="col1 CNote off play">C</td>
+        <td id="CsharptoggleButton11" class="col1 CsharpNote off play">C♯</td>
+        <td id="DtoggleButton12" class="col1 DNote off play">D</td>
+
+        <td id="DsharptoggleButton12" class="col5 DsharpNote off play">D♯</td>
+        <td id="EtoggleButton12" class="col5 ENote off play">E</td>
+        <td id="FtoggleButton12" class="col5 FNote off play">F</td>
+        <td id="FsharptoggleButton12" class="col5 FsharpNote off play">F♯</td>
+        <td id="GtoggleButton12" class="col5 GNote off play">G</td>
+        <td id="GsharptoggleButton12" class="col5 GsharpNote off play">G♯</td>
+        <td id="AtoggleButton12" class="col5 ANote off play">A</td>
+        <td id="AsharptoggleButton12" class="col5 AsharpNote off play">A♯</td>
+        <td id="BtoggleButton12" class="col5 BNote off play">B</td>
+        <td id="CtoggleButton12" class="col5 CNote off play">C</td>
+        <td id="CsharptoggleButton12" class="col5 CsharpNote off play">C♯</td>
+
+      </tr>
+
+      <tr id="AString">
+
+        <td class="col6"></td>
+        <td class="col7"><button href="#" onclick="shiftALeft(this)">→</button></td>
+
+        <td id="AtoggleButton13" class="rotate-text ANote off play">A</td>
+
+        <td id="AsharptoggleButton13" class="AsharpNote off play">A♯</td>
+        <td id="BtoggleButton13" class="BNote off play">B</td>
+        <td id="CtoggleButton13" class="CNote off play">C</td>
+        <td id="CsharptoggleButton13" class="CsharpNote off play">C♯</td>
+        <td id="DtoggleButton13" class="DNote off play">D</td>
+        <td id="DsharptoggleButton13" class="DsharpNote off play">D♯</td>
+        <td id="EtoggleButton13" class="ENote off play">E</td>
+        <td id="FtoggleButton13" class="FNote off play">F</td>
+        <td id="FsharptoggleButton13" class="FsharpNote off play">F♯</td>
+        <td id="GtoggleButton13" class="GNote off play">G</td>
+        <td id="GsharptoggleButton13" class="GsharpNote off play">G♯</td>
+        <td id="AtoggleButton14" class="ANote off play">A</td>
+
+        <td id="AsharptoggleButton14" class="col1 AsharpNote off play">A♯</td>
+        <td id="BtoggleButton14" class="col1 BNote off play">B</td>
+        <td id="CtoggleButton14" class="col1 CNote off play">C</td>
+        <td id="CsharptoggleButton14" class="col1 CsharpNote off play">C♯</td>
+        <td id="DtoggleButton14" class="col1 DNote off play">D</td>
+        <td id="DsharptoggleButton14" class="col1 DsharpNote off play">D♯</td>
+        <td id="EtoggleButton14" class="col1 ENote off play">E</td>
+        <td id="FtoggleButton14" class="col1 FNote off play">F</td>
+        <td id="FsharptoggleButton14" class="col1 FsharpNote off play">F♯</td>
+        <td id="GtoggleButton14" class="col1 GNote off play">G</td>
+        <td id="GsharptoggleButton14" class="col1 GsharpNote off play">G♯</td>
+        <td id="AtoggleButton15" class="col1 ANote off play">A</td>
+
+        <td id="AsharptoggleButton15" class="col5 AsharpNote off play">A♯</td>
+        <td id="BtoggleButton15" class="col5 BNote off play">B</td>
+        <td id="CtoggleButton15" class="col5 CNote off play">C</td>
+        <td id="CsharptoggleButton15" class="col5 CsharpNote off play">C♯</td>
+        <td id="DtoggleButton15" class="col5 DNote off play">D</td>
+        <td id="DsharptoggleButton15" class="col5 DsharpNote off play">D♯</td>
+        <td id="EtoggleButton15" class="col5 ENote off play">E</td>
+        <td id="FtoggleButton15" class="col5 FNote off play">F</td>
+        <td id="FsharptoggleButton15" class="col5 FsharpNote off play">F♯</td>
+        <td id="GtoggleButton15" class="col5 GNote off play">G</td>
+        <td id="GsharptoggleButton15" class="col5 GsharpNote off play">G♯</td>
+
+      </tr>
+      <tr id="lowEString">
+
+        <td class="col6"><button href="#" onclick="toggleRowLowB(this)">B↓</button></td>
+        <td class="col7"><button href="#" onclick="shiftLowELeft(this)">→</button></td>
+
+        <td id="EtoggleButton16" class="rotate-text ENote off play">E</td>
+
+        <td id="FtoggleButton16" class="FNote off play">F</td>
+        <td id="FsharptoggleButton16" class="FsharpNote off play">F♯</td>
+        <td id="GtoggleButton16" class="GNote off play">G</td>
+        <td id="GsharptoggleButton16" class="GsharpNote off play">G♯</td>
+        <td id="AtoggleButton16" class="ANote off play">A</td>
+        <td id="AsharptoggleButton16" class="AsharpNote off play">A♯</td>
+        <td id="BtoggleButton16" class="BNote off play">B</td>
+        <td id="CtoggleButton16" class="CNote off play">C</td>
+        <td id="CsharptoggleButton16" class="CsharpNote off play">C♯</td>
+        <td id="DtoggleButton16" class="DNote off play">D</td>
+        <td id="DsharptoggleButton16" class="DsharpNote off play">D♯</td>
+        <td id="EtoggleButton17" class="ENote off play">E</td>
+
+        <td id="FtoggleButton17" class="col1 FNote off play">F</td>
+        <td id="FsharptoggleButton17" class="col1 FsharpNote off play">F♯</td>
+        <td id="GtoggleButton17" class="col1 GNote off play">G</td>
+        <td id="GsharptoggleButton17" class="col1 GsharpNote off play">G♯</td>
+        <td id="AtoggleButton17" class="col1 ANote off play">A</td>
+        <td id="AsharptoggleButton17" class="col1 AsharpNote off play">A♯</td>
+        <td id="BtoggleButton17" class="col1 BNote off play">B</td>
+        <td id="CtoggleButton17" class="col1 CNote off play">C</td>
+        <td id="CsharptoggleButton17" class="col1 CsharpNote off play">C♯</td>
+        <td id="DtoggleButton17" class="col1 DNote off play">D</td>
+        <td id="DsharptoggleButton17" class="col1 DsharpNote off play">D♯</td>
+        <td id="EtoggleButton18" class="col1 ENote off play">E</td>
+
+        <td id="FtoggleButton18" class="col5 FNote off play">F</td>
+        <td id="FsharptoggleButton18" class="col5 FsharpNote off play">F♯</td>
+        <td id="GtoggleButton18" class="col5 GNote off play">G</td>
+        <td id="GsharptoggleButton18" class="col5 GsharpNote off play">G♯</td>
+        <td id="AtoggleButton18" class="col5 ANote off play">A</td>
+        <td id="AsharptoggleButton18" class="col5 AsharpNote off play">A♯</td>
+        <td id="BtoggleButton18" class="col5 BNote off play">B</td>
+        <td id="CtoggleButton18" class="col5 CNote off play">C</td>
+        <td id="CsharptoggleButton18" class="col5 CsharpNote off play">C♯</td>
+        <td id="DtoggleButton18" class="col5 DNote off play">D</td>
+        <td id="DsharptoggleButton18" class="col5 DsharpNote off play">D♯</td>
+
+      </tr>
+
+      <tr id="lowBString" style="display: none;">
+
+        <td class="col6"><button href="#" onclick="toggleRowLowG(this)">G↓</button></td>
+        <td class="col7"><button href="#" onclick="shiftLowBLeft(this)">→</button></td>
+
+        <td id="BtoggleButton19" class="rotate-text BNote off play">B</td>
+
+        <td id="CtoggleButton19" class="CNote off play">C</td>
+        <td id="CsharptoggleButton19" class="CsharpNote off play">C♯</td>
+        <td id="DtoggleButton19" class="DNote off play">D</td>
+        <td id="DsharptoggleButton19" class="DsharpNote off play">D♯</td>
+        <td id="EtoggleButton19" class="ENote off play">E</td>
+        <td id="FtoggleButton19" class="FNote off play">F</td>
+        <td id="FsharptoggleButton19" class="FsharpNote off play">F♯</td>
+        <td id="GtoggleButton19" class="GNote off play">G</td>
+        <td id="GsharptoggleButton19" class="GsharpNote off play">G♯</td>
+        <td id="AtoggleButton19" class="ANote off play">A</td>
+        <td id="AsharptoggleButton19" class="AsharpNote off play">A♯</td>
+        <td id="BtoggleButton20" class="BNote off play">B</td>
+
+        <td id="CtoggleButton20" class="col1 CNote off play">C</td>
+        <td id="CsharptoggleButton20" class="col1 CsharpNote off play">C♯</td>
+        <td id="DtoggleButton20" class="col1 DNote off play">D</td>
+        <td id="DsharptoggleButton20" class="col1 DsharpNote off play">D♯</td>
+        <td id="EtoggleButton20" class="col1 ENote off play">E</td>
+        <td id="FtoggleButton20" class="col1 FNote off play">F</td>
+        <td id="FsharptoggleButton20" class="col1 FsharpNote off play">F♯</td>
+        <td id="GtoggleButton20" class="col1 GNote off play">G</td>
+        <td id="GsharptoggleButton20" class="col1 GsharpNote off play">G♯</td>
+        <td id="AtoggleButton20" class="col1 ANote off play">A</td>
+        <td id="AsharptoggleButton20" class="col1 AsharpNote off play">A♯</td>
+        <td id="BtoggleButton21" class="col1 BNote off play">B</td>
+
+        <td id="CtoggleButton21" class="col5 CNote off play">C</td>
+        <td id="CsharptoggleButton21" class="col5 CsharpNote off play">C♯</td>
+        <td id="DtoggleButton21" class="col5 DNote off play">D</td>
+        <td id="DsharptoggleButton21" class="col5 DsharpNote off play">D♯</td>
+        <td id="EtoggleButton21" class="col5 ENote off play">E</td>
+        <td id="FtoggleButton21" class="col5 FNote off play">F</td>
+        <td id="FsharptoggleButton21" class="col5 FsharpNote off play">F♯</td>
+        <td id="GtoggleButton21" class="col5 GNote off play">G</td>
+        <td id="GsharptoggleButton21" class="col5 GsharpNote off play">G♯</td>
+        <td id="AtoggleButton21" class="col5 ANote off play">A</td>
+        <td id="AsharptoggleButton21" class="col5 AsharpNote off play">A♯</td>
+
+      </tr>
+
+      <tr id="lowGString" style="display: none;">
+
+        <td class="col6"><button href="#" onclick="toggleRowLowG(this)">G→</button></td>
+        <td class="col7"><button href="#" onclick="shiftLowGLeft()">→</button></td>
+
+        <td id="GtoggleButton22" class="rotate-text GNote off play">G</td>
+
+        <td id="GsharptoggleButton22" class="GsharpNote off play">G♯</td>
+        <td id="AtoggleButton22" class="ANote off play">A</td>
+        <td id="AsharptoggleButton22" class="AsharpNote off play">A♯</td>
+        <td id="BtoggleButton22" class="BNote off play">B</td>
+        <td id="CtoggleButton22" class="CNote off play">C</td>
+        <td id="CsharptoggleButton22" class="CsharpNote off play">C♯</td>
+        <td id="DtoggleButton22" class="DNote off play">D</td>
+        <td id="DsharptoggleButton22" class="DsharpNote off play">D♯</td>
+        <td id="EtoggleButton22" class="ENote off play">E</td>
+        <td id="FtoggleButton22" class="FNote off play">F</td>
+        <td id="FsharptoggleButton22" class="FsharpNote off play">F♯</td>
+        <td id="GtoggleButton23" class="GNote off play">G</td>
+
+        <td id="GsharptoggleButton23" class="col1 GsharpNote off play">G♯</td>
+        <td id="AtoggleButton23" class="col1 ANote off play">A</td>
+        <td id="AsharptoggleButton23" class="col1 AsharpNote off play">A♯</td>
+        <td id="BtoggleButton23" class="col1 BNote off play">B</td>
+        <td id="CtoggleButton23" class="col1 CNote off play">C</td>
+        <td id="CsharptoggleButton23" class="col1 CsharpNote off play">C♯</td>
+        <td id="DtoggleButton23" class="col1 DNote off play">D</td>
+        <td id="DsharptoggleButton23" class="col1 DsharpNote off play">D♯</td>
+        <td id="EtoggleButton23" class="col1 ENote off play">E</td>
+        <td id="FtoggleButton23" class="col1 FNote off play">F</td>
+        <td id="FsharptoggleButton23" class="col1 FsharpNote off play">F♯</td>
+        <td id="GtoggleButton24" class="col1 GNote off play">G</td>
+
+        <td id="GsharptoggleButton24" class="col5 GsharpNote off play">G♯</td>
+        <td id="AtoggleButton24" class="col5 ANote off play">A</td>
+        <td id="AsharptoggleButton24" class="col5 AsharpNote off play">A♯</td>
+        <td id="BtoggleButton24" class="col5 BNote off play">B</td>
+        <td id="CtoggleButton24" class="col5 CNote off play">C</td>
+        <td id="CsharptoggleButton24" class="col5 CsharpNote off play">C♯</td>
+        <td id="DtoggleButton24" class="col5 DNote off play">D</td>
+        <td id="DsharptoggleButton24" class="col5 DsharpNote off play">D♯</td>
+        <td id="EtoggleButton24" class="col5 ENote off play">E</td>
+        <td id="FtoggleButton24" class="col5 FNote off play">F</td>
+        <td id="FsharptoggleButton24" class="col5 FsharpNote off play">F♯</td>
+
+      </tr>
+
+      <tr class="table-header">
+        <td class="col6"></td>
+        <td class="col7"></td>
+        <td class="ExcelStyle" style="text-align: right;">|</td>
+        <td class="ExcelStyle" style="text-align: left;">|</td>
+        <td class="ExcelStyle"></td>
+        <td class="ExcelStyle">➌</td>
+        <td class="ExcelStyle"></td>
+        <td class="ExcelStyle">➎</td>
+        <td class="ExcelStyle"></td>
+        <td class="ExcelStyle">➐</td>
+        <td class="ExcelStyle"></td>
+        <td class="ExcelStyle">➒</td>
+        <td class="ExcelStyle"></td>
+        <td class="ExcelStyle"></td>
+        <td class="ExcelStyle">➊➋</td>
+        <td class="col1"></td>
+        <td class="col1"></td>
+        <td class="col1">➎</td>
+        <td class="col1"></td>
+        <td class="col1">➐</td>
+        <td class="col1"></td>
+        <td class="col1">➒</td>
+        <td class="col1"></td>
+        <td class="col1 col2">➊</td>
+        <td class="col1 col3"></td>
+        <td class="col1 col4"></td>
+        <td class="col1 col4">➋➍</td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+        <td class="col5"></td>
+      </tr>
+
     </table>
+    </div>
+
+      <div id="pianoBlock" class="kbdbox" >
+
+    <table class="kbd-table">
+
+     <!--
+     <col width=1 style='width:1pt'>
+     <col width=42 style='width:32pt'>
+     <col width=1 style='width:1pt'>
+     <col width=29 style='width:22pt'>
+     <col width=1 style='width:1pt'>
+     <col width=13 style='width:10pt'>
+     <col width=1 style='width:1pt'>
+     <col width=46 style='width:34pt'>
+     <col width=1 style='width:1pt'>
+     <col width=13 style='width:10pt'>
+     <col width=1 style='width:1pt'>
+     <col width=29 style='width:22pt'>
+     <col width=1 style='width:1pt'>
+     <col width=46 style='width:34pt'>
+     <col width=1 style='width:1pt'>
+     <col width=42 style='width:32pt'>
+     <col width=1 style='width:1pt'>
+     <col width=32 style='width:24pt'>
+     <col width=1 style='width:1pt'>
+     <col width=10 style='width:7pt'>
+     <col width=1 style='width:1pt'>
+     <col width=42 style='width:32pt'>
+     <col width=1 style='width:1pt'>
+     <col width=20 style='width:15pt'>
+     <col width=1 style='width:1pt'>
+     <col width=20 style='width:15pt'>
+     <col width=1 style='width:1pt'>
+     <col width=42 style='width:32pt'>
+     <col width=1 style='width:1pt'>
+     <col width=10 style='width:7pt'>
+     <col width=1 style='width:1pt'>
+     <col width=32 style='width:24pt'>
+     <col width=1 style='width:1pt'>
+     <col width=42 style='width:32pt'>
+     <col width=1 style='width:1pt'>
+     -->
+
+     <tr class="top-row" >
+      <td class="col-s" ></td>
+      <td class="col-cl" ></td>
+      <td class="col-s" ></td>
+      <td class="col-csl" ></td>
+      <td class="col-s" ></td>
+      <td class="col-csr" ></td>
+      <td class="col-s" ></td>
+      <td class="col-dm" ></td>
+      <td class="col-s" ></td>
+      <td class="col-dsl" ></td>
+      <td class="col-s" ></td>
+      <td class="col-dsr" ></td>
+      <td class="col-s" ></td>
+      <td class="col-er" ></td>
+      <td class="col-s" ></td>
+      <td class="col-fl" ></td>
+      <td class="col-s" ></td>
+      <td class="col-fsl" ></td>
+      <td class="col-s" ></td>
+      <td class="col-fsr" ></td>
+      <td class="col-s" ></td>
+      <td class="col-gm" ></td>
+      <td class="col-s" ></td>
+      <td class="col-gsl" ></td>
+      <td class="col-s" ></td>
+      <td class="col-gsr" ></td>
+      <td class="col-s" ></td>
+      <td class="col-am" ></td>
+      <td class="col-s" ></td>
+      <td class="col-asl" ></td>
+      <td class="col-s" ></td>
+      <td class="col-asr" ></td>
+      <td class="col-s" ></td>
+      <td class="col-br" ></td>
+      <td class="col-s" ></td>
+     </tr>
+
+     <tr class="blackkey-row">
+      <td class="space-cell"></td>
+      <td id="CtoggleButton25" class="off play CNote"></td>
+      <td class="space-cell"></td>
+      <td id="CsharptoggleButton25" class="off black play CsharpNote"></td>
+      <td id="CsharptoggleButton26" class="off play CsharpNote black"></td>
+      <td id="CsharptoggleButton27" class="off play CsharpNote black"></td>
+      <td class="space-cell"></td>
+      <td id="DtoggleButton25" class="off play DNote"></td>
+      <td class="space-cell"></td>
+      <td id="DsharptoggleButton25" class="off play DsharpNote black"></td>
+      <td id="DsharptoggleButton26" class="off play DsharpNote black"></td>
+      <td id="DsharptoggleButton27" class="off play DsharpNote black"></td>
+      <td class="space-cell"></td>
+      <td id="EtoggleButton25" class="off play ENote"></td>
+      <td class="space-cell"></td>
+      <td id="FtoggleButton25" class="off play FNote"></td>
+      <td class="space-cell"></td>
+      <td id="FsharptoggleButton25" class="off play FsharpNote black"></td>
+      <td id="FsharptoggleButton26" class="off play FsharpNote black"></td>
+      <td id="FsharptoggleButton27" class="off play FsharpNote black"></td>
+      <td class="space-cell"></td>
+      <td id="GtoggleButton25" class="off play GNote"></td>
+      <td class="space-cell"></td>
+
+      <td id="GsharptoggleButton25" class="off play GsharpNote black"></td>
+      <td id="GsharptoggleButton26" class="off play GsharpNote black"></td>
+      <td id="GsharptoggleButton27" class="off play GsharpNote black"></td>
+
+      <td class="space-cell"></td>
+      <td id="AtoggleButton25" class="off play ANote"></td>
+      <td class="space-cell"></td>
+
+      <td id="AsharptoggleButton25" class="off play AsharpNote black"></td>
+      <td id="AsharptoggleButton26" class="off play AsharpNote black"></td>
+      <td id="AsharptoggleButton27" class="off play AsharpNote black"></td>
+
+      <td class="space-cell"></td>
+      <td id="BtoggleButton25" class="off play BNote"></td>
+      <td class="space-cell"></td>
+     </tr>
+
+     <tr class="middle-row">
+      <td class="space-cell"></td>
+      <td id="CtoggleButton26" class="off play CNote"></td>
+      <td class="space-cell"></td>
+      <td class="space-cell"></td>
+      <td class="space-cell"></td>
+      <td class="space-cell"></td>
+      <td class="space-cell"></td>
+      <td id="DtoggleButton26" class="off play DNote"></td>
+      <td class="space-cell"></td>
+      <td class="space-cell"></td>
+      <td class="space-cell"></td>
+      <td class="space-cell"></td>
+      <td class="space-cell"></td>
+      <td id="EtoggleButton26" class="off play ENote"></td>
+      <td class="space-cell"></td>
+      <td id="FtoggleButton26" class="off play FNote"></td>
+      <td class="space-cell"></td>
+      <td class="space-cell"></td>
+      <td class="space-cell"></td>
+      <td class="space-cell"></td>
+      <td class="space-cell"></td>
+      <td id="GtoggleButton26" class="off play GNote"></td>
+      <td class="space-cell"></td>
+      <td class="space-cell"></td>
+      <td class="space-cell"></td>
+      <td class="space-cell"></td>
+      <td class="space-cell"></td>
+      <td id="AtoggleButton26" class="off play ANote"></td>
+      <td class="space-cell"></td>
+      <td class="space-cell"></td>
+      <td class="space-cell"></td>
+      <td class="space-cell"></td>
+      <td class="space-cell"></td>
+      <td id="BtoggleButton26" class="off play BNote"></td>
+      <td class="space-cell"></td>
+     </tr>
+
+     <tr class="whitekey-row">
+      <td class="space-cell"></td>
+      <td id="CtoggleButton27" class="off play CNote"></td>
+      <td id="CtoggleButton28" class="off play CNote"></td>
+      <td id="CtoggleButton29" class="off play CNote"></td>
+      <td class="space-cell"></td>
+      <td id="DtoggleButton27" class="off play DNote"></td>
+      <td id="DtoggleButton28" class="off play DNote"></td>
+      <td id="DtoggleButton29" class="off play DNote"></td>
+      <td id="DtoggleButton30" class="off play DNote"></td>
+      <td id="DtoggleButton31" class="off play DNote"></td>
+
+      <td class="space-cell"></td>
+      <td id="EtoggleButton27" class="off play ENote"></td>
+      <td id="EtoggleButton28" class="off play ENote"></td>
+      <td id="EtoggleButton29" class="off play ENote"></td>
+      <td class="space-cell"></td>
+      <td id="FtoggleButton27" class="off play FNote"></td>
+      <td id="FtoggleButton28" class="off play FNote"></td>
+      <td id="FtoggleButton29" class="off play FNote"></td>
+      <td class="space-cell"></td>
+      <td id="GtoggleButton27" class="off play GNote"></td>
+      <td id="GtoggleButton28" class="off play GNote"></td>
+      <td id="GtoggleButton29" class="off play GNote"></td>
+      <td id="GtoggleButton30" class="off play GNote"></td>
+      <td id="GtoggleButton31" class="off play GNote"></td>
+      <td class="space-cell"></td>
+      <td id="AtoggleButton27" class="off play ANote"></td>
+      <td id="AtoggleButton28" class="off play ANote"></td>
+      <td id="AtoggleButton29" class="off play ANote"></td>
+      <td id="AtoggleButton30" class="off play ANote"></td>
+      <td id="AtoggleButton31" class="off play ANote"></td>
+      <td class="space-cell"></td>
+      <td id="BtoggleButton27" class="off play BNote"></td>
+      <td id="BtoggleButton28" class="off play BNote"></td>
+      <td id="BtoggleButton29" class="off play BNote"></td>
+      <td class="space-cell"></td>
+     </tr>
+
+     <tr class="bottom-row">
+      <td class="space-cell"></td>
+      <td class="space-cell"></td>
+      <td class="space-cell"></td>
+      <td class="space-cell"></td>
+      <td class="space-cell"></td>
+      <td class="space-cell"></td>
+      <td class="space-cell"></td>
+      <td class="space-cell"></td>
+      <td class="space-cell"></td>
+      <td class="space-cell"></td>
+      <td class="space-cell"></td>
+      <td class="space-cell"></td>
+      <td class="space-cell"></td>
+      <td class="space-cell"></td>
+      <td class="space-cell"></td>
+      <td class="space-cell"></td>
+      <td class="space-cell"></td>
+      <td class="space-cell"></td>
+      <td class="space-cell"></td>
+      <td class="space-cell"></td>
+      <td class="space-cell"></td>
+      <td class="space-cell"></td>
+      <td class="space-cell"></td>
+      <td class="space-cell"></td>
+      <td class="space-cell"></td>
+      <td class="space-cell"></td>
+      <td class="space-cell"></td>
+      <td class="space-cell"></td>
+      <td class="space-cell"></td>
+      <td class="space-cell"></td>
+      <td class="space-cell"></td>
+      <td class="space-cell"></td>
+      <td class="space-cell"></td>
+      <td class="space-cell"></td>
+      <td class="space-cell"></td>
+     </tr>
+
+    </table>
+
+    </div>
 
     <ol id="resultList" class="column-container column-item resulttext">No Scale Match. Select more notes.</ol>
     

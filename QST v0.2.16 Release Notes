@@ -1,0 +1,18 @@
+Quick Scales Tool
+v.0.2.16
+
+A visual tool for musical instruments like guitar, bass and piano to help musicians, singer-songwriters, producers, and bands find the right harmonies for their compositions, covers, and collaborative jams.
+
+This web based app is still in beta testing. An official and stable release is coming soon!
+
+v.0.2.16 Release notes (pardon my atrocious spelling!):
+
+-Quick Scales Tool is now a Progressive Web App (PWA)! It can be downloaded from any browser, including mobile as a bookmark saved to the device's homescreen, for offline and standalone use.
+    Any updates pushed to my repository will automatically update the PWA on your device upon opening. Be aware that some features might break and you may need to redownload it from the main webpage.
+-Now more mobile friendly with responsive web design. I included media queries in each page's style sheet to change page's layout based on device viewport width.
+    You can now use the page in portrait mode on mobile devices and the layout will change when tilted to landscape mode. Mobile portrait mode is still a bit clunky so more to come as I optimize the layouts for each media query.
+-The Scale Filter page now contains a button to view or hide a piano keyboard that can be interacted with similar to the guitar fretboard. The guitar fretboard was also redeployed with functionality similar to the main page.
+    The guitar fretboard can now be customized with: tuning, showing between 4-8 strings, and between 12-24 frets.
+-Optimized the service worker to actually allow the app to work as an offline PWA and update when connected to network.
+-General formatting on HTML and CSS files, cleaning up the JavaScript code to actually allow it to function as desired.
+-More to come!

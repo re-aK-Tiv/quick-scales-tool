@@ -33,9 +33,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
   <title>Quick Scales Tool</title>
-  <meta name="author" content="Unknown" />
+  <meta name="author" content="Kyle Tivnan" />
   <meta name="description" content="The Quick Scales Tool is a visual aid for guitar, bass, piano and other fretted string 
-  instruments that allows musicians to see which notes on a scale will maximize harmonious playing while staying in key, especially during collaborative play!" />
+  instruments that allows musicians to see which notes on a scale will maximize harmonious playing while staying in key, especially during collaborative play! v0.2.16" />
   <link rel="manifest" href="qst.json" />
   </head>
 
@@ -171,7 +171,7 @@
         <td class="ExcelStyle"></td>
         <td class="ExcelStyle"></td>
         <td class="ExcelStyle"></td>
-        <td class="ExcelStyle"><button href="#"  onclick="toggleColumn(1)" class="fretfullbtn">24🠲</button></td>
+        <td class="ExcelStyle"><button href="#"  onclick="toggleColumn(1)" class="fretfullbtn">24→</button></td>
         <td class="col1"></td>
         <td class="col1"></td>
         <td class="col1"></td>
@@ -183,7 +183,7 @@
         <td class="col1 col2"><!--<button href="#"  onclick="toggleColumn(3)">(±)22</button>--></td>
         <td class="col1 col3"><!--<button href="#"  onclick="toggleColumn(4)">(±)23-24</button>--></td>
         <td class="col1 col4"></td>
-        <td class="col1 col4"><button href="#"  onclick="toggleColumn(1)">🠰12</button></td>
+        <td class="col1 col4"><button href="#"  onclick="toggleColumn(1)">←12</button></td>
         <td class="col5"></td>
         <td class="col5"></td>
         <td class="col5"></td>
@@ -284,8 +284,8 @@
 
       <tr id="highEString">
         
-        <td class="col6"><button href="#" onclick="toggleRowHighE(this)">E🠲</button></td>
-        <td class="col7"><button href="#" onclick="shiftHighELeft(this)">🠲</button></td>
+        <td class="col6"><button href="#" onclick="toggleRowHighE(this)">E→</button></td>
+        <td class="col7"><button href="#" onclick="shiftHighELeft(this)">→</button></td>
         <td class="ExcelStyle rotate-text ENote Highlight">E</td>
         <td class="ExcelStyle FNote Highlight">F</td>
         <td class="ExcelStyle FSharpNote">F♯</td>
@@ -325,8 +325,8 @@
       </tr>
       <tr id="highBString">
         
-        <td class="col6"><button href="#" onclick="toggleRowHighE(this)">E🠱</button></td>
-        <td class="col7"><button href="#" onclick="shiftHighBLeft(this)">🠲</button></td>
+        <td class="col6"><button href="#" onclick="toggleRowHighE(this)">E↑</button></td>
+        <td class="col7"><button href="#" onclick="shiftHighBLeft(this)">→</button></td>
         <td class="ExcelStyle rotate-text BNote Highlight">B</td>
         <td class="ExcelStyle CNote Highlight">C</td>
         <td class="ExcelStyle CSharpNote">C♯</td>
@@ -366,8 +366,8 @@
       </tr>
       <tr id="highGString">
        
-        <td class="col6"><button href="#" onclick="toggleRowHighB(this)">B🠱 </button></td>
-        <td class="col7"><button href="#" onclick="shiftHighGLeft(this)">🠲</button></td>
+        <td class="col6"><button href="#" onclick="toggleRowHighB(this)">B↑</button></td>
+        <td class="col7"><button href="#" onclick="shiftHighGLeft(this)">→</button></td>
         <td class="ExcelStyle rotate-text GNote Highlight">G</td>
         <td class="ExcelStyle GSharpNote">G♯</td>
         <td class="ExcelStyle ANote Highlight">A</td>
@@ -408,7 +408,7 @@
       <tr id="DString">
         
         <td class="col6"></td>
-        <td class="col7"><button href="#" onclick="shiftDLeft(this)">🠲</button></td>
+        <td class="col7"><button href="#" onclick="shiftDLeft(this)">→</button></td>
         <td class="ExcelStyle rotate-text DNote Highlight">D</td>
         <td class="ExcelStyle DSharpNote">D♯</td>
         <td class="ExcelStyle ENote Highlight">E</td>
@@ -449,7 +449,7 @@
       <tr id="AString">
      
         <td class="col6"></td>
-        <td class="col7"><button href="#" onclick="shiftALeft(this)">🠲</button></td>
+        <td class="col7"><button href="#" onclick="shiftALeft(this)">→</button></td>
         <td class="ExcelStyle rotate-text ANote Highlight">A</td>
         <td class="ExcelStyle ASharpNote">A♯</td>
         <td class="ExcelStyle BNote Highlight">B</td>
@@ -489,8 +489,8 @@
       </tr>
       <tr id="lowEString">
         
-        <td class="col6"><button href="#" onclick="toggleRowLowB(this)">B🠳</button></td>
-        <td class="col7"><button href="#" onclick="shiftLowELeft(this)">🠲</button></td>
+        <td class="col6"><button href="#" onclick="toggleRowLowB(this)">B↓</button></td>
+        <td class="col7"><button href="#" onclick="shiftLowELeft(this)">→</button></td>
         <td class="ExcelStyle rotate-text ENote Highlight">E</td>
         <td class="ExcelStyle FNote Highlight">F</td>
         <td class="ExcelStyle FSharpNote">F♯</td>
@@ -530,8 +530,8 @@
       </tr>
       <tr id="lowBString" style="display: none;">
       
-        <td class="col6"><button href="#" onclick="toggleRowLowG(this)">G🠳</button></td>
-        <td class="col7"><button href="#" onclick="shiftLowBLeft(this)">🠲</button></td>
+        <td class="col6"><button href="#" onclick="toggleRowLowG(this)">G↓</button></td>
+        <td class="col7"><button href="#" onclick="shiftLowBLeft(this)">→</button></td>
         <td class="ExcelStyle rotate-text BNote Highlight">B</td>
         <td class="ExcelStyle CNote Highlight">C</td>
         <td class="ExcelStyle CSharpNote">C♯</td>
@@ -571,8 +571,8 @@
       </tr>
       <tr id="lowGString" style="display: none;">
 
-        <td class="col6"><button href="#" onclick="toggleRowLowG(this)">G🠲</button></td>
-        <td class="col7"><button href="#" onclick="shiftLowGLeft()">🠲</button></td>
+        <td class="col6"><button href="#" onclick="toggleRowLowG(this)">G→</button></td>
+        <td class="col7"><button href="#" onclick="shiftLowGLeft()">→</button></td>
         <td class="ExcelStyle rotate-text GNote Highlight">G</td>
         <td class="ExcelStyle GSharpNote">G♯</td>
         <td class="ExcelStyle ANote Highlight">A</td>
@@ -663,16 +663,26 @@
   <br> Each string can be tuned down with buttons in the second column. </br>
   <br>More frets, up to 24 total, can be added starting with the button above fret 12.</br></p> -->
 
-  <script>
+<!-- Register the app's service worker. -->
 
-  <!-- Register the app's service worker. -->
-<script>
+<!--<script type="module" src="app.js">-->
+
+  <script defer>
+
   if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("sw.js");
-  }
+  navigator.serviceWorker.register("/sw.js").then(
+    (registration) => {
+      console.log("Service worker registration successful:", registration);
+    },
+    (error) => {
+      console.error(`Service worker registration failed: ${error}`);
+    },
+  );
+} else {
+  console.error("Service workers are not supported.");
+}
 
-</script>
-
+  </script>
 
   </body>
 

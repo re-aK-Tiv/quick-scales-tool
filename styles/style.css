@@ -109,6 +109,7 @@ table {
   background-color: #67b49d;
   text-shadow: 3px 3px 3px #aaa;
 }
+
 .col1 {
 	display: none;
 }
@@ -235,23 +236,23 @@ table.show7 .col7 {
   }
 
   h1 {
-    font-size: 12px;
+    font-size: 28px;
     margin: 2px;
     text-shadow: 2px 2px 2px #aaa;
   }
 
   h2 {
     display: block;
-    font-size: 10px;
+    font-size: 16px;
     margin: 2px;
     text-shadow: 2px 2px 2px #aaa;
   }
 
   .linkbtn {
     display: block;
-    width: 12px;
+    width: 36px;
     background-color: #ace7ae;
-    border-radius: 2px;
+    border-radius: 10px;
     float: right;
   }
 
@@ -261,7 +262,7 @@ table.show7 .col7 {
       color: rgb(14, 10, 10);
       text-shadow: 0px 0px 0px;
       padding: 0px;
-      font-size: 10px;
+      font-size: 16px;
       font-weight: none;
       border: none;
       border-radius: 2px;
@@ -283,7 +284,7 @@ table.show7 .col7 {
       display: block;
       background-color: #ace7ae;
       width: 100%;
-      font-size: 10px;
+      font-size: 16px;
     }
 
     #mobilelink {
@@ -317,10 +318,52 @@ table.show7 .col7 {
 
 @media (max-width: 450px) {
 
+  h1 {
+    font-size: 16px;
+    margin: 2px;
+    text-shadow: 2px 2px 2px #aaa;
+  }
+
   h2 {
      display: none;
   }
+
+  .mobilelink {
+    display: block;
+    background-color: #ace7ae;
+    width: 100%;
+    font-size: 10px;
+  }
+
+  .linkbtn {
+    display: block;
+    width: 20px;
+    background-color: #ace7ae;
+    border-radius: 5px;
+    float: right;
+  }
+
+  .select {
+    background-color: #ace7ae;
+    text-align: center;
+    color: rgb(14, 10, 10);
+    text-shadow: 0px 0px 0px;
+    padding: 0px;
+    font-size: 10px;
+    font-weight: none;
+    border: none;
+    border-radius: 2px;
+  }
+
   .fretfullbtn {
+    display: none;
+  }
+
+  .col1 {
+    display: none;
+  }
+
+  table.show1 .col1 {
     display: none;
   }
 

@@ -15,6 +15,622 @@ function togglemobilelink(){
   }
 }
 
+var pianoBlock = document.getElementById("pianoBlock");
+
+pianoBlock.style.display = "none";
+
+function togglePiano(){
+  if(pianoBlock.style.display == "none")
+  {
+    pianoBlock.style.display = "block";
+  }
+  else
+  {
+    pianoBlock.style.display = "none";
+  }
+}
+
+
+
+//show/hide row and column toggle functions, for adding frets and strings
+
+function toggleColumn(n) {
+  var currentClass = document.getElementById("mytable").className;
+  if (currentClass.indexOf("show" + n) != -1) {
+    document.getElementById("mytable").className = currentClass.replace("show" + n, "");
+  } else {
+    document.getElementById("mytable").className += " " + "show" + n;
+  }
+}
+
+function toggleRowHighE(){
+  var subRow = document.getElementById("highEString");
+  subRow.style.display = subRow.style.display === 'none' ? 'table-row' : 'none';
+}
+
+function toggleRowHighB(){
+  var subRow = document.getElementById("highBString");
+  subRow.style.display = subRow.style.display === 'none' ? 'table-row' : 'none';
+}
+
+function toggleRowLowB(){
+  var subRow = document.getElementById("lowBString");
+  subRow.style.display = subRow.style.display === 'none' ? 'table-row' : 'none';
+}
+
+function toggleRowLowG(){
+  var subRow = document.getElementById("lowGString");
+  subRow.style.display = subRow.style.display === 'none' ? 'table-row' : 'none';
+}
+
+//shift row cells left toggle, for detuning function.
+
+/*
+ *
+ N *eed to build out class based substitutions. Currently, all these functions do is shift the innerHTML text left and
+ replace the leftmost cell's innerHTML with the rightmost cell's innerHTML. Not exactly functional! So, we need to do several things in these new Detune functions:
+
+ 1) cells moved from the far right, or index[35], to index[0] need their .col5 class removed, class .rotate text and .highlight (or lack thereof) class from newly shifted cells at index[12] added,
+ or whatever they were at index[11] prior to the shift to the left.
+ 2) cells moved to index [1] need their .rotate-text class removed and to shift their remaining classes to the next cells to the right of them.
+ 3) cells that moved left at index[2-12], or further depending on whether or not index[13-24] are shown, need add their .highlight classes to the next cells to the right of them, and
+ remove the previous .highlight classes.
+ 4) cells that move to index[13] and beyond, if not shown, need to have col1,2,3,4, or 5 (aka a display: none class toggle, depending on where they are) added.
+ Similar would be true for index[21, 22, & 23] if not shown. If all 24 indexes are shown, then this would apply to index[25].
+ Otherwise, if any of those cells at index[13-24] are shown, then rule 2 conditions would apply.
+
+ TO DO: Need to figure out the column show/hide toggle buttons, need to be able to collapse all columns back to say 12, currently one all columns are expanded,
+ collapsing using the toggle above column 12 doesn't collpase the other columns with it. Possibly just have a full 13-24 expand toggle and shrink down from there.
+ Similar issue currently with the string row toggles, not as big of a deal but is kind of clunky!
+
+ ALSO: Rewrite the JS code for the .highlight class to add highlight class to cells based on scale selected. Possibly do a query selector on each class, have some
+ conditional functions apply based on cell class list, apply a highlight class based on whether or not the note is part of the newly mapped array from the
+ drop down selections. HTML ElementID based functions or variables for individual cells are not best suited for this type of variability in shifts, contrary to how the original page JS was written.
+
+ Basically, need a toggle if/else function applied for each note class,
+ i.e. if C is in new mapped array, add CNote-Highlight to class list, else add CNote-No-Highlight to class list; etc.
+
+ */
+
+
+/*
+function shiftHighELeft(){
+  var row = document.getElementById("highEString");
+
+  // Get the last cell value
+  const lastCellValue = row.cells[13].innerHTML;
+  const lastCellClass = row.cells[13].className;
+
+
+  // Shift the cells to the left
+  for (let i = row.cells.length - 1; i > 1; i--) {
+    row.cells[i].innerHTML = row.cells[i - 1].innerHTML;
+    row.cells[i].className = row.cells[i - 1].className;
+
+  };
+
+  row.cells[15].classList.add("col1");
+  // row.cells[23].classList.remove("col1");
+  // row.cells[23].classList.add("col2");
+  // row.cells[24].classList.remove("col2");
+  // row.cells[24].classList.add("col3");
+  // row.cells[25].classList.remove("col3");
+  // row.cells[25].classList.add("col4");
+  row.cells[27].classList.add("col5");
+  row.cells[27].classList.remove("col1"); //replace col1 with col4 if uncommenting row.cells[23]-[25] above
+
+  // Replace the leftmost cell with the last cell value
+  row.cells[2].innerHTML = lastCellValue;
+  row.cells[2].className = lastCellClass;
+
+  row.cells[2].classList.remove("col5");
+  row.cells[2].classList.add("rotate-text");
+
+  // Remove .rotate-text from the second cell
+  row.cells[3].classList.remove("rotate-text");
+};
+
+function shiftHighBLeft(){
+  var row = document.getElementById("highBString");
+
+  // Get the last cell value
+  const lastCellValue = row.cells[13].innerHTML;
+  const lastCellClass = row.cells[13].className;
+
+  // Shift the cells to the left
+  for (let i = row.cells.length - 1; i > 1; i--) {
+    row.cells[i].innerHTML = row.cells[i - 1].innerHTML;
+    row.cells[i].className = row.cells[i - 1].className;
+  };
+
+  row.cells[15].classList.add("col1");
+  // row.cells[23].classList.remove("col1");
+  // row.cells[23].classList.add("col2");
+  // row.cells[24].classList.remove("col2");
+  // row.cells[24].classList.add("col3");
+  // row.cells[25].classList.remove("col3");
+  // row.cells[25].classList.add("col4");
+  row.cells[27].classList.add("col5");
+  row.cells[27].classList.remove("col1"); //replace col1 with col4 if uncommenting row.cells[23]-[25] above
+
+  // Replace the leftmost cell with the last cell value
+  row.cells[2].innerHTML = lastCellValue;
+  row.cells[2].className = lastCellClass;
+  row.cells[2].classList.remove("col5");
+  row.cells[2].classList.add("rotate-text";
+
+  // Remove .rotate-text from the second cell
+  row.cells[3].classList.remove("rotate-text");
+};
+
+function shiftHighGLeft(){
+  var row = document.getElementById("highGString");
+
+  // Get the last cell value
+  const lastCellValue = row.cells[13].innerHTML;
+  const lastCellClass = row.cells[13].className;
+
+  // Shift the cells to the left
+  for (let i = row.cells.length - 1; i > 1; i--) {
+    row.cells[i].innerHTML = row.cells[i - 1].innerHTML;
+    row.cells[i].className = row.cells[i - 1].className;
+  };
+
+  row.cells[15].classList.add("col1");
+  // row.cells[23].classList.remove("col1");
+  // row.cells[23].classList.add("col2");
+  // row.cells[24].classList.remove("col2");
+  // row.cells[24].classList.add("col3");
+  // row.cells[25].classList.remove("col3");
+  // row.cells[25].classList.add("col4");
+  row.cells[27].classList.add("col5");
+  row.cells[27].classList.remove("col1"); //replace col1 with col4 if uncommenting row.cells[23]-[25] above
+
+  // Replace the leftmost cell with the last cell value
+  row.cells[2].innerHTML = lastCellValue;
+  row.cells[2].className = lastCellClass;
+  row.cells[2].classList.remove("col5");
+  row.cells[2].classList.add("rotate-text");
+
+  // Remove .rotate-text from the second cell
+  row.cells[3].classList.remove("rotate-text");
+};
+
+function shiftALeft(){
+  var row = document.getElementById("AString");
+
+  // Get the last cell value
+  const lastCellValue = row.cells[13].innerHTML;
+  const lastCellClass = row.cells[13].className;
+
+  // Shift the cells to the left
+  for (let i = row.cells.length - 1; i > 1; i--) {
+    row.cells[i].innerHTML = row.cells[i - 1].innerHTML;
+    row.cells[i].className = row.cells[i - 1].className;
+  };
+
+  row.cells[15].classList.add("col1");
+  // row.cells[23].classList.remove("col1");
+  // row.cells[23].classList.add("col2");
+  // row.cells[24].classList.remove("col2");
+  // row.cells[24].classList.add("col3");
+  // row.cells[25].classList.remove("col3");
+  // row.cells[25].classList.add("col4");
+  row.cells[27].classList.add("col5");
+  row.cells[27].classList.remove("col1"); //replace col1 with col4 if uncommenting row.cells[23]-[25] above
+
+  // Replace the leftmost cell with the last cell value
+  row.cells[2].innerHTML = lastCellValue;
+  row.cells[2].className = lastCellClass;
+  row.cells[2].classList.remove("col5");
+  row.cells[2].classList.add("rotate-text");
+
+  // Remove .rotate-text from the second cell
+  row.cells[3].classList.remove("rotate-text");
+};
+
+function shiftDLeft(){
+  var row = document.getElementById("DString");
+
+  // Get the last cell value
+  const lastCellValue = row.cells[13].innerHTML;
+  const lastCellClass = row.cells[13].className;
+
+  // Shift the cells to the left
+  for (let i = row.cells.length - 1; i > 1; i--) {
+    row.cells[i].innerHTML = row.cells[i - 1].innerHTML;
+    row.cells[i].className = row.cells[i - 1].className;
+  };
+
+  row.cells[15].classList.add("col1");
+  // row.cells[23].classList.remove("col1");
+  // row.cells[23].classList.add("col2");
+  // row.cells[24].classList.remove("col2");
+  // row.cells[24].classList.add("col3");
+  // row.cells[25].classList.remove("col3");
+  // row.cells[25].classList.add("col4");
+  row.cells[27].classList.add("col5");
+  row.cells[27].classList.remove("col1"); //replace col1 with col4 if uncommenting row.cells[23]-[25] above
+
+  // Replace the leftmost cell with the last cell value
+  row.cells[2].innerHTML = lastCellValue;
+  row.cells[2].className = lastCellClass;
+  row.cells[2].classList.remove("col5");
+  row.cells[2].classList.add("rotate-text");
+
+  // Remove .rotate-text from the second cell
+  row.cells[3].classList.remove("rotate-text");
+};
+
+function shiftLowELeft(){
+  var row = document.getElementById("lowEString");
+
+  // Get the last cell value
+  const lastCellValue = row.cells[13].innerHTML;
+  const lastCellClass = row.cells[13].className;
+
+  // Shift the cells to the left
+  for (let i = row.cells.length - 1; i > 1; i--) {
+    row.cells[i].innerHTML = row.cells[i - 1].innerHTML;
+    row.cells[i].className = row.cells[i - 1].className;
+  };
+
+  row.cells[15].classList.add("col1");
+  // row.cells[23].classList.remove("col1");
+  // row.cells[23].classList.add("col2");
+  // row.cells[24].classList.remove("col2");
+  // row.cells[24].classList.add("col3");
+  // row.cells[25].classList.remove("col3");
+  // row.cells[25].classList.add("col4");
+  row.cells[27].classList.add("col5");
+  row.cells[27].classList.remove("col1"); //replace col1 with col4 if uncommenting row.cells[23]-[25] above
+
+  // Replace the leftmost cell with the last cell value
+  row.cells[2].innerHTML = lastCellValue;
+  row.cells[2].className = lastCellClass;
+  row.cells[2].classList.remove("col5");
+  row.cells[2].classList.add("rotate-text");
+
+  // Remove .rotate-text from the second cell
+  row.cells[3].classList.remove("rotate-text");
+};
+
+function shiftLowBLeft(){
+  var row = document.getElementById("lowBString");
+
+  // Get the last cell value
+  const lastCellValue = row.cells[13].innerHTML;
+  const lastCellClass = row.cells[13].className;
+
+  // Shift the cells to the left
+  for (let i = row.cells.length - 1; i > 1; i--) {
+    row.cells[i].innerHTML = row.cells[i - 1].innerHTML;
+    row.cells[i].className = row.cells[i - 1].className;
+  };
+
+  row.cells[15].classList.add("col1");
+  // row.cells[23].classList.remove("col1");
+  // row.cells[23].classList.add("col2");
+  // row.cells[24].classList.remove("col2");
+  // row.cells[24].classList.add("col3");
+  // row.cells[25].classList.remove("col3");
+  // row.cells[25].classList.add("col4");
+  row.cells[27].classList.add("col5");
+  row.cells[27].classList.remove("col1"); //replace col1 with col4 if uncommenting row.cells[23]-[25] above
+
+  // Replace the leftmost cell with the last cell value
+  row.cells[2].innerHTML = lastCellValue;
+  row.cells[2].className = lastCellClass;
+  row.cells[2].classList.remove("col5");
+  row.cells[2].classList.add("rotate-text");
+
+  // Remove .rotate-text from the second cell
+  row.cells[3].classList.remove("rotate-text");
+};
+
+function shiftLowGLeft(){
+  var row = document.getElementById("lowGString");
+
+  // Get the last cell value
+  const lastCellValue = row.cells[13].innerHTML;
+  const lastCellClass = row.cells[13].className;
+
+  // Shift the cells to the left
+  for (let i = row.cells.length - 1; i > 1; i--) {
+    row.cells[i].innerHTML = row.cells[i - 1].innerHTML;
+    row.cells[i].className = row.cells[i - 1].className;
+  };
+
+  row.cells[15].classList.add("col1");
+  // row.cells[23].classList.remove("col1");
+  // row.cells[23].classList.add("col2");
+  // row.cells[24].classList.remove("col2");
+  // row.cells[24].classList.add("col3");
+  // row.cells[25].classList.remove("col3");
+  // row.cells[25].classList.add("col4");
+  row.cells[27].classList.add("col5");
+  row.cells[27].classList.remove("col1"); //replace col1 with col4 if uncommenting row.cells[23]-[25] above
+
+  // Replace the leftmost cell with the last cell value
+  row.cells[2].innerHTML = lastCellValue;
+  row.cells[2].className = lastCellClass;
+  row.cells[2].classList.remove("col5");
+  row.cells[2].classList.add("rotate-text");
+
+  // Remove .rotate-text from the second cell
+  row.cells[3].classList.remove("rotate-text");
+};*/
+
+
+function shiftHighELeft(){
+  let row = document.getElementById("highEString");
+
+  // Get the last cell value
+  let lastCellValue = row.cells[13].innerHTML;
+  let lastCellClass = row.cells[14].classList;
+
+
+  // Shift the cells to the left
+  for (let i = row.cells.length - 1; i > 1; i--) {
+    row.cells[i].innerHTML = row.cells[i - 1].innerHTML;
+    row.cells[i].classList = row.cells[i - 1].classList;
+
+  };
+
+  row.cells[15].classList.add("col1");
+  // row.cells[23].classList.remove("col1");
+  // row.cells[23].classList.add("col2");
+  // row.cells[24].classList.remove("col2");
+  // row.cells[24].classList.add("col3");
+  // row.cells[25].classList.remove("col3");
+  // row.cells[25].classList.add("col4");
+  row.cells[27].classList.add("col5");
+  row.cells[27].classList.remove("col1"); //replace col1 with col4 if uncommenting row.cells[23]-[25] above
+
+  // Replace the leftmost cell with the last cell value
+  row.cells[2].innerHTML = lastCellValue;
+  row.cells[2].classList = lastCellClass;
+
+  row.cells[2].classList.remove("col5");
+  row.cells[2].classList.add("rotate-text");
+
+  // Remove .rotate-text from the second cell
+  row.cells[3].classList.remove("rotate-text");
+};
+
+function shiftHighBLeft(){
+  const row = document.getElementById("highBString");
+
+  // Get the last cell value
+  let lastCellValue = row.cells[13].innerHTML;
+  let lastCellClass = row.cells[14].classList;
+
+  // Shift the cells to the left
+  for (let i = row.cells.length - 1; i > 1; i--) {
+    row.cells[i].innerHTML = row.cells[i - 1].innerHTML;
+    row.cells[i].classList = row.cells[i - 1].classList;
+  };
+
+  row.cells[15].classList.add("col1");
+  // row.cells[23].classList.remove("col1");
+  // row.cells[23].classList.add("col2");
+  // row.cells[24].classList.remove("col2");
+  // row.cells[24].classList.add("col3");
+  // row.cells[25].classList.remove("col3");
+  // row.cells[25].classList.add("col4");
+  row.cells[27].classList.add("col5");
+  row.cells[27].classList.remove("col1"); //replace col1 with col4 if uncommenting row.cells[23]-[25] above
+
+  // Replace the leftmost cell with the last cell value
+  row.cells[2].innerHTML = lastCellValue;
+  row.cells[2].classList = lastCellClass;
+  row.cells[2].classList.remove("col5");
+  row.cells[2].classList.add("rotate-text");
+
+  // Remove .rotate-text from the second cell
+  row.cells[3].classList.remove("rotate-text");
+};
+
+function shiftHighGLeft(){
+  const row = document.getElementById("highGString");
+
+  // Get the last cell value
+  let lastCellValue = row.cells[13].innerHTML;
+  let lastCellClass = row.cells[14].classList;
+
+  // Shift the cells to the left
+  for (let i = row.cells.length - 1; i > 1; i--) {
+    row.cells[i].innerHTML = row.cells[i - 1].innerHTML;
+    row.cells[i].classList = row.cells[i - 1].classList;
+  };
+
+  row.cells[15].classList.add("col1");
+  // row.cells[23].classList.remove("col1");
+  // row.cells[23].classList.add("col2");
+  // row.cells[24].classList.remove("col2");
+  // row.cells[24].classList.add("col3");
+  // row.cells[25].classList.remove("col3");
+  // row.cells[25].classList.add("col4");
+  row.cells[27].classList.add("col5");
+  row.cells[27].classList.remove("col1"); //replace col1 with col4 if uncommenting row.cells[23]-[25] above
+
+  // Replace the leftmost cell with the last cell value
+  row.cells[2].innerHTML = lastCellValue;
+  row.cells[2].classList = lastCellClass;
+  row.cells[2].classList.remove("col5");
+  row.cells[2].classList.add("rotate-text");
+
+  // Remove .rotate-text from the second cell
+  row.cells[3].classList.remove("rotate-text");
+};
+
+function shiftALeft(){
+  const row = document.getElementById("AString");
+
+  // Get the last cell value
+  let lastCellValue = row.cells[13].innerHTML;
+  let lastCellClass = row.cells[14].classList;
+
+  // Shift the cells to the left
+  for (let i = row.cells.length - 1; i > 1; i--) {
+    row.cells[i].innerHTML = row.cells[i - 1].innerHTML;
+    row.cells[i].classList = row.cells[i - 1].classList;
+  };
+
+  row.cells[15].classList.add("col1");
+  // row.cells[23].classList.remove("col1");
+  // row.cells[23].classList.add("col2");
+  // row.cells[24].classList.remove("col2");
+  // row.cells[24].classList.add("col3");
+  // row.cells[25].classList.remove("col3");
+  // row.cells[25].classList.add("col4");
+  row.cells[27].classList.add("col5");
+  row.cells[27].classList.remove("col1"); //replace col1 with col4 if uncommenting row.cells[23]-[25] above
+
+  // Replace the leftmost cell with the last cell value
+  row.cells[2].innerHTML = lastCellValue;
+  row.cells[2].classList = lastCellClass;
+  row.cells[2].classList.remove("col5");
+  row.cells[2].classList.add("rotate-text");
+
+  // Remove .rotate-text from the second cell
+  row.cells[3].classList.remove("rotate-text");
+};
+
+function shiftDLeft(){
+  const row = document.getElementById("DString");
+
+  // Get the last cell value
+  let lastCellValue = row.cells[13].innerHTML;
+  let lastCellClass = row.cells[14].classList;
+
+  // Shift the cells to the left
+  for (let i = row.cells.length - 1; i > 1; i--) {
+    row.cells[i].innerHTML = row.cells[i - 1].innerHTML;
+    row.cells[i].classList = row.cells[i - 1].classList;
+  };
+
+  row.cells[15].classList.add("col1");
+  // row.cells[23].classList.remove("col1");
+  // row.cells[23].classList.add("col2");
+  // row.cells[24].classList.remove("col2");
+  // row.cells[24].classList.add("col3");
+  // row.cells[25].classList.remove("col3");
+  // row.cells[25].classList.add("col4");
+  row.cells[27].classList.add("col5");
+  row.cells[27].classList.remove("col1"); //replace col1 with col4 if uncommenting row.cells[23]-[25] above
+
+  // Replace the leftmost cell with the last cell value
+  row.cells[2].innerHTML = lastCellValue;
+  row.cells[2].classList = lastCellClass;
+  row.cells[2].classList.remove("col5");
+  row.cells[2].classList.add("rotate-text");
+
+  // Remove .rotate-text from the second cell
+  row.cells[3].classList.remove("rotate-text");
+};
+
+function shiftLowELeft(){
+  const row = document.getElementById("lowEString");
+
+  // Get the last cell value
+  let lastCellValue = row.cells[13].innerHTML;
+  let lastCellClass = row.cells[14].classList;
+
+  // Shift the cells to the left
+  for (let i = row.cells.length - 1; i > 1; i--) {
+    row.cells[i].innerHTML = row.cells[i - 1].innerHTML;
+    row.cells[i].classList = row.cells[i - 1].classList;
+  };
+
+  row.cells[15].classList.add("col1");
+  // row.cells[23].classList.remove("col1");
+  // row.cells[23].classList.add("col2");
+  // row.cells[24].classList.remove("col2");
+  // row.cells[24].classList.add("col3");
+  // row.cells[25].classList.remove("col3");
+  // row.cells[25].classList.add("col4");
+  row.cells[27].classList.add("col5");
+  row.cells[27].classList.remove("col1"); //replace col1 with col4 if uncommenting row.cells[23]-[25] above
+
+  // Replace the leftmost cell with the last cell value
+  row.cells[2].innerHTML = lastCellValue;
+  row.cells[2].classList = lastCellClass;
+  row.cells[2].classList.remove("col5");
+  row.cells[2].classList.add("rotate-text");
+
+  // Remove .rotate-text from the second cell
+  row.cells[3].classList.remove("rotate-text");
+};
+
+function shiftLowBLeft(){
+  const row = document.getElementById("lowBString");
+
+  // Get the last cell value
+  let lastCellValue = row.cells[13].innerHTML;
+  let lastCellClass = row.cells[14].classList;
+
+  // Shift the cells to the left
+  for (let i = row.cells.length - 1; i > 1; i--) {
+    row.cells[i].innerHTML = row.cells[i - 1].innerHTML;
+    row.cells[i].classList = row.cells[i - 1].classList;
+  };
+
+  row.cells[15].classList.add("col1");
+  // row.cells[23].classList.remove("col1");
+  // row.cells[23].classList.add("col2");
+  // row.cells[24].classList.remove("col2");
+  // row.cells[24].classList.add("col3");
+  // row.cells[25].classList.remove("col3");
+  // row.cells[25].classList.add("col4");
+  row.cells[27].classList.add("col5");
+  row.cells[27].classList.remove("col1"); //replace col1 with col4 if uncommenting row.cells[23]-[25] above
+
+  // Replace the leftmost cell with the last cell value
+  row.cells[2].innerHTML = lastCellValue;
+  row.cells[2].classList = lastCellClass;
+  row.cells[2].classList.remove("col5");
+  row.cells[2].classList.add("rotate-text");
+
+  // Remove .rotate-text from the second cell
+  row.cells[3].classList.remove("rotate-text");
+};
+
+function shiftLowGLeft(){
+  const row = document.getElementById("lowGString");
+
+  // Get the last cell value
+  let lastCellValue = row.cells[13].innerHTML;
+  let lastCellClass = row.cells[14].classList;
+
+  // Shift the cells to the left
+  for (let i = row.cells.length - 1; i > 1; i--) {
+    row.cells[i].innerHTML = row.cells[i - 1].innerHTML;
+    row.cells[i].classList = row.cells[i - 1].classList;
+  };
+
+  row.cells[15].classList.add("col1");
+  // row.cells[23].classList.remove("col1");
+  // row.cells[23].classList.add("col2");
+  // row.cells[24].classList.remove("col2");
+  // row.cells[24].classList.add("col3");
+  // row.cells[25].classList.remove("col3");
+  // row.cells[25].classList.add("col4");
+  row.cells[27].classList.add("col5");
+  row.cells[27].classList.remove("col1"); //replace col1 with col4 if uncommenting row.cells[23]-[25] above
+
+  // Replace the leftmost cell with the last cell value
+  row.cells[2].innerHTML = lastCellValue;
+  row.cells[2].classList = lastCellClass;
+  row.cells[2].classList.remove("col5");
+  row.cells[2].classList.add("rotate-text");
+
+  // Remove .rotate-text from the second cell
+  row.cells[3].classList.remove("rotate-text");
+};
+
+
+
 const seriesOfArrays = [
   [
     10,
@@ -8179,397 +8795,230 @@ const seriesOfArrays = [
   ] */
 ];
 
-const toggleButton = document.getElementById('toggleButton');
-const toggleButton1 = document.getElementById('toggleButton1');
 
-const resultElement = document.getElementById('result');
+/*
+    let showE = 0;
+    let showF = 0;
+    let showFsharp = 0;
+    let showG = 0;
+    let showGsharp = 0;
+    let showA = 0;
+    let showAsharp = 0;
+    let showB = 0;
+    let showC = 0;
+    let showCsharp = 0;
+    let showD = 0;
+    let showDsharp = 0;
 
-let showE = 0;
-let showF = 0;
-let showFsharp = 0;
-let showG = 0;
-let showGsharp = 0;
-let showA = 0;
-let showAsharp = 0;
-let showB = 0;
-let showC = 0;
-let showCsharp = 0;
-let showD = 0;
-let showDsharp = 0;
-
-//mapping the toggleButtons from the html
-//Let's try this method to optimize this clunky ass script: https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementsByClassName
-
-const EtoggleButton1 = document.getElementById('EtoggleButton1');
-const EtoggleButton2 = document.getElementById('EtoggleButton2');
-const EtoggleButton3 = document.getElementById('EtoggleButton3');
-const EtoggleButton4 = document.getElementById('EtoggleButton4');
-const EtoggleButton5 = document.getElementById('EtoggleButton5');
-const EtoggleButton6 = document.getElementById('EtoggleButton6');
-const EtoggleButton7 = document.getElementById('EtoggleButton7');
-const EtoggleButton8 = document.getElementById('EtoggleButton8');
-
-const FtoggleButton1 = document.getElementById('FtoggleButton1');
-const FtoggleButton2 = document.getElementById('FtoggleButton2');
-const FtoggleButton3 = document.getElementById('FtoggleButton3');
-const FtoggleButton4 = document.getElementById('FtoggleButton4');
-const FtoggleButton5 = document.getElementById('FtoggleButton5');
-const FtoggleButton6 = document.getElementById('FtoggleButton6');
-
-const FsharptoggleButton1 = document.getElementById('FsharptoggleButton1');
-const FsharptoggleButton2 = document.getElementById('FsharptoggleButton2');
-const FsharptoggleButton3 = document.getElementById('FsharptoggleButton3');
-const FsharptoggleButton4 = document.getElementById('FsharptoggleButton4');
-const FsharptoggleButton5 = document.getElementById('FsharptoggleButton5');
-const FsharptoggleButton6 = document.getElementById('FsharptoggleButton6');
-
-const GtoggleButton1 = document.getElementById('GtoggleButton1');
-const GtoggleButton2 = document.getElementById('GtoggleButton2');
-const GtoggleButton3 = document.getElementById('GtoggleButton3');
-const GtoggleButton4 = document.getElementById('GtoggleButton4');
-const GtoggleButton5 = document.getElementById('GtoggleButton5');
-const GtoggleButton6 = document.getElementById('GtoggleButton6');
-const GtoggleButton7 = document.getElementById('GtoggleButton7');
-
-const GsharptoggleButton1 = document.getElementById('GsharptoggleButton1');
-const GsharptoggleButton2 = document.getElementById('GsharptoggleButton2');
-const GsharptoggleButton3 = document.getElementById('GsharptoggleButton3');
-const GsharptoggleButton4 = document.getElementById('GsharptoggleButton4');
-const GsharptoggleButton5 = document.getElementById('GsharptoggleButton5');
-const GsharptoggleButton6 = document.getElementById('GsharptoggleButton6');
-
-const AtoggleButton1 = document.getElementById('AtoggleButton1');
-const AtoggleButton2 = document.getElementById('AtoggleButton2');
-const AtoggleButton3 = document.getElementById('AtoggleButton3');
-const AtoggleButton4 = document.getElementById('AtoggleButton4');
-const AtoggleButton5 = document.getElementById('AtoggleButton5');
-const AtoggleButton6 = document.getElementById('AtoggleButton6');
-const AtoggleButton7 = document.getElementById('AtoggleButton7');
-
-const AsharptoggleButton1 = document.getElementById('AsharptoggleButton1');
-const AsharptoggleButton2 = document.getElementById('AsharptoggleButton2');
-const AsharptoggleButton3 = document.getElementById('AsharptoggleButton3');
-const AsharptoggleButton4 = document.getElementById('AsharptoggleButton4');
-const AsharptoggleButton5 = document.getElementById('AsharptoggleButton5');
-const AsharptoggleButton6 = document.getElementById('AsharptoggleButton6');
-
-const BtoggleButton1 = document.getElementById('BtoggleButton1');
-const BtoggleButton2 = document.getElementById('BtoggleButton2');
-const BtoggleButton3 = document.getElementById('BtoggleButton3');
-const BtoggleButton4 = document.getElementById('BtoggleButton4');
-const BtoggleButton5 = document.getElementById('BtoggleButton5');
-const BtoggleButton6 = document.getElementById('BtoggleButton6');
-const BtoggleButton7 = document.getElementById('BtoggleButton7');
-
-const CtoggleButton1 = document.getElementById('CtoggleButton1');
-const CtoggleButton2 = document.getElementById('CtoggleButton2');
-const CtoggleButton3 = document.getElementById('CtoggleButton3');
-const CtoggleButton4 = document.getElementById('CtoggleButton4');
-const CtoggleButton5 = document.getElementById('CtoggleButton5');
-const CtoggleButton6 = document.getElementById('CtoggleButton6');
-
-const CsharptoggleButton1 = document.getElementById('CsharptoggleButton1');
-const CsharptoggleButton2 = document.getElementById('CsharptoggleButton2');
-const CsharptoggleButton3 = document.getElementById('CsharptoggleButton3');
-const CsharptoggleButton4 = document.getElementById('CsharptoggleButton4');
-const CsharptoggleButton5 = document.getElementById('CsharptoggleButton5');
-const CsharptoggleButton6 = document.getElementById('CsharptoggleButton6');
-
-const DtoggleButton1 = document.getElementById('DtoggleButton1');
-const DtoggleButton2 = document.getElementById('DtoggleButton2');
-const DtoggleButton3 = document.getElementById('DtoggleButton3');
-const DtoggleButton4 = document.getElementById('DtoggleButton4');
-const DtoggleButton5 = document.getElementById('DtoggleButton5');
-const DtoggleButton6 = document.getElementById('DtoggleButton6');
-const DtoggleButton7 = document.getElementById('DtoggleButton7');
-
-const DsharptoggleButton1 = document.getElementById('DsharptoggleButton1');
-const DsharptoggleButton2 = document.getElementById('DsharptoggleButton2');
-const DsharptoggleButton3 = document.getElementById('DsharptoggleButton3');
-const DsharptoggleButton4 = document.getElementById('DsharptoggleButton4');
-const DsharptoggleButton5 = document.getElementById('DsharptoggleButton5');
-const DsharptoggleButton6 = document.getElementById('DsharptoggleButton6');
 
 const resultList = document.getElementById('resultList');
 
-//mirroring behavior for all AtoggleButtons with a click event listener, toggling true/false, running the filterAndDisplay function, and adding the classes for the toggling behavior.
 
-const AtoggleButtons = document.querySelectorAll('button[id^="AtoggleButton"]');
+let Etoggles = document.querySelectorAll(".ENote");
 
-AtoggleButtons.forEach(button => {
-  button.addEventListener('click', function() {
-    showA = showA === 0 ? 10 : 0;
-    filterAndDisplay();
-    AtoggleButton1.classList.toggle('on');
-    AtoggleButton1.classList.toggle('off');
-    AtoggleButton2.classList.toggle('on');
-    AtoggleButton2.classList.toggle('off');
-    AtoggleButton3.classList.toggle('on');
-    AtoggleButton3.classList.toggle('off');
-    AtoggleButton4.classList.toggle('on');
-    AtoggleButton4.classList.toggle('off');
-    AtoggleButton5.classList.toggle('on');
-    AtoggleButton5.classList.toggle('off');
-    AtoggleButton6.classList.toggle('on');
-    AtoggleButton6.classList.toggle('off');
-    AtoggleButton7.classList.toggle('on');
-    AtoggleButton7.classList.toggle('off');
-  });
-});
-
-const AsharptoggleButtons = document.querySelectorAll('button[id^="AsharptoggleButton"]');
-
-AsharptoggleButtons.forEach(button => {
-  button.addEventListener('click', function() {
-    showAsharp = showAsharp === 0 ? 11 : 0;
-    filterAndDisplay();
-    AsharptoggleButton1.classList.toggle('on');
-    AsharptoggleButton1.classList.toggle('off');
-    AsharptoggleButton2.classList.toggle('on');
-    AsharptoggleButton2.classList.toggle('off');
-    AsharptoggleButton3.classList.toggle('on');
-    AsharptoggleButton3.classList.toggle('off');
-    AsharptoggleButton4.classList.toggle('on');
-    AsharptoggleButton4.classList.toggle('off');
-    AsharptoggleButton5.classList.toggle('on');
-    AsharptoggleButton5.classList.toggle('off');
-    AsharptoggleButton6.classList.toggle('on');
-    AsharptoggleButton6.classList.toggle('off');
-
-  });
-});
-
-const BtoggleButtons = document.querySelectorAll('button[id^="BtoggleButton"]');
-
-BtoggleButtons.forEach(button => {
-  button.addEventListener('click', function() {
-    showB = showB === 0 ? 12 : 0;
-    filterAndDisplay();
-    BtoggleButton1.classList.toggle('on');
-    BtoggleButton1.classList.toggle('off');
-    BtoggleButton2.classList.toggle('on');
-    BtoggleButton2.classList.toggle('off');
-    BtoggleButton3.classList.toggle('on');
-    BtoggleButton3.classList.toggle('off');
-    BtoggleButton4.classList.toggle('on');
-    BtoggleButton4.classList.toggle('off');
-    BtoggleButton5.classList.toggle('on');
-    BtoggleButton5.classList.toggle('off');
-    BtoggleButton6.classList.toggle('on');
-    BtoggleButton6.classList.toggle('off');
-    BtoggleButton7.classList.toggle('on');
-    BtoggleButton7.classList.toggle('off');
-
-
-  });
-});
-
-const CtoggleButtons = document.querySelectorAll('button[id^="CtoggleButton"]');
-
-CtoggleButtons.forEach(button => {
-  button.addEventListener('click', function() {
-    showC = showC === 0 ? 1 : 0;
-    filterAndDisplay();
-    CtoggleButton1.classList.toggle('on');
-    CtoggleButton1.classList.toggle('off');
-    CtoggleButton2.classList.toggle('on');
-    CtoggleButton2.classList.toggle('off');
-    CtoggleButton3.classList.toggle('on');
-    CtoggleButton3.classList.toggle('off');
-    CtoggleButton4.classList.toggle('on');
-    CtoggleButton4.classList.toggle('off');
-    CtoggleButton5.classList.toggle('on');
-    CtoggleButton5.classList.toggle('off');
-    CtoggleButton6.classList.toggle('on');
-    CtoggleButton6.classList.toggle('off');
-
-  });
-});
-
-const CsharptoggleButtons = document.querySelectorAll('button[id^="CsharptoggleButton"]');
-
-CsharptoggleButtons.forEach(button => {
-  button.addEventListener('click', function() {
-    showCsharp = showCsharp === 0 ? 2 : 0;
-    filterAndDisplay();
-    CsharptoggleButton1.classList.toggle('on');
-    CsharptoggleButton1.classList.toggle('off');
-    CsharptoggleButton2.classList.toggle('on');
-    CsharptoggleButton2.classList.toggle('off');
-    CsharptoggleButton3.classList.toggle('on');
-    CsharptoggleButton3.classList.toggle('off');
-    CsharptoggleButton4.classList.toggle('on');
-    CsharptoggleButton4.classList.toggle('off');
-    CsharptoggleButton5.classList.toggle('on');
-    CsharptoggleButton5.classList.toggle('off');
-    CsharptoggleButton6.classList.toggle('on');
-    CsharptoggleButton6.classList.toggle('off');
-
-  });
-});
-
-const DtoggleButtons = document.querySelectorAll('button[id^="DtoggleButton"]');
-
-DtoggleButtons.forEach(button => {
-  button.addEventListener('click', function() {
-    showD = showD === 0 ? 3 : 0;
-    filterAndDisplay();
-    DtoggleButton1.classList.toggle('on');
-    DtoggleButton1.classList.toggle('off');
-    DtoggleButton2.classList.toggle('on');
-    DtoggleButton2.classList.toggle('off');
-    DtoggleButton3.classList.toggle('on');
-    DtoggleButton3.classList.toggle('off');
-    DtoggleButton4.classList.toggle('on');
-    DtoggleButton4.classList.toggle('off');
-    DtoggleButton5.classList.toggle('on');
-    DtoggleButton5.classList.toggle('off');
-    DtoggleButton6.classList.toggle('on');
-    DtoggleButton6.classList.toggle('off');
-    DtoggleButton7.classList.toggle('on');
-    DtoggleButton7.classList.toggle('off');
-
-  });
-});
-
-const DsharptoggleButtons = document.querySelectorAll('button[id^="DsharptoggleButton"]');
-
-DsharptoggleButtons.forEach(button => {
-  button.addEventListener('click', function() {
-    showDsharp = showDsharp === 0 ? 4 : 0;
-    filterAndDisplay();
-    DsharptoggleButton1.classList.toggle('on');
-    DsharptoggleButton1.classList.toggle('off');
-    DsharptoggleButton2.classList.toggle('on');
-    DsharptoggleButton2.classList.toggle('off');
-    DsharptoggleButton3.classList.toggle('on');
-    DsharptoggleButton3.classList.toggle('off');
-    DsharptoggleButton4.classList.toggle('on');
-    DsharptoggleButton4.classList.toggle('off');
-    DsharptoggleButton5.classList.toggle('on');
-    DsharptoggleButton5.classList.toggle('off');
-    DsharptoggleButton6.classList.toggle('on');
-    DsharptoggleButton6.classList.toggle('off');
-
-  });
-});
-
-const EtoggleButtons = document.querySelectorAll('button[id^="EtoggleButton"]');
-
-EtoggleButtons.forEach(button => {
-  button.addEventListener('click', function() {
+Etoggles.forEach(i => {
+  i.addEventListener('click', function() {
     showE = showE === 0 ? 5 : 0;
     filterAndDisplay();
-    EtoggleButton1.classList.toggle('on');
-    EtoggleButton1.classList.toggle('off');
-    EtoggleButton2.classList.toggle('on');
-    EtoggleButton2.classList.toggle('off');
-    EtoggleButton3.classList.toggle('on');
-    EtoggleButton3.classList.toggle('off');
-    EtoggleButton4.classList.toggle('on');
-    EtoggleButton4.classList.toggle('off');
-    EtoggleButton5.classList.toggle('on');
-    EtoggleButton5.classList.toggle('off');
-    EtoggleButton6.classList.toggle('on');
-    EtoggleButton6.classList.toggle('off');
-    EtoggleButton7.classList.toggle('on');
-    EtoggleButton7.classList.toggle('off');
-    EtoggleButton8.classList.toggle('on');
-    EtoggleButton8.classList.toggle('off');
-
+    onEoff();
+    console.log(this.className);
   });
 });
 
-const FtoggleButtons = document.querySelectorAll('button[id^="FtoggleButton"]');
+function onEoff() {
+  for (var i = 0; i < Etoggles.length; i++) {
+    Etoggles[i].classList.toggle("on");
+    Etoggles[i].classList.toggle("off");
+  };
+};
 
-FtoggleButtons.forEach(button => {
-  button.addEventListener('click', function() {
+let Ftoggles = document.querySelectorAll(".FNote");
+
+Ftoggles.forEach(i => {
+  i.addEventListener('click', () => {
     showF = showF === 0 ? 6 : 0;
     filterAndDisplay();
-    FtoggleButton1.classList.toggle('on');
-    FtoggleButton1.classList.toggle('off');
-    FtoggleButton2.classList.toggle('on');
-    FtoggleButton2.classList.toggle('off');
-    FtoggleButton3.classList.toggle('on');
-    FtoggleButton3.classList.toggle('off');
-    FtoggleButton4.classList.toggle('on');
-    FtoggleButton4.classList.toggle('off');
-    FtoggleButton5.classList.toggle('on');
-    FtoggleButton5.classList.toggle('off');
-    FtoggleButton6.classList.toggle('on');
-    FtoggleButton6.classList.toggle('off');
-
+    onFoff();
   });
 });
 
-const FsharptoggleButtons = document.querySelectorAll('button[id^="FsharptoggleButton"]');
+function onFoff() {
+  for (var i = 0; i < Ftoggles.length; i++) {
+    Ftoggles[i].classList.toggle("on");
+    Ftoggles[i].classList.toggle("off");
+  };
+};
 
-FsharptoggleButtons.forEach(button => {
-  button.addEventListener('click', function() {
+let FSharptoggles = document.querySelectorAll(".FSharpNote");
+
+FSharptoggles.forEach(i => {
+  i.addEventListener('click', () => {
     showFsharp = showFsharp === 0 ? 7 : 0;
     filterAndDisplay();
-    FsharptoggleButton1.classList.toggle('on');
-    FsharptoggleButton1.classList.toggle('off');
-    FsharptoggleButton2.classList.toggle('on');
-    FsharptoggleButton2.classList.toggle('off');
-    FsharptoggleButton3.classList.toggle('on');
-    FsharptoggleButton3.classList.toggle('off');
-    FsharptoggleButton4.classList.toggle('on');
-    FsharptoggleButton4.classList.toggle('off');
-    FsharptoggleButton5.classList.toggle('on');
-    FsharptoggleButton5.classList.toggle('off');
-    FsharptoggleButton6.classList.toggle('on');
-    FsharptoggleButton6.classList.toggle('off');
-
+    onFSharpoff();
   });
 });
 
-const GtoggleButtons = document.querySelectorAll('button[id^="GtoggleButton"]');
+function onFSharpoff() {
+  for (var i = 0; i < FSharptoggles.length; i++) {
+    FSharptoggles[i].classList.toggle("on");
+    FSharptoggles[i].classList.toggle("off");
+  };
+};
 
-GtoggleButtons.forEach(button => {
-  button.addEventListener('click', function() {
+let Gtoggles = document.querySelectorAll(".GNote");
+
+Gtoggles.forEach(i => {
+  i.addEventListener('click', () => {
     showG = showG === 0 ? 8 : 0;
     filterAndDisplay();
-    GtoggleButton1.classList.toggle('on');
-    GtoggleButton1.classList.toggle('off');
-    GtoggleButton2.classList.toggle('on');
-    GtoggleButton2.classList.toggle('off');
-    GtoggleButton3.classList.toggle('on');
-    GtoggleButton3.classList.toggle('off');
-    GtoggleButton4.classList.toggle('on');
-    GtoggleButton4.classList.toggle('off');
-    GtoggleButton5.classList.toggle('on');
-    GtoggleButton5.classList.toggle('off');
-    GtoggleButton6.classList.toggle('on');
-    GtoggleButton6.classList.toggle('off');
-    GtoggleButton7.classList.toggle('on');
-    GtoggleButton7.classList.toggle('off');
-
-
+    onGoff();
   });
 });
 
-const GsharptoggleButtons = document.querySelectorAll('button[id^="GsharptoggleButton"]');
+function onGoff() {
+  for (var i = 0; i < Gtoggles.length; i++) {
+    Gtoggles[i].classList.toggle("on");
+    Gtoggles[i].classList.toggle("off");
+  };
+};
 
-GsharptoggleButtons.forEach(button => {
-  button.addEventListener('click', function() {
+let GSharptoggles = document.querySelectorAll(".GSharpNote");
+
+GSharptoggles.forEach(i => {
+  i.addEventListener('click', () => {
     showGsharp = showGsharp === 0 ? 9 : 0;
     filterAndDisplay();
-    GsharptoggleButton1.classList.toggle('on');
-    GsharptoggleButton1.classList.toggle('off');
-    GsharptoggleButton2.classList.toggle('on');
-    GsharptoggleButton2.classList.toggle('off');
-    GsharptoggleButton3.classList.toggle('on');
-    GsharptoggleButton3.classList.toggle('off');
-    GsharptoggleButton4.classList.toggle('on');
-    GsharptoggleButton4.classList.toggle('off');
-    GsharptoggleButton5.classList.toggle('on');
-    GsharptoggleButton5.classList.toggle('off');
-    GsharptoggleButton6.classList.toggle('on');
-    GsharptoggleButton6.classList.toggle('off');
-
+    onGSharpoff();
   });
 });
+
+function onGSharpoff() {
+  for (var i = 0; i < GSharptoggles.length; i++) {
+    GSharptoggles[i].classList.toggle("on");
+    GSharptoggles[i].classList.toggle("off");
+  };
+};
+
+let Atoggles = document.querySelectorAll(".ANote");
+
+Atoggles.forEach(i => {
+  i.addEventListener('click', () => {
+    showA = showA === 0 ? 10 : 0;
+    filterAndDisplay();
+    onAoff();
+  });
+});
+
+function onAoff() {
+  for (var i = 0; i < Atoggles.length; i++) {
+    Atoggles[i].classList.toggle("on");
+    Atoggles[i].classList.toggle("off");
+  };
+};
+
+let ASharptoggles = document.querySelectorAll(".ASharpNote");
+
+ASharptoggles.forEach(i => {
+  i.addEventListener('click', () => {
+    showAsharp = showAsharp === 0 ? 11 : 0;
+    filterAndDisplay();
+    onASharpoff();
+  });
+});
+
+function onASharpoff() {
+  for (var i = 0; i < ASharptoggles.length; i++) {
+    ASharptoggles[i].classList.toggle("on");
+    ASharptoggles[i].classList.toggle("off");
+  };
+};
+
+let Btoggles = document.querySelectorAll(".BNote");
+
+Btoggles.forEach(i => {
+  i.addEventListener('click', () => {
+    showB = showB === 0 ? 12 : 0;
+    filterAndDisplay();
+    onBoff();
+  });
+});
+
+function onBoff() {
+  for (var i = 0; i < Btoggles.length; i++) {
+    Btoggles[i].classList.toggle("on");
+    Btoggles[i].classList.toggle("off");
+  };
+};
+
+let Ctoggles = document.querySelectorAll(".CNote");
+
+Ctoggles.forEach(i => {
+  i.addEventListener('click', () => {
+    showC = showC === 0 ? 1 : 0;
+    filterAndDisplay();
+    onCoff();
+  });
+});
+
+function onCoff() {
+  for (var i = 0; i < Ctoggles.length; i++) {
+    Ctoggles[i].classList.toggle("on");
+    Ctoggles[i].classList.toggle("off");
+  };
+};
+
+let CSharptoggles = document.querySelectorAll(".CSharpNote");
+
+CSharptoggles.forEach(i => {
+  i.addEventListener('click', () => {
+    showCsharp = showCsharp === 0 ? 2 : 0;
+    filterAndDisplay();
+    onCSharpoff();
+  });
+});
+
+function onCSharpoff() {
+  for (var i = 0; i < CSharptoggles.length; i++) {
+    CSharptoggles[i].classList.toggle("on");
+    CSharptoggles[i].classList.toggle("off");
+  };
+};
+
+let Dtoggles = document.querySelectorAll(".DNote");
+
+Dtoggles.forEach(i => {
+  i.addEventListener('click', () => {
+    showD = showD === 0 ? 3 : 0;
+    filterAndDisplay();
+    onDoff();
+  });
+});
+
+function onDoff() {
+  for (var i = 0; i < Dtoggles.length; i++) {
+    Dtoggles[i].classList.toggle("on");
+    Dtoggles[i].classList.toggle("off");
+  };
+};
+
+let DSharptoggles = document.querySelectorAll(".DSharpNote");
+
+DSharptoggles.forEach(i => {
+  i.addEventListener('click', () => {
+    showDsharp = showDsharp === 0 ? 4 : 0;
+    filterAndDisplay();
+    onDSharpoff();
+  });
+});
+
+function onDSharpoff() {
+  for (var i = 0; i < DSharptoggles.length; i++) {
+    DSharptoggles[i].classList.toggle("on");
+    DSharptoggles[i].classList.toggle("off");
+  };
+};
+
 
 function filterAndDisplay() {
 
@@ -8668,6 +9117,8 @@ lastItems.forEach(items => {
 
 //new results filter: example array analysis code
 
+/*
+
 resultList.innerHTML = '';
 
 // Perform analysis on arrays
@@ -8693,4 +9144,647 @@ results.forEach((result) => {
   resultsList.appendChild(listItem);
 }); 
 
-}
+};
+
+        */
+
+let showE = 0;
+let showF = 0;
+let showFsharp = 0;
+let showG = 0;
+let showGsharp = 0;
+let showA = 0;
+let showAsharp = 0;
+let showB = 0;
+let showC = 0;
+let showCsharp = 0;
+let showD = 0;
+let showDsharp = 0;
+
+//INFO: The new function for click action on each clickable field.
+const toggleButtons = document.querySelectorAll("td.play"); //TODO: need to add this to the class lists for each cell.
+
+toggleButtons.forEach(toggle => {
+  toggle.addEventListener('click', function() {
+    //changeDisplay();
+
+    toggleClass = this.classList;
+    console.log(toggleClass);
+
+
+    const resultList = document.getElementById('resultList');
+
+
+    const classTestOn = toggleClass.contains("on");
+    console.log(classTestOn);
+
+    const classTestOff = toggleClass.contains("off");
+    console.log(classTestOff);
+
+/*
+    const togglesA2 = document.querySelectorAll(".A2Note");
+
+    const classTestA2 = toggleClass.contains("A2Note");
+    console.log(classTestA2);
+
+    function testClassA2() {
+
+      if (classTestA2 && classTestOff) {
+        showA2 = 10;
+        onA2off();
+        filterAndDisplay();
+        console.log('Class Is A2 off');
+      } else if (classTestA2 && classTestOn) {
+        showA2 = 0;
+        onA2off();
+        filterAndDisplay();
+        console.log('Class Is A2 on');
+      } else {
+        console.log('Class Not A2');
+      }
+      console.log(showA2);
+      return showA2;
+
+    };
+
+    console.log(testClassA2());
+
+    function onA2off() {
+      for (var i = 0; i < togglesA2.length; i++) {
+        togglesA2[i].classList.toggle("on");
+        togglesA2[i].classList.toggle("off");
+      };
+    };
+*/
+
+
+    const togglesA = document.querySelectorAll(".ANote");
+
+    const classTestA = toggleClass.contains("ANote");
+    console.log(classTestA);
+
+    function testClassA() {
+
+      if (classTestA && classTestOff) {
+        showA = 10;
+        onAoff();
+        filterAndDisplay();
+        console.log('Class Is A off');
+      } else if (classTestA && classTestOn) {
+        showA = 0;
+        onAoff();
+        filterAndDisplay();
+        console.log('Class Is A on');
+      } else {
+        console.log('Class Not A');
+      }
+      console.log(showA);
+      return showA;
+
+    };
+
+    console.log(testClassA());
+
+    function onAoff() {
+      for (var i = 0; i < togglesA.length; i++) {
+        togglesA[i].classList.toggle("on");
+        togglesA[i].classList.toggle("off");
+      };
+    };
+
+
+    const togglesAsharp = document.querySelectorAll(".AsharpNote");
+
+    const classTestAsharp = toggleClass.contains("AsharpNote");
+    console.log(classTestAsharp);
+
+    function testClassAsharp() {
+
+      if (classTestAsharp && classTestOff) {
+        showAsharp = 11;
+        onAsharpoff();
+        filterAndDisplay();
+        console.log('Class Is Asharp off')
+      } else if (classTestAsharp && classTestOn) {
+        showAsharp = 0;
+        onAsharpoff();
+        filterAndDisplay();
+        console.log('Class Is Asharp on');
+      } else {
+        console.log('Class Not Asharp');
+      }
+      console.log(showAsharp);
+      return showAsharp;
+
+    };
+
+    console.log(testClassAsharp());
+
+    function onAsharpoff() {
+      for (var i = 0; i < togglesAsharp.length; i++) {
+        togglesAsharp[i].classList.toggle("on");
+        togglesAsharp[i].classList.toggle("off");
+      };
+    };
+
+
+    const togglesB = document.querySelectorAll(".BNote");
+
+    const classTestB = toggleClass.contains("BNote");
+    console.log(classTestB);
+
+    function testClassB() {
+
+      if (classTestB && classTestOff) {
+        showB = 12;
+        onBoff();
+        filterAndDisplay();
+        console.log('Class Is B off')
+      } else if (classTestB && classTestOn) {
+        showB = 0;
+        onBoff();
+        filterAndDisplay();
+        console.log('Class Is B on');
+      } else {
+        console.log('Class Not B');
+      }
+      console.log(showB);
+      return showB;
+
+    };
+
+    console.log(testClassB());
+
+    function onBoff() {
+      for (var i = 0; i < togglesB.length; i++) {
+        togglesB[i].classList.toggle("on");
+        togglesB[i].classList.toggle("off");
+      };
+    };
+
+    const togglesC = document.querySelectorAll(".CNote");
+
+    const classTestC = toggleClass.contains("CNote");
+    console.log(classTestC);
+
+    function testClassC() {
+
+      if (classTestC && classTestOff) {
+        showC = 1;
+        onCoff();
+        filterAndDisplay();
+        console.log('Class Is C off')
+      } else if (classTestC && classTestOn) {
+        showC = 0;
+        onCoff();
+        filterAndDisplay();
+        console.log('Class Is C on');
+      } else {
+        console.log('Class Not C');
+      }
+      console.log(showC);
+      return showC;
+
+    };
+
+    console.log(testClassC());
+
+    function onCoff() {
+      for (var i = 0; i < togglesC.length; i++) {
+        togglesC[i].classList.toggle("on");
+        togglesC[i].classList.toggle("off");
+      };
+    };
+
+
+    const togglesCsharp = document.querySelectorAll(".CsharpNote");
+
+    const classTestCsharp = toggleClass.contains("CsharpNote");
+    console.log(classTestCsharp);
+
+    function testClassCsharp() {
+
+      if (classTestCsharp && classTestOff) {
+        showCsharp = 2;
+        onCsharpoff();
+        filterAndDisplay();
+        console.log('Class Is Csharp off')
+      } else if (classTestCsharp && classTestOn) {
+        showCsharp = 0;
+        onCsharpoff();
+        filterAndDisplay();
+        console.log('Class Is Csharp on');
+      } else {
+        console.log('Class Not Csharp');
+      }
+      console.log(showCsharp);
+      return showCsharp;
+
+    };
+
+    console.log(testClassCsharp());
+
+    function onCsharpoff() {
+      for (var i = 0; i < togglesCsharp.length; i++) {
+        togglesCsharp[i].classList.toggle("on");
+        togglesCsharp[i].classList.toggle("off");
+      };
+    };
+
+
+    const togglesD = document.querySelectorAll(".DNote");
+
+    const classTestD = toggleClass.contains("DNote");
+    console.log(classTestD);
+
+    function testClassD() {
+
+      if (classTestD && classTestOff) {
+        showD = 3;
+        onDoff();
+        filterAndDisplay();
+        console.log('Class Is D off')
+      } else if (classTestD && classTestOn) {
+        showD = 0;
+        onDoff();
+        filterAndDisplay();
+        console.log('Class Is D on');
+      } else {
+        console.log('Class Not D');
+      }
+      console.log(showD);
+      return showD;
+
+    };
+
+    console.log(testClassD());
+
+    function onDoff() {
+      for (var i = 0; i < togglesD.length; i++) {
+        togglesD[i].classList.toggle("on");
+        togglesD[i].classList.toggle("off");
+      };
+    };
+
+
+    const togglesDsharp = document.querySelectorAll(".DsharpNote");
+
+    const classTestDsharp = toggleClass.contains("DsharpNote");
+    console.log(classTestDsharp);
+
+    function testClassDsharp() {
+
+      if (classTestDsharp && classTestOff) {
+        showDsharp = 4;
+        onDsharpoff();
+        filterAndDisplay();
+        console.log('Class Is Dsharp off')
+      } else if (classTestDsharp && classTestOn) {
+        showDsharp = 0;
+        onDsharpoff();
+        filterAndDisplay();
+        console.log('Class Is Dsharp on');
+      } else {
+        console.log('Class Not Dsharp');
+      }
+      console.log(showDsharp);
+      return showDsharp;
+
+    };
+
+    console.log(testClassDsharp());
+
+    function onDsharpoff() {
+      for (var i = 0; i < togglesDsharp.length; i++) {
+        togglesDsharp[i].classList.toggle("on");
+        togglesDsharp[i].classList.toggle("off");
+      };
+    };
+
+
+    const togglesE = document.querySelectorAll(".ENote");
+
+    const classTestE = toggleClass.contains("ENote");
+    console.log(classTestE);
+
+    function testClassE() {
+
+      if (classTestE && classTestOff) {
+        showE = 5;
+        onEoff();
+        filterAndDisplay();
+        console.log('Class Is E off')
+      } else if (classTestE && classTestOn) {
+        showE = 0;
+        onEoff();
+        filterAndDisplay();
+        console.log('Class Is E on');
+      } else {
+        console.log('Class Not E');
+      }
+      console.log(showE);
+      return showE;
+
+    };
+
+    console.log(testClassE());
+
+    function onEoff() {
+      for (var i = 0; i < togglesE.length; i++) {
+        togglesE[i].classList.toggle("on");
+        togglesE[i].classList.toggle("off");
+      };
+    };
+
+
+    const togglesF = document.querySelectorAll(".FNote");
+
+    const classTestF = toggleClass.contains("FNote");
+    console.log(classTestF);
+
+    function testClassF() {
+
+      if (classTestF && classTestOff) {
+        showF = 6;
+        onFoff();
+        filterAndDisplay();
+        console.log('Class Is F off')
+      } else if (classTestF && classTestOn) {
+        showF = 0;
+        onFoff();
+        filterAndDisplay();
+        console.log('Class Is F on');
+      } else {
+        console.log('Class Not F');
+      }
+      console.log(showF);
+      return showF;
+
+    };
+
+    console.log(testClassF());
+
+    function onFoff() {
+      for (var i = 0; i < togglesF.length; i++) {
+        togglesF[i].classList.toggle("on");
+        togglesF[i].classList.toggle("off");
+      };
+    };
+
+
+    const togglesFsharp = document.querySelectorAll(".FsharpNote");
+
+    const classTestFsharp = toggleClass.contains("FsharpNote");
+    console.log(classTestFsharp);
+
+    function testClassFsharp() {
+
+      if (classTestFsharp && classTestOff) {
+        showFsharp = 7;
+        onFsharpoff();
+        filterAndDisplay();
+        console.log('Class Is Fsharp off')
+      } else if (classTestFsharp && classTestOn) {
+        showFsharp = 0;
+        onFsharpoff();
+        filterAndDisplay();
+        console.log('Class Is Fsharp on');
+      } else {
+        console.log('Class Not Fsharp');
+      }
+      console.log(showFsharp);
+      return showFsharp;
+
+    };
+
+    console.log(testClassFsharp());
+
+    function onFsharpoff() {
+      for (var i = 0; i < togglesFsharp.length; i++) {
+        togglesFsharp[i].classList.toggle("on");
+        togglesFsharp[i].classList.toggle("off");
+      };
+    };
+
+
+    const togglesG = document.querySelectorAll(".GNote");
+
+    const classTestG = toggleClass.contains("GNote");
+    console.log(classTestG);
+
+    function testClassG() {
+
+      if (classTestG && classTestOff) {
+        showG = 8;
+        onGoff();
+        filterAndDisplay();
+        console.log('Class Is G off')
+      } else if (classTestG && classTestOn) {
+        showG = 0;
+        onGoff();
+        filterAndDisplay();
+        console.log('Class Is G on');
+      } else {
+        console.log('Class Not G');
+      }
+      console.log(showG);
+      return showG;
+
+    };
+
+    console.log(testClassG());
+
+    function onGoff() {
+      for (var i = 0; i < togglesG.length; i++) {
+        togglesG[i].classList.toggle("on");
+        togglesG[i].classList.toggle("off");
+      };
+    };
+
+    const togglesGsharp = document.querySelectorAll(".GsharpNote");
+
+    const classTestGsharp = toggleClass.contains("GsharpNote");
+    console.log(classTestGsharp);
+
+    function testClassGsharp() {
+
+      if (classTestGsharp && classTestOff) {
+        showGsharp = 9;
+        onGsharpoff();
+        filterAndDisplay();
+        console.log('Class Is Gsharp off')
+      } else if (classTestGsharp && classTestOn) {
+        showGsharp = 0;
+        onGsharpoff();
+        filterAndDisplay();
+        console.log('Class Is Gsharp on');
+      } else {
+        console.log('Class Not Gsharp');
+      }
+      console.log(showGsharp);
+      return showGsharp;
+
+    };
+
+    console.log(testClassGsharp());
+
+    function onGsharpoff() {
+      for (var i = 0; i < togglesGsharp.length; i++) {
+        togglesGsharp[i].classList.toggle("on");
+        togglesGsharp[i].classList.toggle("off");
+      };
+    };
+
+
+
+
+/*
+    const togglesB2 = document.querySelectorAll(".B2Note");
+
+    const classTestB2 = toggleClass.contains("B2Note");
+    console.log(classTestB2);
+
+    function testClassB2() {
+
+      if (classTestB2 && classTestOff) {
+        showB2 = 12;
+        onB2off();
+        filterAndDisplay();
+        console.log('Class Is B2 off')
+      } else if (classTestB2 && classTestOn) {
+        showB2 = 0;
+        onB2off();
+        filterAndDisplay();
+        console.log('Class Is B2 on');
+      } else {
+        console.log('Class Not B2');
+      }
+      console.log(showB2);
+      return showB2;
+
+    };
+
+    console.log(testClassB2());
+
+    function onB2off() {
+      for (var i = 0; i < togglesB2.length; i++) {
+        togglesB2[i].classList.toggle("on");
+        togglesB2[i].classList.toggle("off");
+      };
+    };
+*/
+
+    function filterAndDisplay() {
+
+      const singleArray = [showA];
+
+      const filteredArrays =
+      seriesOfArrays.filter(array => {
+        return array.some(item => singleArray.includes(item));
+      });
+
+      const singleArray1 = [showAsharp];
+
+      const filteredArrays1 = filteredArrays.filter(array => {
+        return array.some(item => singleArray1.includes(item));
+      });
+
+      const singleArray2 = [showB];
+
+      const filteredArrays2 = filteredArrays1.filter(array => {
+        return array.some(item => singleArray2.includes(item));
+      });
+
+      const singleArray3 = [showC];
+
+      const filteredArrays3 = filteredArrays2.filter(array => {
+        return array.some(item => singleArray3.includes(item));
+      });
+
+      const singleArray4 = [showCsharp];
+
+      const filteredArrays4 = filteredArrays3.filter(array => {
+        return array.some(item => singleArray4.includes(item));
+      });
+
+      const singleArray5 = [showD];
+
+      const filteredArrays5 = filteredArrays4.filter(array => {
+        return array.some(item => singleArray5.includes(item));
+      });
+
+      const singleArray6 = [showDsharp];
+
+      const filteredArrays6 = filteredArrays5.filter(array => {
+        return array.some(item => singleArray6.includes(item));
+      });
+
+      const singleArray7 = [showE];
+
+      const filteredArrays7 = filteredArrays6.filter(array => {
+        return array.some(item => singleArray7.includes(item));
+      });
+
+      const singleArray8 = [showF];
+
+      const filteredArrays8 = filteredArrays7.filter(array => {
+        return array.some(item => singleArray8.includes(item));
+      });
+
+      const singleArray9 = [showFsharp];
+
+      const filteredArrays9 = filteredArrays8.filter(array => {
+        return array.some(item => singleArray9.includes(item));
+      });
+
+      const singleArray10 = [showG];
+
+      const filteredArrays10 = filteredArrays9.filter(array => {
+        return array.some(item => singleArray10.includes(item));
+      });
+
+      const singleArray11 = [showGsharp];
+
+      const filteredArrays11 = filteredArrays10.filter(array => {
+        return array.some(item => singleArray11.includes(item));
+      });
+
+      console.log(filteredArrays11); //final filtered array
+
+      //new results filter: example array analysis code
+
+      resultList.innerHTML = '';
+
+      // Perform analysis on arrays
+      const buttonsPressed = showC/1 + showCsharp/2 + showD/3 + showDsharp/4 +
+      showE/5 + showF/6 + showFsharp/7 + showG/8 + showGsharp/9 + showA/10 + showAsharp/11 + showB/12;
+
+      const results = filteredArrays11.map((arr) => ({
+        lastItem: arr[arr.length - 1],
+        itemCount: arr.filter((item) => item > 0).length,
+                                                     itemCountTotal: buttonsPressed,
+      }));
+
+
+
+      // Sort the results based on itemCount in descending order
+      results.sort((a, b) => b.itemCountTotal/b.itemCount - a.itemCountTotal/a.itemCount);
+
+      // Generate HTML list
+      const resultsList = document.getElementById('resultList');
+      results.forEach((result) => {
+        const listItem = document.createElement('li');
+        listItem.textContent = `${result.lastItem} | Match: ${result.itemCountTotal}/${result.itemCount}`;
+        resultsList.appendChild(listItem);
+      });
+
+    };
+
+
+});
+});  //INFO: event listener function performed each time a select option is changed.
+
+/*function changeDisplay() {
+
+};*/
+

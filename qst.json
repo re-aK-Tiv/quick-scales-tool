@@ -3,7 +3,7 @@
   "short_name": "QST",
   "description": "A visual tool for fret based instruments like guitars and pianos to help musicians",
   "start_url": "/",
-  "theme_color": "67b49d",
+  "theme_color": "#67b49d",
   "background_color": "#2b4b41",
   "display": "standalone",
   "icons": [
