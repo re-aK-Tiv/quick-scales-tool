@@ -264,7 +264,7 @@ self.addEventListener("fetch", (event) => {
 
 //js13kGames example
 
-const VERSION = "v0.2.16";
+const VERSION = "v0.2.18";
 const cacheName = `quick-scales-tool-${VERSION}`;
 
 // Files to cache
@@ -275,6 +275,7 @@ const contentToCache = [
     "./index-guitar-filter/styles/style.css",
     "./index-guitar-filter/images/hamburger-menu-512.png",
     "./index-guitar-filter/scripts/main.js",
+    "./index-guitar-filter/.",
     "./index-about/styles/style.css",
     "./index-about/images/hamburger-menu-512.png",
     "./index-about/images/scale-filter-ver2.PNG",
